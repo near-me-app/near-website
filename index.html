@@ -1,0 +1,483 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Discover plans around you, meet people who share your interests, and bring your community together on Near."><meta name="theme-color" content="#0B0C0F"><link rel="canonical" href="https://www.whatsnear.in/"><meta property="og:type" content="website"><meta property="og:title" content="Near — find your next plan"><meta property="og:description" content="Explore the map. Find your people. Make plans worth showing up for."><meta property="og:url" content="https://www.whatsnear.in/"><title>Near — find your next plan</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anton&family=Unbounded:wght@700;900&family=Nunito:wght@500;600;700;800;900&family=JetBrains+Mono:wght@500;700&family=Silkscreen&display=swap" rel="stylesheet"><link href="tokens.css" rel="stylesheet"><link href="preview.css" rel="stylesheet">
+<style id="near-event-gallery-styles">
+/* A24-inspired gallery. Deliberately scoped to section two. */
+#possibilities .event-stage{background-image:none}
+#possibilities.spatial-events{height:250svh}
+#possibilities.spatial-events .event-stage{position:sticky;top:64px;height:calc(100svh - 64px);min-height:580px;padding:0;overflow:hidden;isolation:isolate}
+#possibilities.spatial-events .occasion-intro{position:absolute;top:32px;left:0;right:0;z-index:6;pointer-events:none}
+#possibilities.spatial-events .occasion-intro h2{font:800 clamp(36px,4.2vw,66px)/1.02 var(--body);letter-spacing:-.045em;text-transform:none;max-width:390px;margin-bottom:18px}
+#possibilities.spatial-events .occasion-intro p{font-size:15px;line-height:1.55;max-width:300px;margin:0}
+#possibilities.spatial-events .occasion-window{position:absolute;inset:0;width:100%;margin:0;perspective:1700px;overflow:hidden;touch-action:pan-y;cursor:grab}
+#possibilities.spatial-events .occasion-window:active{cursor:grabbing}
+#possibilities.spatial-events .occasion-track{position:absolute;inset:0;width:100%;height:100%;max-width:none;margin:0;display:block;transform-style:preserve-3d}
+#possibilities.spatial-events .occasion-card{position:absolute;left:58%;top:54%;width:clamp(310px,26vw,410px);padding:12px;border-radius:30px;background:var(--bg-2);transform-origin:center;backface-visibility:hidden;will-change:transform;box-shadow:0 25px 50px var(--photo-shadow);user-select:none}
+#possibilities.spatial-events .event-cover{height:clamp(180px,28svh,280px);border-radius:21px}
+#possibilities.spatial-events .event-cover img{pointer-events:none}
+#possibilities.spatial-events .event-body{padding:19px 9px 7px}
+#possibilities.spatial-events .event-body h3{font:800 clamp(27px,2.4vw,36px)/1.05 var(--body);letter-spacing:-.035em;margin:0 0 17px}
+#possibilities.spatial-events .event-body p{font-size:12px;margin:12px 0}
+#possibilities.spatial-events .event-cta{height:48px;margin-top:18px;font-size:13px}
+#possibilities.spatial-events .occasion-bottom{position:absolute;left:0;right:0;bottom:19px;z-index:6;pointer-events:none;display:flex;flex-direction:row;justify-content:space-between}
+#possibilities .event-gallery-help{font-size:11px;color:var(--ink-2)}
+#possibilities .gallery-announcement{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#possibilities .occasion-window:focus-visible{outline:2px solid var(--ink);outline-offset:-7px}
+@media(max-width:900px){
+ #possibilities.spatial-events .occasion-intro{top:22px}
+ #possibilities.spatial-events .occasion-intro h2{font-size:35px;max-width:none;margin-bottom:10px}
+ #possibilities.spatial-events .occasion-intro h2 br{display:none}
+ #possibilities.spatial-events .occasion-intro p{font-size:13px;max-width:none}
+ #possibilities.spatial-events .occasion-intro p br{display:none}
+ #possibilities.spatial-events .occasion-card{left:50%;top:57%;width:min(76vw,340px);padding:10px;border-radius:27px}
+ #possibilities.spatial-events .event-cover{height:clamp(150px,23svh,210px);border-radius:19px}
+ #possibilities.spatial-events .event-body{padding:16px 7px 5px}
+ #possibilities.spatial-events .event-body h3{font-size:28px;margin-bottom:13px}
+ #possibilities.spatial-events .event-body p{font-size:11px;margin:9px 0}
+ #possibilities.spatial-events .event-cta{height:44px;margin-top:13px;font-size:12px}
+ #possibilities.spatial-events .cover-tags{left:10px;right:10px;top:12px;gap:5px}
+ #possibilities.spatial-events .cover-tags span{font-size:10px;padding:6px 8px}
+ #possibilities.spatial-events .occasion-bottom{bottom:12px;gap:7px;font-size:10px;flex-wrap:wrap}
+ #possibilities .event-gallery-help{font-size:10px}
+}
+@media(min-width:901px) and (max-height:800px){
+ #possibilities.spatial-events .occasion-card{width:315px;padding:10px}
+ #possibilities.spatial-events .event-cover{height:175px}
+ #possibilities.spatial-events .event-body h3{font-size:28px;margin-bottom:12px}
+ #possibilities.spatial-events .event-body{padding-top:14px}
+ #possibilities.spatial-events .event-body p{margin:9px 0}
+}
+
+/* The last gallery beat hands the viewport to the existing app section. */
+#possibilities,#features{background-color:var(--bg)}
+#features .story-stage{background-image:none}
+#possibilities.spatial-events{height:350svh;z-index:2}
+#features.gallery-handoff-target{margin-top:calc(-100svh + 64px)}
+#possibilities .handoff-preview.features{position:absolute;inset:0;width:100%;max-width:none;height:100%;margin:0;padding:0;display:block;background:transparent;z-index:4;pointer-events:none;overflow:visible;visibility:hidden}
+#possibilities .handoff-preview .story-stage{position:relative;top:0;height:100%;margin-inline:auto;background:none;overflow:visible}
+#possibilities .handoff-preview .phone-wrap{top:auto}
+#possibilities .handoff-preview .feature-copy article:not(.is-active){visibility:hidden;opacity:0}
+#possibilities .occasion-intro,#possibilities .occasion-bottom{will-change:transform,opacity}
+
+/* The real app stage keeps identical geometry in both positions. */
+#features.has-story .phone,#possibilities .handoff-preview .phone{height:min(650px,calc(100svh - 124px));width:auto;aspect-ratio:591/1280;max-width:100%}
+#features.has-story .phone-wrap,#possibilities .handoff-preview .phone-wrap{min-height:0;padding-top:0}
+@media(max-width:900px){
+ #features.has-story .phone,#possibilities .handoff-preview .phone{height:min(498px,calc(100svh - 264px));width:auto}
+ #features.has-story .story-stage,#possibilities .handoff-preview .story-stage{gap:20px;padding-block:20px}
+}
+</style>
+
+<style id="near-final-design">
+/* Campaign direction: cream type, lived-in map, actual app screens. */
+body>header.site-header{height:64px;padding:0;background:var(--bg);border-bottom:1px solid var(--line-soft);z-index:80}
+.site-header .header-inner{width:min(1240px,calc(100% - 80px));height:100%;margin:auto;display:grid;grid-template-columns:1fr auto 1fr;gap:30px;align-items:center}
+.site-header .header-brand{justify-self:start;min-height:44px;display:flex;align-items:center}
+.site-header .wordmark{width:92px;height:20px}
+.site-header .desktop-nav{display:flex;gap:32px;padding:0}
+.site-header .desktop-nav a{color:var(--ink-mid);font-size:13px;font-weight:700;transition:color .18s}
+.site-header .desktop-nav a:hover,.site-header .desktop-nav a:focus-visible{color:var(--ink)}
+.site-header .header-download{justify-self:end;background:var(--ink);color:var(--bg);border-radius:99px;min-height:40px;padding:0 20px;gap:20px;font-size:13px;font-weight:800}
+.site-header .header-download span{font-size:18px;font-weight:500}
+.site-header .mobile-nav{display:none}
+#hero.map-hero{height:auto;min-height:min(900px,calc(100svh - 64px));padding:0;display:block;background:var(--bg);isolation:isolate}
+#hero .map{inset:0;z-index:auto}
+#hero .map-art{opacity:.58;transform:rotate(-5deg) scale(1.13)}
+#hero .map:after{inset:0;background:linear-gradient(90deg,var(--bg) 2%,rgba(11,12,15,.88) 32%,rgba(11,12,15,.16) 70%),linear-gradient(0deg,var(--bg),transparent 28%);z-index:1}
+#hero .hero-layout{position:relative;min-height:inherit;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding-block:72px 65px;gap:40px;pointer-events:none}
+#hero .hero-copy{position:relative;width:100%;z-index:4;pointer-events:auto}
+#hero .hero-copy h1{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:clamp(92px,10.2vw,158px);line-height:.95;letter-spacing:-.015em;margin:0 0 28px}
+#hero .hero-copy h1>span{display:block;width:fit-content}
+#hero .hero-copy h1 .hero-prelude{font-size:.43em;line-height:1.2;letter-spacing:-.01em;color:var(--ink-mid);margin-bottom:10px;white-space:nowrap}
+#hero .hero-copy h1 .hero-go{margin-bottom:10px}
+#hero .hero-copy h1 .hero-outside{background:var(--live);padding:.025em .2em .085em;border-radius:999px;margin-left:-.05em}
+#hero .hero-copy>p{font-family:var(--body);font-size:clamp(16px,1.45vw,20px);font-weight:700;line-height:1.6;max-width:450px;margin:0;color:var(--ink)}
+#hero .store-row{margin-top:25px;gap:12px;flex-wrap:nowrap}
+#hero .store,#download .store{padding:0;border:0;background:none;min-height:48px;border-radius:0;display:inline-flex}
+#hero .store img,#download .store img{height:48px;width:auto;display:block;max-width:100%}
+#hero .hero-explore{display:flex;align-items:center;gap:24px;margin-top:28px;min-height:44px;font-size:12px;font-weight:700;color:var(--ink-mid);width:fit-content}
+#hero .hero-explore span{font-size:20px;color:var(--ink)}
+.hero-apps{position:relative;height:620px;min-width:0;perspective:1400px;align-self:center;z-index:3;pointer-events:none}
+.hero-device{position:absolute;width:clamp(220px,20vw,300px);padding:6px;border-radius:40px;background:var(--surface-2);border:1px solid var(--border);box-shadow:0 28px 60px var(--shadow);animation:near-device-float 7s ease-in-out infinite;animation-play-state:paused}
+.hero-device-inner{overflow:hidden;border-radius:33px;background:var(--bg)}
+.hero-device img{display:block;width:100%;height:auto;aspect-ratio:591/1280;object-fit:cover}
+.hero-device-back{left:-5%;top:65px;transform:rotate(-10deg);width:clamp(205px,18vw,265px);opacity:.7}
+.hero-device-back{animation-delay:-3s}
+.hero-device-front{right:-2%;top:6px;transform:rotate(8deg)}
+.hero-plan{position:absolute;bottom:37px;left:0;z-index:5;width:min(340px,95%);display:flex;align-items:center;gap:14px;padding:16px;background:var(--card);border:1px solid var(--border);border-radius:23px;box-shadow:0 20px 40px var(--shadow);transform:rotate(-5deg);pointer-events:auto}
+.hero-plan>img{height:54px;width:54px;border-radius:16px;background:var(--food-deep);padding:7px}
+.hero-plan strong{font-size:15px;line-height:1.2;display:block}
+.hero-plan small{font-size:11px;color:var(--ink-mid);display:block;margin-top:5px}
+.hero-plan-arrow{margin-left:auto;font-size:22px}
+.hero-app-caption{position:absolute;right:0;bottom:-15px;color:var(--ink-2);font-size:11px}
+#hero .pin{z-index:2;animation:near-pin-float 6s ease-in-out infinite;animation-play-state:paused}
+#hero .pin.p0{left:89%;top:78%;animation-delay:-2s}
+#hero .pin.p1{left:61%;top:7%;animation-delay:-1s}
+#hero .pin.p2{left:46%;top:70%;animation-delay:-4s}
+#hero .pin.p3{left:93%;top:25%;animation-delay:-3s}
+#hero .pin.p4{left:46%;top:19%;animation-delay:-5s}
+#hero .pin.p5{left:77%;top:86%}
+#hero .pin .disc{position:relative;height:43px;width:43px;box-shadow:0 5px 15px var(--shadow)}
+#hero .pin.p5 .disc:after{content:'';position:absolute;inset:-10px;border:1px solid var(--live);border-radius:50%;opacity:0;animation:near-live-ring 3s ease-out infinite;animation-play-state:paused;pointer-events:none}
+#hero.is-playing .pin,#hero.is-playing .hero-device,#hero.is-playing .pin.p5 .disc:after{animation-play-state:running}
+#hero .you{display:none}
+#hero .map-note{right:24px;bottom:18px;font-size:10px;opacity:.7}
+#hero .pin-preview{top:24%;right:3%;z-index:10;box-shadow:var(--soft-shadow)}
+@keyframes near-device-float{0%,100%{translate:0 0}50%{translate:0 -9px}}
+@keyframes near-pin-float{0%,100%{translate:0 0}50%{translate:0 -7px}}
+@keyframes near-live-ring{0%{transform:scale(.7);opacity:0}20%{opacity:.45}100%{transform:scale(1.5);opacity:0}}
+/* Communities retain the same photo, surface and rounded UI as the event cards. */
+#communities.community-renewed{background:var(--bg);background-image:none;padding:0;position:relative;overflow:hidden}
+#communities .community-stage{display:grid;grid-template-columns:1.05fr 1fr;gap:100px;align-items:center;padding-block:110px}
+#communities .community-copy h2{font:800 clamp(42px,4.6vw,66px)/1.04 var(--body);text-transform:none;letter-spacing:-.045em;margin-bottom:28px}
+#communities .community-copy>p{font-size:17px;line-height:1.75;max-width:480px;margin:0}
+#communities .community-invite{background:none;border:0;border-radius:0;padding:0;margin-top:36px}
+#communities .community-invite h3{font:800 19px/1.35 var(--body);letter-spacing:-.015em;margin:0 0 12px}
+#communities .community-invite p{font-size:14px;line-height:1.75;margin:0 0 22px;max-width:450px}
+#communities .community-apply{display:inline-flex;align-items:center;justify-content:center;gap:22px;padding:16px 24px;min-height:54px;background:var(--ink);color:var(--bg);border-radius:99px;font-size:14px;font-weight:800}
+#communities .community-invite small{display:block;font-size:11px;line-height:1.6;color:var(--ink-2);max-width:330px;margin-top:13px}
+#communities .community-join{display:inline-flex;gap:24px;align-items:center;min-height:44px;margin-top:22px;font-size:13px;font-weight:800;text-decoration:none}
+#communities .community-visual{position:relative;padding:35px 20px;min-width:0}
+#communities .community-sheet{position:relative;background:var(--bg-2);border:1px solid var(--border);border-radius:32px;padding:10px;box-shadow:var(--soft-shadow);transform:rotate(3deg);max-width:430px;margin:auto;overflow:hidden}
+#communities .community-cover{height:240px;border-radius:23px;position:relative;overflow:hidden}
+#communities .community-cover>img{height:100%;width:100%;object-fit:cover}
+#communities .community-cover>span{position:absolute;left:14px;bottom:14px;background:var(--photo-shade);color:var(--ink);border-radius:99px;padding:7px 12px;font-size:10px}
+#communities .community-sheet-body{padding:25px 16px 15px}
+#communities .community-identity{display:flex;align-items:center;gap:15px}
+#communities .community-identity>img{background:var(--cat-4-deep);padding:7px;border-radius:18px;width:60px;height:60px;flex-shrink:0}
+#communities .community-identity h3{font:800 30px/1.05 var(--body);letter-spacing:-.035em;margin:0}
+#communities .community-identity p{font-size:11px;margin:8px 0 0}
+#communities .community-tabs{display:flex;justify-content:flex-start;gap:8px;padding:19px 0 0;border:0;margin:0}
+#communities .community-tabs span{padding:6px 10px;border-radius:99px;font-size:10px;background:var(--surface-2);color:var(--ink-mid)}
+#communities .community-next{display:flex;gap:12px;align-items:center;margin:22px 0;padding:0}
+#communities .community-next-icon{font-size:24px;color:var(--ink-mid)}
+#communities .community-next strong{font-size:12px}
+#communities .community-next p{font-size:11px;margin:3px 0 0}
+#communities .community-message{font-size:12px;background:var(--bubble-in);border:0;border-radius:16px 16px 16px 4px;padding:10px 14px;width:fit-content;max-width:95%;margin:9px 0}
+#communities .community-message.reply{margin-left:auto;background:var(--bubble-out);border-radius:16px 16px 4px 16px}
+#communities .community-example{display:block;color:var(--ink-2);font-size:10px;text-align:center;margin-top:20px}
+#communities .community-orbit{position:absolute;inset:0;pointer-events:none}
+#communities .member{position:absolute;display:grid;place-items:center;background:var(--card);border:1px solid var(--border);border-radius:20px;width:62px;height:62px;z-index:2;box-shadow:0 12px 24px var(--photo-shadow)}
+#communities .member>img{width:44px;height:44px;object-fit:contain}
+#communities .member.m1{left:-10px;top:18px;rotate:-12deg}
+#communities .member.m2{right:-6px;top:85px;rotate:10deg}
+#communities .member.m3{left:-25px;bottom:125px;rotate:-8deg}
+#communities .member.m4{right:0;bottom:10px;rotate:12deg}
+/* Footer: one continuous field with an emerging event orbit. */
+footer.site-footer.footer-renewed{background:var(--bg);border-top:0;isolation:isolate}
+.footer-renewed .footer-showcase{height:800px;background:var(--bg);position:relative;overflow:hidden}
+.footer-renewed .footer-map{inset:0;width:100%;height:100%;position:absolute;opacity:.24;z-index:-1;transform:rotate(-8deg) scale(1.15)}
+.footer-renewed .footer-heading{padding-top:52px;z-index:3;position:relative}
+.footer-renewed .footer-heading h2{font:400 clamp(70px,7.5vw,116px)/.96 Anton,Impact,sans-serif;text-transform:uppercase;letter-spacing:-.012em;margin:0 0 18px}
+.footer-renewed .footer-heading p{font-size:14px;line-height:1.5}
+.footer-renewed .footer-vortex{top:255px;height:325px;z-index:1;overflow:visible;pointer-events:none}
+.footer-renewed .vortex-hub{width:104px;height:104px;background:var(--bg);border:1px solid var(--border);border-radius:50%;box-shadow:0 16px 35px var(--photo-shadow)}
+.footer-renewed .vortex-hub .wordmark{width:64px}
+.footer-renewed .vortex-rings i{width:220px;height:140px;transform:rotate(-8deg);border-color:var(--line-soft)}
+.footer-renewed .vortex-rings i:nth-child(2){width:480px;height:250px}
+.footer-renewed .vortex-rings i:nth-child(3){width:760px;height:350px}
+.footer-renewed .vortex-card{width:175px;border-radius:21px;padding:8px;background:var(--bg-2);border-color:var(--border);box-shadow:0 16px 30px var(--photo-shadow)}
+.footer-renewed .vortex-card img{height:105px;border-radius:14px}
+.footer-renewed .vortex-card>span{font-size:9px;margin:11px 6px 5px}
+.footer-renewed .vortex-card>strong{font-size:16px;margin:0 6px 8px}
+.footer-renewed .footer-download{bottom:55px;z-index:5}
+.footer-renewed .footer-download .store-row{margin-top:0;gap:14px}
+.footer-renewed .footer-download>p{font-size:12px;margin-top:20px}
+.footer-renewed .footer-bottom{display:grid;grid-template-columns:1.5fr 1fr 1fr;align-items:start;gap:60px;padding-block:40px;background:var(--bg);border-top:1px solid var(--line-soft)}
+.footer-renewed .footer-brand-block p{font-size:12px;color:var(--ink-mid);margin:15px 0 0}
+.footer-renewed .footer-bottom nav{display:flex;flex-direction:column;gap:0}
+.footer-renewed .footer-bottom a{min-height:36px;font-size:12px}
+.footer-renewed .footer-brand{min-height:32px}
+.footer-renewed .footer-colophon{display:flex;align-items:start;justify-content:space-between;gap:24px;color:var(--ink-2);font-size:10px;padding-block:24px 30px;border-top:1px solid var(--line-soft);position:relative;z-index:10}
+.photo-credits{max-width:400px;text-align:right}
+.photo-credits summary{cursor:pointer;padding:0 0 12px;min-height:32px}
+.photo-credits p{font-size:11px;line-height:1.8;margin:0}
+.photo-credits a{text-decoration:underline;text-underline-offset:3px}
+@media(min-width:901px) and (max-height:820px){
+ #hero.map-hero{min-height:735px}
+ #hero .hero-layout{padding-block:40px}
+ #hero .hero-copy h1{font-size:128px}
+ .hero-apps{height:580px}
+ .hero-device-front{width:260px}
+ .hero-device-back{width:235px}
+}
+@media(max-width:1050px) and (min-width:901px){
+ #hero .hero-copy h1{font-size:112px}
+ .hero-device-front{width:240px;right:-5%}
+ .hero-device-back{width:210px;left:-10%}
+ .hero-apps{height:560px}
+ #hero .hero-copy>p{font-size:16px}
+ #communities .community-stage{gap:50px}
+}
+@media(max-width:900px){
+ .site-header .header-inner{width:calc(100% - 40px);grid-template-columns:1fr auto auto;gap:18px}
+ .site-header .desktop-nav{display:none}
+ .site-header .header-download{grid-column:3;grid-row:1;font-size:12px;padding:0 16px;min-height:38px;gap:12px}
+ .site-header .mobile-nav{display:block;grid-column:2;grid-row:1;font-size:12px}
+ .site-header .mobile-nav summary{list-style:none;cursor:pointer;display:flex;gap:8px;align-items:center;min-height:44px}
+ .site-header .mobile-nav summary::-webkit-details-marker{display:none}
+ .site-header .mobile-nav nav{position:absolute;right:20px;left:20px;top:63px;background:var(--surface);border:1px solid var(--border);padding:12px;display:flex;flex-direction:column;gap:0;border-radius:0 0 20px 20px;box-shadow:var(--soft-shadow)}
+ .site-header .mobile-nav nav a{padding:8px 15px;min-height:44px;display:flex;align-items:center;font-size:14px}
+ #hero.map-hero{min-height:auto}
+ #hero .hero-layout{grid-template-columns:1fr;gap:25px;padding-block:44px 50px;min-height:0}
+ #hero .hero-copy{width:100%;margin:0}
+ #hero .hero-copy h1{font-size:clamp(100px,18vw,150px);margin-bottom:24px}
+ #hero .hero-copy h1 .hero-go{display:inline-block;vertical-align:middle;margin:0 10px 0 0}
+ #hero .hero-copy h1 .hero-outside{display:inline-block;vertical-align:middle;font-size:.85em;margin:0}
+ #hero .hero-copy>p{font-size:17px;max-width:460px}
+ #hero .hero-explore{margin-top:16px}
+ #hero .hero-apps{height:560px;width:min(540px,100%);margin:0 auto}
+ .hero-device-front{width:245px;right:4%;top:8px}
+ .hero-device-back{width:220px;left:7%;top:50px}
+ .hero-plan{left:2%;bottom:12px;width:310px}
+ .hero-app-caption{bottom:-18px;right:8px}
+ #hero .map:after{background:linear-gradient(180deg,var(--bg) 1%,rgba(11,12,15,.75) 25%,transparent 65%,var(--bg) 100%)}
+ #hero .pin.p0{left:81%;top:87%}#hero .pin.p1{left:80%;top:42%}#hero .pin.p2{left:6%;top:68%}#hero .pin.p3{left:88%;top:63%}#hero .pin.p4{left:10%;top:46%}#hero .pin.p5{left:60%;top:92%}
+ #hero .map-note{bottom:10px;font-size:9px}
+ #hero .pin-preview{top:47%;right:5%;max-width:270px}
+ #communities .community-stage{grid-template-columns:1fr;gap:45px;padding-block:75px}
+ #communities .community-copy h2{font-size:clamp(41px,7vw,60px)}
+ #communities .community-copy>p{font-size:16px}
+ #communities .community-visual{width:min(460px,100%);margin:auto;padding:25px 18px}
+ #communities .community-sheet{transform:rotate(2deg)}
+ #communities .member.m1{left:-3px}#communities .member.m2{right:0}#communities .member.m3{left:-3px}#communities .member.m4{right:0}
+ .footer-renewed .footer-showcase{height:770px}
+ .footer-renewed .footer-heading{padding-top:45px}
+ .footer-renewed .footer-heading h2{font-size:80px}
+ .footer-renewed .footer-vortex{top:245px;height:300px}
+ .footer-renewed .vortex-card{width:150px}
+ .footer-renewed .vortex-card img{height:88px}
+ .footer-renewed .vortex-card>strong{font-size:14px}
+ .footer-renewed .footer-bottom{grid-template-columns:1fr 1fr;gap:30px;padding-block:32px}
+ .footer-renewed .footer-brand-block{grid-column:1/-1}
+ .footer-renewed .footer-bottom nav{order:initial;flex-basis:auto}
+ .footer-renewed .footer-download{bottom:55px}
+}
+@media(max-width:520px){
+ .site-header .header-inner{width:calc(100% - 32px);gap:16px}
+ .site-header .wordmark{width:78px;height:18px}
+ .site-header .header-download{padding:0 14px;gap:10px}
+ #hero .hero-layout{width:calc(100% - 40px);padding-top:35px}
+ #hero .hero-copy h1{font-size:clamp(88px,23vw,118px)}
+ #hero .hero-copy h1 .hero-prelude{font-size:.45em;margin-bottom:8px}
+ #hero .hero-copy h1 .hero-go{display:block;margin-bottom:7px}
+ #hero .hero-copy h1 .hero-outside{display:block;font-size:1em;padding-inline:.18em}
+ #hero .hero-copy>p{font-size:15px;line-height:1.7}
+ #hero .store-row{gap:10px}
+ #hero .store img,#download .store img{height:43px}
+ #hero .hero-apps{height:500px;margin-top:2px}
+ .hero-device-front{width:211px;right:0}
+ .hero-device-back{width:185px;left:0;top:45px}
+ .hero-device{padding:4px;border-radius:30px}
+ .hero-device-inner{border-radius:25px}
+ .hero-plan{width:285px;bottom:7px;left:0;padding:13px}
+ .hero-plan strong{font-size:13px}
+ .hero-plan>img{height:45px;width:45px}
+ #hero .hero-app-caption{bottom:-20px;font-size:10px}
+ #communities .community-stage{gap:30px;padding-block:65px}
+ #communities .community-apply{font-size:12px;padding:15px 19px;gap:18px}
+ #communities .community-cover{height:205px}
+ #communities .community-sheet-body{padding:22px 12px 12px}
+ #communities .community-identity h3{font-size:26px}
+ #communities .community-identity>img{width:50px;height:50px;border-radius:15px}
+ #communities .member{width:49px;height:49px;border-radius:16px}
+ #communities .member>img{height:36px;width:36px}
+ .footer-renewed .footer-heading h2{font-size:72px}
+ .footer-renewed .footer-heading p{font-size:13px}
+ .footer-renewed .footer-vortex{top:235px;height:300px}
+ .footer-renewed .vortex-hub{width:80px;height:80px}
+ .footer-renewed .vortex-hub .wordmark{width:49px}
+ .footer-renewed .vortex-card{width:145px}
+ .footer-renewed .footer-colophon{flex-direction:column;gap:10px;font-size:9px}
+ .photo-credits{text-align:left}
+}
+@media(prefers-reduced-motion:reduce){
+ #hero .pin,#hero .hero-device,#hero .pin.p5 .disc:after{animation:none!important}
+ .hero-device-front,.hero-device-back{transform:none}
+}
+</style>
+<link href="ticket-theme.css" rel="stylesheet">
+</head><body><svg width="0" height="0" aria-hidden="true"><symbol id="i-apple" viewBox="0 0 24 28"><path fill="currentColor" d="M18.9 14.8c0-3 2.5-4.5 2.6-4.6-1.4-2.1-3.6-2.4-4.4-2.4-1.9-.2-3.7 1.2-4.6 1.2s-2.4-1.2-3.9-1.1C6.6 7.9 4.8 9 3.7 10.8c-2.1 3.7-.5 9.2 1.6 12.2 1 1.5 2.2 3.1 3.8 3 1.5-.1 2.1-1 4-1s2.4 1 4.1 1c1.7 0 2.7-1.5 3.7-3 1.2-1.7 1.7-3.4 1.7-3.5-.1 0-3.7-1.4-3.7-4.7ZM15.7 5.8c.8-1.1 1.4-2.5 1.3-4-1.2.1-2.7.8-3.6 1.9-.8.9-1.5 2.4-1.3 3.8 1.4.1 2.8-.7 3.6-1.7Z"/></symbol><symbol id="i-play" viewBox="0 0 28 30"><path fill="#5bc9f4" d="M2 1 16 15 2 29Z"/><path fill="#66d08a" d="m2 1 18 10-4 4Z"/><path fill="#ffd166" d="m20 11 6 3.2q1.5.8 0 1.6L20 19l-4-4Z"/><path fill="#f46a78" d="m2 29 18-10-4-4Z"/></symbol></svg><a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="header-inner">
+  <a class="header-brand" href="#hero" aria-label="Near home"><svg class="wordmark" viewBox="0 0 23 5" role="img" aria-label="Near" shape-rendering="crispEdges"><rect x="0" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="1" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="2" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="3" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="4" width="1.04" height="1.04" fill="currentColor"/></svg></a>
+  <nav class="desktop-nav" aria-label="Main"><a href="#possibilities">Discover</a><a href="#aura">Your Aura</a><a href="#communities">Communities</a></nav>
+  <a class="header-download" href="#download">Get Near <span aria-hidden="true">&#8599;</span></a>
+  <details class="mobile-nav"><summary>Menu <span aria-hidden="true">&#9776;</span></summary><nav aria-label="Mobile"><a href="#possibilities">Discover plans</a><a href="#features">Inside the app</a><a href="#aura">Your Aura</a><a href="#communities">Communities</a></nav></details>
+</div></header><main id="main"><section class="hero map-hero" id="hero" aria-labelledby="heroTitle">
+<div class="map"><canvas class="map-art" aria-hidden="true"></canvas><button class="pin p0" aria-label="Preview Late-night ramen run" data-plan="Late-night ramen run"><span class="disc"><img src="assets/street-food.png" alt="" width="37" height="37"></span><span class="pin-label">32m</span></button><button class="pin p1" aria-label="Preview Football after work" data-plan="Football after work"><span class="disc"><img src="assets/football.png" alt="" width="37" height="37"></span><span class="pin-label">1h</span></button><button class="pin p2" aria-label="Preview A walk by the water" data-plan="A walk by the water"><span class="disc"><img src="assets/walk.png" alt="" width="37" height="37"></span><span class="pin-label">2h</span></button><button class="pin p3" aria-label="Preview A little common ground" data-plan="A little common ground"><span class="disc"><img src="assets/friends-meetup.png" alt="" width="37" height="37"></span><span class="pin-label">45m</span></button><button class="pin p4" aria-label="Preview Plantation drive" data-plan="Plantation drive"><span class="disc"><img src="assets/tree-plantation.png" alt="" width="37" height="37"></span><span class="pin-label">10h</span></button><button class="pin p5" aria-label="Preview A late-night set" data-plan="A late-night set"><span class="disc"><img src="assets/live-music.png" alt="" width="37" height="37"></span><span class="pin-label"><i class="live-dot" aria-hidden="true"></i>live now</span></button><span class="you" aria-hidden="true"></span><div class="pin-preview" hidden><button class="close-preview" aria-label="Close plan preview">&times;</button><div class="event-card"><span class="tile"><img alt="" width="40" height="40"></span><div><strong></strong><p>Illustrative plan</p><a href="#features">Explore this plan</a></div></div></div><span class="map-note">Illustrative plans &middot; explore a pin</span></div>
+<div class="hero-layout wrap"><div class="hero-copy">
+  <h1 id="heroTitle"><span class="hero-prelude">The city is open</span><span class="hero-go">Find your</span><span class="hero-outside">next plan.</span></h1>
+  <p>Near is the map of what&#8217;s happening around you. Find a plan, meet your people, and show up.</p>
+  <div class="store-row"><a class="store" data-store="ios" href="https://apps.apple.com/app/id679831337" target="_blank" rel="noopener noreferrer" aria-label="Open the App Store (new tab)"><img src="assets/app_store_badge.svg" alt="Download on the App Store" height="48"></a><a class="store" data-store="android" href="https://play.google.com/store/apps/details?id=com.near.near_radar" target="_blank" rel="noopener noreferrer" aria-label="Open Google Play (new tab)"><img src="assets/google_play_badge.svg" alt="Get it on Google Play" height="48"></a></div>
+  <a class="hero-explore" href="#possibilities">See what&#8217;s happening <span aria-hidden="true">&#8595;</span></a>
+</div><div class="hero-apps" aria-label="A look inside Near">
+  <div class="hero-device hero-device-back"><div class="hero-device-inner"><img src="near-assets/app-create.jpg" alt="Create a plan in Near with categories for food, sport, creativity and volunteering" width="591" height="1280" fetchpriority="low"></div></div>
+  <div class="hero-device hero-device-front"><div class="hero-device-inner"><img src="near-assets/app-map.jpg" alt="Near app showing nearby plans on the Mumbai map" width="591" height="1280" fetchpriority="high"></div></div>
+  <a class="hero-plan" href="#possibilities"><img src="assets/street-food.png" alt="" width="64" height="64"><span><strong>Late-night ramen run</strong><small>A little common ground.</small></span><span class="hero-plan-arrow" aria-hidden="true">&#8599;</span></a>
+  <span class="hero-app-caption">Real plans start with a pin.</span>
+</div></div>
+</section><section class="event-gallery" id="possibilities" aria-labelledby="occasionTitle"><div class="event-stage"><div class="occasion-intro wrap"><h2 id="occasionTitle">Your kind<br>of outside.</h2><p>A good cause. A great read. A night out.<br>There&#8217;s a plan for every side of you.</p></div><div class="occasion-window"><div class="occasion-track"><article class="occasion-card occasion-plantation" data-event-index="0" aria-label="Illustrative plantation drive"><div class="event-cover"><img src="assets/events/plantation.jpg" alt="" width="700" height="467" loading="lazy" decoding="async"><div class="cover-tags"><span>Sunday morning</span><span>plantation drive</span></div><span class="cover-going"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6m3 9v-2a6 6 0 0 0-3-5"/></svg>8 going</span></div><div class="event-body"><h3>A little greener,<br>together</h3><p class="event-detail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z"/></svg><span>Saplings, soil & good company</span></p><p class="event-location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 0 1 14 0Z"/><circle cx="12" cy="10" r="2"/></svg><span>Your neighbourhood park</span></p><a class="event-cta" href="#download">Find plans like this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a></div></article><article class="occasion-card occasion-reading" data-event-index="1" aria-label="Illustrative book reading"><div class="event-cover"><img src="assets/events/reading.jpg" alt="" width="700" height="467" loading="lazy" decoding="async"><div class="cover-tags"><span>This weekend</span><span>book reading</span></div><span class="cover-going"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6m3 9v-2a6 6 0 0 0-3-5"/></svg>6 going</span></div><div class="event-body"><h3>Just one<br>more chapter</h3><p class="event-detail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z"/></svg><span>Bring your current read</span></p><p class="event-location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 0 1 14 0Z"/><circle cx="12" cy="10" r="2"/></svg><span>A quiet neighbourhood cafe</span></p><a class="event-cta" href="#download">Find plans like this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a></div></article><article class="occasion-card occasion-party" data-event-index="2" aria-label="Illustrative party"><div class="event-cover"><img src="assets/events/party.jpg" alt="" width="700" height="467" loading="lazy" decoding="async"><div class="cover-tags"><span>Friday night</span><span>party</span></div><span class="cover-going"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6m3 9v-2a6 6 0 0 0-3-5"/></svg>12 going</span></div><div class="event-body"><h3>Good music.<br>Great company.</h3><p class="event-detail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z"/></svg><span>Bring a friend. Find your rhythm.</span></p><p class="event-location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 0 1 14 0Z"/><circle cx="12" cy="10" r="2"/></svg><span>A spot around the corner</span></p><a class="event-cta" href="#download">Find plans like this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a></div></article><article class="occasion-card occasion-turf" data-event-index="3" aria-label="Illustrative turf game"><div class="event-cover"><img src="assets/events/turf.jpg" alt="" width="700" height="1053" loading="lazy" decoding="async"><div class="cover-tags"><span>After work</span><span>turf game</span></div><span class="cover-going"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6m3 9v-2a6 6 0 0 0-3-5"/></svg>10 going</span></div><div class="event-body"><h3>One more game?<br>Always.</h3><p class="event-detail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z"/></svg><span>All skill levels welcome</span></p><p class="event-location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 0 1 14 0Z"/><circle cx="12" cy="10" r="2"/></svg><span>Your local football turf</span></p><a class="event-cta" href="#download">Find plans like this <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a></div></article></div></div><div class="occasion-bottom wrap"><span>Illustrative events &amp; attendance.</span></div></div></section><section class="features" id="features"><div class="story-stage wrap"><div class="feature-copy"><article data-screen="0"><h2>Small plan.<br>New people.</h2><p>Start with something you&#8217;re into. See what&#8217;s happening nearby, and find a reason to show up.</p><div class="event-card"><span class="tile" aria-hidden="true"><img src="assets/street-food.png" alt="" width="40" height="40"></span><div><strong>Late-night ramen run</strong><p>in 32m &middot; 3/8 going</p><small>A plan could look like this</small></div></div></article><article data-screen="1"><h2>See a plan.<br>Make it happen.</h2><p>Open the details. Find your people. Give the group chat something to talk about.</p><a href="#download">Find your next plan</a></article><article data-screen="2"><h2>Your people.<br>Your profile.</h2><p>A profile that holds your interests, your events, and your communities.</p></article></div><div class="phone-wrap"><div class="phone"><div class="screen screen-map actual-screen"><img src="near-assets/app-map.jpg" alt="Near app map showing nearby plans around Mumbai" width="591" height="1280" loading="lazy"></div><div class="screen sheet" hidden><div class="handle"></div><div class="event-hero"><span>Food &amp; drinks</span><img class="event-icon" src="assets/street-food.png" alt="" width="128" height="128"></div><h3>Late-night ramen run</h3><p>Hosted by <b>Alex</b></p><div class="event-card"><span class="tile" aria-hidden="true"><img src="assets/street-food.png" alt="" width="40" height="40"></span><div><strong>Late-night ramen run</strong><p>in 32m &middot; 3/8 going</p><small>A plan could look like this</small></div></div><p>A warm bowl. A few new faces.</p><a class="btn" href="#download">Get Near to join</a></div><div class="screen profile actual-screen" hidden><img src="near-assets/app-profile.jpg" alt="Near app profile showing interests, Aura and upcoming events" width="591" height="1280" loading="lazy"></div></div></div></div></section><section class="aura-journey" id="aura" aria-labelledby="auraTitle"><div class="aura-stage wrap"><div class="aura-copy"><h2 id="auraTitle">Earn your Aura.<br>Make it yours.</h2><p>Host. Show up. Share your card.</p></div><div class="aura-display"><div class="aura-deck"><article class="aura-card" style="--card-tone:var(--tier-0)" aria-label="Off Radar, Aura 0"><div class="card-top"><svg class="wordmark" viewBox="0 0 23 5" role="img" aria-label="Near" shape-rendering="crispEdges"><rect x="0" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="1" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="2" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="3" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="4" width="1.04" height="1.04" fill="currentColor"/></svg><span>AURA / 01</span></div><div class="card-emblem" aria-hidden="true"><span></span><span></span><span></span><b>0</b></div><div class="card-bottom"><span class="card-tier">Off Radar</span><p>Still proving it.</p><div class="card-stamp"><span>YOUR NEXT CHAPTER</span><span>NEAR</span></div></div></article><article class="aura-card" style="--card-tone:var(--tier-1)" aria-label="Lowkey, Aura 51"><div class="card-top"><svg class="wordmark" viewBox="0 0 23 5" role="img" aria-label="Near" shape-rendering="crispEdges"><rect x="0" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="1" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="2" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="3" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="4" width="1.04" height="1.04" fill="currentColor"/></svg><span>AURA / 02</span></div><div class="card-emblem" aria-hidden="true"><span></span><span></span><span></span><b>51</b></div><div class="card-bottom"><span class="card-tier">Lowkey</span><p>A bit of a mystery.</p><div class="card-stamp"><span>YOUR NEXT CHAPTER</span><span>NEAR</span></div></div></article><article class="aura-card" style="--card-tone:var(--tier-2)" aria-label="NPC, Aura 76"><div class="card-top"><svg class="wordmark" viewBox="0 0 23 5" role="img" aria-label="Near" shape-rendering="crispEdges"><rect x="0" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="1" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="2" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="3" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="4" width="1.04" height="1.04" fill="currentColor"/></svg><span>AURA / 03</span></div><div class="card-emblem" aria-hidden="true"><span></span><span></span><span></span><b>76</b></div><div class="card-bottom"><span class="card-tier">NPC</span><p>Just kinda there.</p><div class="card-stamp"><span>YOUR NEXT CHAPTER</span><span>NEAR</span></div></div></article><article class="aura-card locked-card" aria-label="Higher Aura tiers locked"><div class="card-top"><svg class="wordmark" viewBox="0 0 23 5" role="img" aria-label="Near" shape-rendering="crispEdges"><rect x="0" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="1" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="2" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="3" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="4" width="1.04" height="1.04" fill="currentColor"/></svg><span>AURA / 04+</span></div><div class="lock-emblem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14v3"/></svg></div><div class="card-bottom"><span class="card-tier">More to<br>unlock.</span><p>Host a plan. Attend with friends.<br>Build your Aura to unlock what follows.</p><div class="card-stamp"><span>ROOKIE &amp; BEYOND</span><span>LOCKED</span></div></div></article></div><div class="aura-track" aria-hidden="true"><span class="is-reached is-active"></span><span></span><span></span><span></span></div><div class="aura-caption"><span id="auraStatus">Off Radar</span><span id="auraCount">01 / 04</span></div></div></div></section><section class="communities community-renewed" id="communities" aria-labelledby="communityTitle">
+<div class="community-stage wrap"><div class="community-copy">
+  <h2 id="communityTitle">Your circle.<br>Something bigger.</h2>
+  <p>Find people who care about the same things. Make a plan, build a ritual, give your community a place to come together.</p>
+  <div class="community-invite"><h3>For the ones bringing people together.</h3><p>Run an NGO, a neighbourhood group or a small community? Tell us about your people and request a Near-approved profile for your group.</p>
+  <a class="community-apply" href="mailto:hello@wecreo.in?subject=Near%20community%20profile%20request&amp;body=Community%20or%20NGO%20name%3A%0A%0ACity%3A%0A%0AWebsite%20or%20social%20link%3A%0A%0AWhat%20your%20community%20does%3A%0A%0AHow%20you%20would%20like%20to%20use%20Near%3A">Bring your community to Near <span aria-hidden="true">&#8599;</span></a>
+  <small>Send an introduction by email. Community profiles are reviewed by the Near team.</small></div>
+  <a class="community-join" href="https://play.google.com/store/apps/details?id=com.near.near_radar" target="_blank" rel="noopener noreferrer">Find your community on Near <span aria-hidden="true">&#8599;</span></a>
+</div><div class="community-visual" aria-label="Illustrative neighbourhood volunteering community">
+  <div class="community-orbit" aria-hidden="true"><span class="member m1"><img src="assets/tree-plantation.png" alt="" width="48" height="48"></span><span class="member m2"><img src="assets/friends-meetup.png" alt="" width="48" height="48"></span><span class="member m3"><img src="assets/football.png" alt="" width="48" height="48"></span><span class="member m4"><img src="assets/walk.png" alt="" width="48" height="48"></span></div>
+  <div class="community-sheet"><div class="community-cover"><img src="assets/events/plantation.jpg" alt="A volunteer planting a young tree" width="700" height="467" loading="lazy"><span>Volunteering &amp; good company</span></div>
+  <div class="community-sheet-body"><div class="community-identity"><img src="assets/tree-plantation.png" alt="" width="56" height="56"><div><h3>The Sunday<br>green team</h3><p>A neighbourhood, a little greener.</p></div></div>
+  <div class="community-tabs"><span>A shared interest</span><span>A reason to meet</span></div>
+  <div class="community-next"><span class="community-next-icon" aria-hidden="true">&#8599;</span><div><strong>A little time. A lasting difference.</strong><p>Plant a sapling. Make a friend.</p></div></div>
+  <div class="community-message">Same place next weekend?</div><div class="community-message reply">Count us in.</div>
+  <small class="community-example">An example of a community on Near.</small></div></div>
+</div></div></section><section class="film wrap"><h2>Something&#8217;s happening<br>near you.</h2><video controls playsinline preload="none" poster="near-assets/near-story-poster.jpg"><source src="near-story.mp4" type="video/mp4"></video></section></main><footer class="site-footer footer-renewed">
+<section class="footer-showcase" id="download" aria-labelledby="footerTitle">
+  <canvas class="map-art footer-map" aria-hidden="true"></canvas>
+  <div class="footer-heading wrap"><h2 id="footerTitle">Good plans.<br>Start near.</h2><p>Less scrolling. More showing up.</p></div>
+  <div class="footer-vortex" aria-hidden="true"><div class="vortex-rings"><i></i><i></i><i></i></div><div class="vortex-hub"><svg class="wordmark" viewBox="0 0 23 5" role="img" aria-label="Near" shape-rendering="crispEdges"><rect x="0" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="1" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="2" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="3" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="4" width="1.04" height="1.04" fill="currentColor"/></svg></div><div class="vortex-card" data-vortex-card><img src="assets/events/plantation.jpg" alt="" width="700" height="467" loading="lazy" decoding="async"><span>Plantation drive</span><strong>A greener Sunday</strong></div><div class="vortex-card" data-vortex-card><img src="assets/events/reading.jpg" alt="" width="700" height="467" loading="lazy" decoding="async"><span>Book reading</span><strong>One more chapter</strong></div><div class="vortex-card" data-vortex-card><img src="assets/events/party.jpg" alt="" width="700" height="467" loading="lazy" decoding="async"><span>Party & music</span><strong>See you out there</strong></div><div class="vortex-card" data-vortex-card><img src="assets/events/turf.jpg" alt="" width="700" height="467" loading="lazy" decoding="async"><span>Turf game</span><strong>One more game</strong></div><div class="vortex-card" data-vortex-card><img src="assets/events/plantation.jpg" alt="" width="700" height="467" loading="lazy" decoding="async"><span>Plantation drive</span><strong>A greener Sunday</strong></div><div class="vortex-card" data-vortex-card><img src="assets/events/reading.jpg" alt="" width="700" height="467" loading="lazy" decoding="async"><span>Book reading</span><strong>One more chapter</strong></div><div class="vortex-card" data-vortex-card><img src="assets/events/party.jpg" alt="" width="700" height="467" loading="lazy" decoding="async"><span>Party & music</span><strong>See you out there</strong></div><div class="vortex-card" data-vortex-card><img src="assets/events/turf.jpg" alt="" width="700" height="467" loading="lazy" decoding="async"><span>Turf game</span><strong>One more game</strong></div></div>
+  <div class="footer-download"><div class="store-row"><a class="store" data-store="ios" href="https://apps.apple.com/app/id679831337" target="_blank" rel="noopener noreferrer" aria-label="Open the App Store (new tab)"><img src="assets/app_store_badge.svg" alt="Download on the App Store" height="48"></a><a class="store" data-store="android" href="https://play.google.com/store/apps/details?id=com.near.near_radar" target="_blank" rel="noopener noreferrer" aria-label="Open Google Play (new tab)"><img src="assets/google_play_badge.svg" alt="Get it on Google Play" height="48"></a></div><p>See you out there.</p></div>
+</section>
+<div class="footer-bottom wrap"><div class="footer-brand-block"><a class="footer-brand" href="#hero" aria-label="Near home"><svg class="wordmark" viewBox="0 0 23 5" role="img" aria-label="Near" shape-rendering="crispEdges"><rect x="0" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="1" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="2" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="3" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="4" width="1.04" height="1.04" fill="currentColor"/></svg></a><p>People. Plans. A little closer.</p></div>
+<nav class="footer-product-nav" aria-label="Explore Near"><a href="#possibilities">Discover plans</a><a href="#aura">Your Aura</a><a href="#communities">Communities</a><a href="mailto:hello@wecreo.in">Contact</a></nav>
+<nav class="footer-legal-nav" aria-label="Legal"><a href="https://www.whatsnear.in/privacy-policy.html">Privacy policy</a><a href="terms-of-service.html">Terms of service</a><a href="https://www.whatsnear.in/community-guidelines.html">Community guidelines</a><a href="https://www.whatsnear.in/account-deletion.html">Account deletion</a></nav></div>
+<div class="footer-colophon wrap"><span>&copy; 2026 WECREO LABS PRIVATE LIMITED</span><details class="photo-credits"><summary>Photography credits</summary><p>Event photographs by <a href="https://unsplash.com/photos/a-man-kneeling-down-to-plant-a-tree-2ENONKqtNEE">Jono Hirst</a>, <a href="https://unsplash.com/photos/person-reading-book-during-daytime-Ej_GTF0JPss">Austin Distel</a>, <a href="https://unsplash.com/photos/people-gathering-in-a-concert-tfgXRk2B4_0">Clayton Cardinalli</a> and <a href="https://unsplash.com/photos/man-wearing-black-and-blue-jersey-shirt-on-field-r-krWscXjvQ">Ben Weber</a> on Unsplash.</p></details></div>
+</footer><script src="map.js"></script><script src="near-assets/vendor/gsap.min.js"></script><script src="near-assets/vendor/ScrollTrigger.min.js"></script><script src="preview.js"></script>
+<script id="near-event-gallery-motion">
+(() => {
+ 'use strict';
+ const section=document.getElementById('possibilities');
+ if(!section||!window.gsap||!window.ScrollTrigger)return;
+ const viewport=section.querySelector('.occasion-window');
+ const track=section.querySelector('.occasion-track');
+ const originals=[...track.querySelectorAll('.occasion-card')];
+ const help=document.createElement('span');help.className='event-gallery-help';
+ help.textContent='Scroll to explore / swipe sideways for more';
+ const status=document.createElement('span');status.className='gallery-announcement';status.setAttribute('aria-live','polite');
+ section.append(status);
+ gsap.registerPlugin(ScrollTrigger);
+ gsap.matchMedia().add('(prefers-reduced-motion: no-preference) and (min-height: 700px)',()=>{
+  section.classList.add('spatial-events');section.querySelector('.occasion-bottom').append(help);
+  viewport.tabIndex=0;viewport.setAttribute('role','region');
+  viewport.setAttribute('aria-label','Example event gallery. Swipe or use left and right arrow keys to browse.');
+  const clones=originals.map(card=>{const copy=card.cloneNode(true);track.append(copy);return copy});
+  const cards=[...originals,...clones],total=cards.length;
+  const stage=section.querySelector('.event-stage');
+  const intro=section.querySelector('.occasion-intro'),bottom=section.querySelector('.occasion-bottom');
+  const destination=document.getElementById('features');
+  const destinationStage=destination.querySelector('.story-stage');
+  const incoming=document.createElement('div');incoming.className='features has-story handoff-preview';incoming.inert=true;incoming.setAttribute('aria-hidden','true');
+  // Move the existing app stage during the handoff. Keep its live screens,
+  // event listeners and layout rather than swapping a copy for the real UI.
+  let appDocked=false;
+  incoming.append(destinationStage);stage.append(incoming);destination.classList.add('gallery-handoff-target');
+  function dockApp(complete){
+   if(complete===appDocked)return;
+   appDocked=complete;
+   if(complete)destination.prepend(destinationStage);
+   else incoming.append(destinationStage);
+  }
+  const state={position:0,exit:0};let scroll=0,exitTarget=0,offset=0,step=400,viewWidth=innerWidth,active=-1,exiting=false,pointer=null,dragging=false,originX=0,originY=0,startOffset=0,suppressClick=false;
+  const mod=(n,m)=>((n%m)+m)%m,clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+  function measure(){viewWidth=innerWidth;step=innerWidth<=900?Math.min(innerWidth*.79,340):Math.min(470,innerWidth*.32)}
+  function render(){
+   const next=mod(Math.round(state.position),total);
+   const exit=state.exit;
+   const smooth=t=>t*t*(3-2*t);
+   const entering=clamp((exit-.18)/.82,0,1),arrive=smooth(entering);
+   const reveal=smooth(clamp((exit-.28)/.42,0,1));
+   // Move the content across a shared canvas, not an opaque sliding panel.
+   gsap.set(incoming,{xPercent:72*(1-arrive),autoAlpha:reveal});
+   gsap.set(intro,{x:-viewWidth*.25*exit,autoAlpha:1-clamp(exit*3,0,1)});
+   gsap.set(bottom,{x:-viewWidth*.15*exit,autoAlpha:1-clamp(exit*4,0,1)});
+   // At the seam the same stage resumes its native sticky position.
+   // Reparent only when crossing the boundary, never on every frame.
+   dockApp(exit>=1);
+   gsap.set(stage,{autoAlpha:exit>=1?0:1});
+   const leaving=exit>.01;
+   if(leaving!==exiting){exiting=leaving;viewport.inert=leaving;if(leaving&&viewport.contains(document.activeElement))document.activeElement.blur()}
+
+   cards.forEach((card,i)=>{
+    const d=mod(i-state.position+total/2,total)-total/2,abs=Math.abs(d);
+    // Perspective and diagonal spacing echo the reference's physical disc rack.
+    const travel=Math.sign(d)*(abs<1?Math.pow(abs,1.4):abs);
+    const delay=clamp((d+2)*.025,0,.12);
+    const burst=clamp((exit-delay)/(.88-delay),0,1);
+    const rush=smooth(burst);
+    const departing=1-smooth(clamp((exit-.32)/.42,0,1));
+    gsap.set(card,{x:travel*step-(viewWidth+step*1.8)*rush,y:-travel*step*.28-12*rush,xPercent:-50,yPercent:-50,
+     z:-Math.min(abs,3)*150,rotationY:-12-clamp(d,-2,2)*17,
+     rotationZ:-5-clamp(d,-2,2)*3-3*rush,scale:1-Math.min(abs,3)*.045,
+     autoAlpha:clamp((2.8-abs)*2,0,1)*departing,zIndex:30-Math.round(abs*8)});
+   });
+   if(next!==active){
+    // Never leave keyboard focus inside a card being made inert.
+    const hadFocus=cards.some(c=>c.contains(document.activeElement));
+    if(hadFocus)viewport.focus({preventScroll:true});
+    active=next;cards.forEach((card,i)=>{card.inert=i!==active;card.setAttribute('aria-hidden',String(i!==active));card.classList.toggle('is-current',i===active)});
+    if(document.activeElement===viewport)status.textContent=cards[active].querySelector('h3').innerText;
+   }
+  }
+  function update(immediate=false){state.exit=exitTarget;render();gsap.to(state,{position:scroll+offset,duration:immediate?0:.4,ease:'power2.out',overwrite:true,onUpdate:render})}
+  measure();render();
+  const trigger=ScrollTrigger.create({trigger:section,start:'top 64px',end:'bottom bottom',
+   onUpdate:self=>{scroll=Math.min(self.progress/.70,1)*4;exitTarget=clamp((self.progress-.74)/.26,0,1);update()},onRefresh:self=>{measure();scroll=Math.min(self.progress/.70,1)*4;exitTarget=clamp((self.progress-.74)/.26,0,1);state.position=scroll+offset;state.exit=exitTarget;render()}});
+  function down(e){if(e.button!==0||e.target.closest('a'))return;pointer=e.pointerId;originX=e.clientX;originY=e.clientY;startOffset=offset;dragging=false;suppressClick=false}
+  function move(e){
+   if(e.pointerId!==pointer)return;
+   const dx=e.clientX-originX,dy=e.clientY-originY;
+   if(!dragging&&Math.abs(dy)>10&&Math.abs(dy)>Math.abs(dx)){pointer=null;return}
+   if(!dragging&&Math.abs(dx)>8&&Math.abs(dx)>Math.abs(dy)){dragging=true;viewport.setPointerCapture(pointer)}
+   if(dragging){suppressClick=true;offset=startOffset-dx/step;update(true)}
+  }
+  function up(e){if(e.pointerId!==pointer)return;if(dragging){offset=Math.round(scroll+offset)-scroll;update()}if(viewport.hasPointerCapture(pointer))viewport.releasePointerCapture(pointer);pointer=null;dragging=false}
+  function key(e){if(e.target!==viewport||!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();offset=Math.round(scroll+offset)+(e.key==='ArrowRight'?1:-1)-scroll;update()}
+  function click(e){if(suppressClick){e.preventDefault();suppressClick=false}}
+  viewport.addEventListener('pointerdown',down);viewport.addEventListener('pointermove',move);viewport.addEventListener('pointerup',up);viewport.addEventListener('pointercancel',up);viewport.addEventListener('keydown',key);viewport.addEventListener('click',click,true);
+  return()=>{trigger.kill();gsap.killTweensOf(state);destination.prepend(destinationStage);incoming.remove();destination.classList.remove('gallery-handoff-target');viewport.inert=false;gsap.set([stage,intro,bottom],{clearProps:'all'});clones.forEach(c=>c.remove());section.classList.remove('spatial-events');help.remove();viewport.removeAttribute('tabindex');viewport.removeAttribute('role');viewport.removeAttribute('aria-label');status.textContent='';originals.forEach(c=>{gsap.set(c,{clearProps:'all'});c.inert=false;c.removeAttribute('aria-hidden');c.classList.remove('is-current')});viewport.removeEventListener('pointerdown',down);viewport.removeEventListener('pointermove',move);viewport.removeEventListener('pointerup',up);viewport.removeEventListener('pointercancel',up);viewport.removeEventListener('keydown',key);viewport.removeEventListener('click',click,true)};
+ });
+ document.fonts.ready.then(()=>ScrollTrigger.refresh());
+})();
+</script>
+<script src="aura.js"></script>
+<script id="near-campaign-motion">
+(() => {
+ 'use strict';
+ const hero=document.getElementById('hero');
+ let heroVisible=false;
+ function heroActivity(){hero.classList.toggle('is-playing',heroVisible&&!document.hidden)}
+ const heroObserver=new IntersectionObserver(entries=>{heroVisible=entries[0].isIntersecting;heroActivity()},{threshold:.05});
+ heroObserver.observe(hero);document.addEventListener('visibilitychange',heroActivity);
+ const mobileMenu=document.querySelector('.mobile-nav');
+ mobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{mobileMenu.open=false}));
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'&&mobileMenu.open){mobileMenu.open=false;mobileMenu.querySelector('summary').focus()}});
+ document.addEventListener('click',event=>{if(mobileMenu.open&&!mobileMenu.contains(event.target))mobileMenu.open=false});
+ const root=document.querySelector('.footer-vortex');
+ if(!root||!window.gsap)return;
+ const cards=[...root.querySelectorAll('[data-vortex-card]')];
+ gsap.matchMedia().add('(prefers-reduced-motion: no-preference)',()=>{
+  let visible=false,running=false,phase=0,scrollPhase=0,radius=400,vertical=105;
+  const clamp=v=>Math.max(0,Math.min(1,v));
+  const smooth=v=>v*v*(3-2*v);
+  function render(){
+   cards.forEach((card,i)=>{
+    const age=(phase+scrollPhase+i/cards.length)%1;
+    const angle=i*Math.PI*.765+age*Math.PI*1.7;
+    const spread=Math.pow(age,.78);
+    const fade=smooth(clamp(age/.18))*smooth(clamp((1-age)/.22));
+    gsap.set(card,{xPercent:-50,yPercent:-50,
+     x:Math.cos(angle)*radius*spread,y:Math.sin(angle)*vertical*spread,
+     scale:.2+smooth(age)*.8,rotation:Math.sin(angle)*13,rotationY:Math.cos(angle)*14,
+     opacity:fade*.94,zIndex:Math.round(age*18)});
+   });
+  }
+  function layout(){radius=Math.min(570,Math.max(210,root.clientWidth*.41));vertical=root.clientWidth<600?75:105;render()}
+  function tick(time,delta){phase=(phase+Math.min(delta||16.67,50)*.000048)%1;render()}
+  function sync(){const should=visible&&!document.hidden;if(should&&!running){gsap.ticker.add(tick);running=true}else if(!should&&running){gsap.ticker.remove(tick);running=false}}
+  const observer=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync()},{threshold:.05});observer.observe(root);
+  const resize=new ResizeObserver(layout);resize.observe(root);layout();
+  const trigger=window.ScrollTrigger?ScrollTrigger.create({trigger:root,start:'top bottom',end:'bottom top',onUpdate:self=>{scrollPhase=self.progress*.12;render()}}):null;
+  document.addEventListener('visibilitychange',sync);
+  return()=>{observer.disconnect();resize.disconnect();if(trigger)trigger.kill();gsap.ticker.remove(tick);document.removeEventListener('visibilitychange',sync);cards.forEach(card=>gsap.set(card,{clearProps:'all'}))};
+ });
+})();
+</script>
+</body></html>

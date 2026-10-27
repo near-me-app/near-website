@@ -1,0 +1,125 @@
+/* Near share-page language: blue night, warm ticket stock, precise printed details. */
+:root{--night:#0b0c0f;--night-blue:#122333;--ticket:#f4efe7;--ticket-ink:#14161a;--ticket-muted:#68635b;--ticket-line:rgba(20,22,26,.43);--sky:#9fd6ef;--display-ticket:Unbounded,Arial Black,system-ui,sans-serif}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--ticket);font-family:Nunito,ui-rounded,system-ui,sans-serif}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 56% 42% at 85% 5%,rgba(61,116,158,.18),transparent 76%),radial-gradient(ellipse 54% 56% at -15% 65%,rgba(65,103,139,.11),transparent 75%)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--sky);outline-offset:4px}
+body>header.site-header{background:rgba(11,12,15,.94);backdrop-filter:blur(18px);border-color:rgba(244,239,231,.14)}
+.site-header .desktop-nav a,.site-header .mobile-nav summary{color:var(--ticket);font-size:12px}
+.site-header .header-download{border-radius:10px;background:var(--ticket);font-weight:900}
+.site-header .mobile-nav nav{background:#182531;border-color:rgba(244,239,231,.16)}
+
+/* The map and real app screens remain the hero; the words use the invitation face. */
+#hero.map-hero{background:radial-gradient(ellipse 70% 70% at 70% 45%,#213d54 0%,#142432 42%,var(--night) 100%)}
+#hero .map-art{opacity:.76;filter:contrast(1.2) saturate(.7)}
+#hero .map:after{background:linear-gradient(90deg,rgba(11,12,15,.88) 2%,rgba(11,12,15,.7) 35%,rgba(11,12,15,.08) 76%),linear-gradient(0deg,var(--night),transparent 30%)}
+#hero .hero-copy h1{font-family:var(--display-ticket);font-size:clamp(48px,5.3vw,82px);font-weight:900;line-height:1.05;letter-spacing:-.075em;text-transform:none;max-width:760px;margin-bottom:28px}
+#hero .hero-copy h1 .hero-prelude{font:800 11px/1.3 JetBrains Mono,monospace;letter-spacing:.13em;color:var(--sky);text-transform:uppercase;margin-bottom:23px}
+#hero .hero-copy h1 .hero-go{margin-bottom:0}
+#hero .hero-copy h1 .hero-outside{color:var(--ticket);background:none;border-radius:0;padding:0;margin:0}
+#hero .hero-copy>p{color:var(--ticket);font-size:17px;font-weight:700;max-width:410px}
+#hero .hero-explore{border-bottom:1px solid rgba(244,239,231,.55);padding-bottom:5px;gap:40px;color:var(--ticket);font-size:13px}
+.hero-device{background:#0c1017;border-color:rgba(244,239,231,.24);box-shadow:0 25px 65px rgba(0,0,0,.58)}
+.hero-plan{background:var(--ticket);color:var(--ticket-ink);border:0;border-radius:14px;box-shadow:0 15px 40px rgba(0,0,0,.45)}
+.hero-plan strong{font-family:var(--display-ticket);font-size:12px;letter-spacing:-.04em}
+.hero-plan small{color:var(--ticket-muted)}
+.hero-app-caption,#hero .map-note{color:#c5d9e5}
+#hero .pin-preview .event-card{background:var(--ticket);color:var(--ticket-ink)}
+#hero .pin-preview .event-card p{color:var(--ticket-muted)}
+
+/* Event covers sit on printed ticket stock; the spatial positions stay unchanged. */
+#possibilities,#features{background-color:var(--night)}
+#possibilities .event-stage{background:radial-gradient(ellipse 70% 68% at 62% 54%,rgba(51,92,123,.27),transparent 76%),var(--night)}
+#possibilities .occasion-intro h2,#features .feature-copy h2,#aura .aura-copy h2,#communities .community-copy h2,.film h2{font-family:var(--display-ticket);font-weight:900;letter-spacing:-.075em;text-transform:none}
+#possibilities.spatial-events .occasion-intro h2{font:900 clamp(34px,4.1vw,61px)/1.12 var(--display-ticket);letter-spacing:-.075em;max-width:520px}
+#possibilities .occasion-intro p,#possibilities .occasion-bottom{color:#bdc8d0}
+#possibilities .occasion-card,#possibilities.spatial-events .occasion-card{background:var(--ticket);color:var(--ticket-ink);border:0;border-radius:20px;padding:11px;box-shadow:0 24px 54px rgba(0,0,0,.5)}
+#possibilities .event-cover,#possibilities.spatial-events .event-cover{border-radius:11px}
+#possibilities .event-body{position:relative}
+#possibilities .event-body:before{content:"";display:block;border-top:1px solid var(--ticket-line);margin:0 0 13px}
+#possibilities .event-body h3,#possibilities.spatial-events .event-body h3{font-family:var(--display-ticket);font-weight:900;letter-spacing:-.065em;font-size:clamp(20px,2vw,28px);line-height:1.16;color:var(--ticket-ink)}
+#possibilities .event-body p,#possibilities.spatial-events .event-body p{color:var(--ticket-muted);font-weight:800}
+#possibilities .event-body p svg{color:var(--ticket-ink)}
+#possibilities .cover-tags span,#possibilities .cover-going{border-radius:7px;background:rgba(11,12,15,.87);color:var(--ticket)}
+#possibilities .event-cta,#possibilities.spatial-events .event-cta{border-radius:9px;background:var(--ticket-ink);color:var(--ticket);font-weight:900}
+#possibilities .occasion-card:focus-within{outline:2px solid var(--sky);outline-offset:4px}
+
+/* One quiet ticket accompanies the scrolling app journey. */
+#features{background-image:radial-gradient(ellipse 60% 50% at 70% 40%,rgba(58,99,131,.16),transparent 80%)}
+#features .feature-copy h2{font-size:clamp(36px,4.5vw,64px);line-height:1.13;max-width:640px}
+#features .feature-copy p{color:#c5c1ba}
+#features .feature-copy .event-card{background:var(--ticket);color:var(--ticket-ink);border:0;border-radius:12px}
+#features .feature-copy .event-card p,#features .feature-copy .event-card small{color:var(--ticket-muted)}
+#features .feature-copy a:not(.btn){text-decoration-thickness:1px;text-underline-offset:6px}
+#features .phone{border-color:#252d35;box-shadow:0 25px 55px rgba(0,0,0,.5)}
+
+/* Aura retains its tier colors and flip behavior, with matching printed details. */
+#aura.aura-journey{background:radial-gradient(ellipse 45% 48% at 50% 48%,rgba(35,68,92,.3),transparent 80%),var(--night);border:0}
+#aura .aura-copy h2{font-size:clamp(35px,4.2vw,60px);line-height:1.12}
+#aura .aura-card{border-radius:18px;border-width:1px;box-shadow:0 22px 50px rgba(0,0,0,.48)}
+#aura .card-top>span,#aura .card-stamp{font-family:JetBrains Mono,monospace;letter-spacing:.12em}
+#aura .card-tier{font-family:var(--display-ticket);font-size:clamp(24px,2.4vw,36px);letter-spacing:-.06em}
+#aura .aura-caption{font-family:JetBrains Mono,monospace;letter-spacing:.04em}
+
+/* Communities feel like an invitation into an actual shared plan. */
+#communities.community-renewed{background:radial-gradient(ellipse 60% 58% at 80% 54%,rgba(62,105,136,.18),transparent 80%),var(--night)}
+#communities .community-copy h2{font-size:clamp(38px,4.3vw,62px);line-height:1.13}
+#communities .community-copy>p{color:#c5c1ba}
+#communities .community-invite{border-top:1px solid rgba(244,239,231,.22);padding-top:28px}
+#communities .community-invite h3{font-family:var(--display-ticket);font-size:17px;line-height:1.4;letter-spacing:-.05em}
+#communities .community-apply{background:var(--ticket);color:var(--ticket-ink);border-radius:9px}
+#communities .community-join{color:var(--sky);text-decoration-thickness:1px;text-underline-offset:5px}
+#communities .community-sheet{background:var(--ticket);border:0;color:var(--ticket-ink);border-radius:20px;padding:10px;box-shadow:0 25px 55px rgba(0,0,0,.5)}
+#communities .community-cover{border-radius:11px}
+#communities .community-cover>span{border-radius:6px;background:rgba(11,12,15,.88)}
+#communities .community-sheet-body{padding:23px 15px 15px}
+#communities .community-identity h3{font-family:var(--display-ticket);font-size:clamp(20px,2.2vw,27px);line-height:1.18;letter-spacing:-.065em}
+#communities .community-identity p,#communities .community-next p,#communities .community-example{color:var(--ticket-muted)}
+#communities .community-tabs{border-block:1px solid var(--ticket-line);padding:13px 0;margin:20px 0}
+#communities .community-tabs span{background:none;border-right:1px solid var(--ticket-line);border-radius:0;color:var(--ticket-muted);font:700 10px JetBrains Mono,monospace;letter-spacing:.02em}
+#communities .community-next{margin:12px 0}
+#communities .community-next-icon{color:var(--ticket-ink)}
+#communities .community-message{background:#e4ded4;color:var(--ticket-ink);border-radius:9px}
+#communities .community-message.reply{background:#d3e6ec;color:var(--ticket-ink);border-radius:9px}
+#communities .member{background:var(--ticket);border:0;border-radius:13px}
+
+/* A cinema ticket frame leads into the continuous, non-hover-pausing footer orbit. */
+.film{background-image:radial-gradient(ellipse 70% 65% at 50% 50%,rgba(52,97,128,.16),transparent 80%)}
+.film h2{font-size:clamp(35px,4.3vw,62px);line-height:1.15}
+.film video{border:9px solid var(--ticket);border-radius:17px;box-shadow:0 28px 55px rgba(0,0,0,.45)}
+footer.site-footer.footer-renewed,.footer-renewed .footer-showcase,.footer-renewed .footer-bottom{background-color:var(--night)}
+.footer-renewed .footer-showcase{background-image:radial-gradient(ellipse 55% 48% at 50% 52%,rgba(65,112,145,.3),transparent 80%)}
+.footer-renewed .footer-heading h2{font:900 clamp(46px,6.5vw,92px)/1.08 var(--display-ticket);letter-spacing:-.08em;text-transform:none}
+.footer-renewed .footer-heading p{color:#c5c1ba}
+.footer-renewed .vortex-rings i{border-color:rgba(159,214,239,.24)}
+.footer-renewed .vortex-hub{background:var(--ticket);color:var(--ticket-ink);border:0;border-radius:18px}
+.footer-renewed .vortex-card{background:var(--ticket);color:var(--ticket-ink);border:0;border-radius:11px}
+.footer-renewed .vortex-card img{border-radius:5px}
+.footer-renewed .vortex-card>span{font:700 8px JetBrains Mono,monospace;text-transform:uppercase;letter-spacing:.07em;color:var(--ticket-muted)}
+.footer-renewed .vortex-card>strong{font-family:var(--display-ticket);font-size:12px;line-height:1.3;letter-spacing:-.05em;color:var(--ticket-ink)}
+.footer-renewed .footer-bottom{border-color:rgba(244,239,231,.15)}
+.footer-renewed .footer-colophon{border-color:rgba(244,239,231,.15)}
+@media(max-width:900px){
+ #hero .hero-copy h1{font-size:clamp(47px,9vw,76px)}
+ #hero .hero-copy h1 .hero-go,#hero .hero-copy h1 .hero-outside{display:block;font-size:1em;margin:0}
+ #hero .map:after{background:linear-gradient(180deg,rgba(11,12,15,.92),rgba(11,12,15,.58) 35%,transparent 67%,var(--night) 100%)}
+ #possibilities.spatial-events .occasion-intro h2{font-size:clamp(31px,6vw,45px)}
+ #possibilities.spatial-events .event-body h3{font-size:21px}
+ #features .feature-copy h2{font-size:clamp(27px,5.5vw,38px)}
+ #aura .aura-copy h2{font-size:clamp(28px,5.5vw,38px)}
+ #communities .community-copy h2{font-size:clamp(32px,6vw,46px)}
+ #communities .community-identity h3{font-size:21px}
+ .footer-renewed .footer-heading h2{font-size:clamp(42px,7vw,62px)}
+}
+@media(max-width:520px){
+ #hero .hero-copy h1{font-size:clamp(40px,10.8vw,57px);letter-spacing:-.07em}
+ #hero .hero-copy h1 .hero-prelude{font-size:10px}
+ #possibilities.spatial-events .event-body h3{font-size:19px}
+ #possibilities .event-body:before{margin-bottom:8px}
+ #possibilities.spatial-events .event-body p{font-size:10px}
+ #communities .community-tabs{gap:0}
+ #communities .community-tabs span{font-size:8px;padding-inline:6px}
+ .film video{border-width:5px}
+ .footer-renewed .vortex-card>strong{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

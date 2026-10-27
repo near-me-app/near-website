@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Guidelines | Near</title>
+  <meta name="description" content="Community Guidelines for Near, a real-time social discovery platform operated by WECREO LABS PRIVATE LIMITED.">
+  <meta name="author" content="WECREO LABS PRIVATE LIMITED">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Near by WECREO LABS PRIVATE LIMITED">
+  <meta property="og:title" content="Community Guidelines | Near">
+  <meta property="og:description" content="The standards that keep Near safe, trusted, and useful.">
+  <meta property="og:url" content="https://whatsnear.in/community-guidelines.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#08080a;
+      --surface:rgba(255,255,255,.045);
+      --border:rgba(255,255,255,.1);
+      --border2:rgba(255,255,255,.18);
+      --text:#f2f2f2;
+      --muted:#8a8a96;
+      --soft:#c9c9d1;
+      --orange:#ff4500;
+      --acid:#00ff87;
+    }
+    html{background:var(--bg);scroll-behavior:smooth}
+    body{
+      min-height:100vh;
+      background:
+        radial-gradient(ellipse 60% 38% at 0 0, rgba(255,69,0,.09), transparent 58%),
+        radial-gradient(ellipse 45% 35% at 100% 8%, rgba(0,255,135,.06), transparent 52%),
+        var(--bg);
+      color:var(--text);
+      font-family:'JetBrains Mono','Courier New',monospace;
+      font-size:14px;
+      line-height:1.75;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:var(--orange);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{width:min(980px,calc(100% - 40px));margin:0 auto}
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter:blur(22px);
+      -webkit-backdrop-filter:blur(22px);
+      background:rgba(8,8,10,.82);
+      border-bottom:1px solid var(--border);
+    }
+    .topbar-inner{height:64px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;text-decoration:none}
+    .brand-logo{height:20px;width:auto;display:block}
+    .back-link{font-size:12px;color:var(--muted);white-space:nowrap}
+    .hero{padding:76px 0 38px;border-bottom:1px solid var(--border)}
+    .eyebrow{font-size:10px;letter-spacing:2.8px;text-transform:uppercase;color:var(--orange);font-weight:700;margin-bottom:16px}
+    h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.4px;line-height:1.12}
+    h1{font-size:clamp(2.4rem,6vw,4.6rem);font-weight:800;max-width:780px}
+    .summary{max-width:780px;margin-top:22px;color:var(--soft);font-size:15px;line-height:1.85}
+    .meta{
+      margin-top:28px;
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      border:1px solid var(--border);
+      background:var(--surface);
+    }
+    .meta div{padding:16px 18px;border-right:1px solid var(--border)}
+    .meta div:last-child{border-right:none}
+    .meta strong{display:block;color:var(--text);font-size:11px;text-transform:uppercase;letter-spacing:1.6px;margin-bottom:4px}
+    .meta span,.meta a{font-size:12px;color:var(--muted)}
+    main{padding:46px 0 72px}
+    .guidelines-layout{display:grid;grid-template-columns:220px 1fr;gap:42px;align-items:start}
+    .toc{position:sticky;top:88px;border-left:1px solid var(--border);padding-left:16px}
+    .toc a{display:block;color:var(--muted);font-size:12px;padding:6px 0}
+    .toc a:hover{color:var(--text);text-decoration:none}
+    .content{min-width:0}
+    section{padding:28px 0;border-bottom:1px solid var(--border)}
+    section:first-child{padding-top:0}
+    h2{font-size:1.55rem;font-weight:800;margin-bottom:12px}
+    h3{font-size:1rem;font-weight:700;margin:20px 0 8px}
+    p{color:var(--soft);margin-bottom:12px}
+    ul{margin:10px 0 14px 20px;color:var(--soft)}
+    li{margin-bottom:8px}
+    .callout{
+      margin:18px 0;
+      padding:16px 18px;
+      border:1px solid rgba(0,255,135,.18);
+      background:rgba(0,255,135,.055);
+      color:var(--soft);
+    }
+    .footer{padding:30px 0;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
+    .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    @media(max-width:760px){
+      .wrap{width:min(100% - 28px,980px)}
+      .topbar-inner{height:58px}
+      .hero{padding:52px 0 30px}
+      .meta{grid-template-columns:1fr}
+      .meta div{border-right:none;border-bottom:1px solid var(--border)}
+      .meta div:last-child{border-bottom:none}
+      .guidelines-layout{display:block}
+      .toc{position:static;margin-bottom:28px;display:grid;grid-template-columns:1fr 1fr;gap:2px 14px}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="index.html"><img src="near-logo.png" alt="Near" class="brand-logo"></a>
+      <a class="back-link" href="terms-of-service.html">terms</a>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Community Guidelines</div>
+      <h1>How we keep Near worth showing up for.</h1>
+      <p class="summary">Near is built for real people meeting in real life. These guidelines explain the behavior we expect from everyone who uses Near, creates plans, joins lobbies, hosts events, or interacts with the community.</p>
+      <div class="meta">
+        <div>
+          <strong>Company</strong>
+          <span>WECREO LABS PRIVATE LIMITED</span>
+        </div>
+        <div>
+          <strong>Contact</strong>
+          <a href="mailto:hello@wecreo.in">hello@wecreo.in</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap guidelines-layout">
+    <nav class="toc" aria-label="Community guidelines sections">
+      <a href="#principles">Principles</a>
+      <a href="#show-up">Show up</a>
+      <a href="#be-real">Be real</a>
+      <a href="#respect">Respect others</a>
+      <a href="#hosting">Hosting</a>
+      <a href="#safety">Safety</a>
+      <a href="#prohibited">Not allowed</a>
+      <a href="#content">Content</a>
+      <a href="#reports">Reports</a>
+      <a href="#enforcement">Enforcement</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="content">
+      <section id="principles">
+        <h2>1. The basic idea</h2>
+        <p>Near works when people can trust what they see, who they meet, and where they are going. Use Near in a way that makes offline plans safer, clearer, and easier for everyone involved.</p>
+        <p>If your behavior makes people feel unsafe, misled, pressured, harassed, or tricked, it does not belong on Near.</p>
+      </section>
+
+      <section id="show-up">
+        <h2>2. Show up responsibly</h2>
+        <ul>
+          <li>Only join plans you genuinely intend to attend.</li>
+          <li>Cancel or leave a lobby if you can no longer make it.</li>
+          <li>Respect the host's time, venue rules, capacity, and event expectations.</li>
+          <li>Repeated ghosting, fake participation, or disruptive behavior may affect your Aura score or account access.</li>
+        </ul>
+      </section>
+
+      <section id="be-real">
+        <h2>3. Be real</h2>
+        <p>Near is for real people. Do not impersonate someone else, use fake identity details, create misleading profiles, or pretend to represent a brand, venue, community, or host without permission.</p>
+        <p>Verification, trust indicators, and Aura scores exist to help the community make better decisions. Do not try to manipulate them.</p>
+      </section>
+
+      <section id="respect">
+        <h2>4. Respect others</h2>
+        <ul>
+          <li>Do not harass, threaten, stalk, bully, shame, or intimidate others.</li>
+          <li>Do not use hateful, discriminatory, sexually aggressive, or degrading behavior.</li>
+          <li>Do not pressure people to meet, share location, share contact details, drink, spend money, or stay at an event.</li>
+          <li>Do not photograph, record, or share someone without their consent.</li>
+          <li>Respect boundaries. If someone says no, drops out, leaves, or reports discomfort, stop.</li>
+        </ul>
+      </section>
+
+      <section id="hosting">
+        <h2>5. Host responsibly</h2>
+        <p>If you create or host a plan, event, route, venue listing, or community activity, make it accurate and safe.</p>
+        <ul>
+          <li>Use clear titles, locations, timing, capacity, cost, and expectations.</li>
+          <li>Do not create fake, bait, unsafe, illegal, or misleading events.</li>
+          <li>Do not change important details without informing participants.</li>
+          <li>Do not use Near to lure people into scams, spam, aggressive promotions, or unsafe situations.</li>
+        </ul>
+      </section>
+
+      <section id="safety">
+        <h2>6. Safety comes first</h2>
+        <p>Use good judgment when meeting people offline. Meet in public places when possible, tell someone you trust where you are going, and use Near's safety tools when needed.</p>
+        <div class="callout">If there is an immediate danger, contact local emergency services first. Near's safety tools are designed to support user safety, not replace emergency services.</div>
+      </section>
+
+      <section id="prohibited">
+        <h2>7. Zero tolerance</h2>
+        <ul>
+          <li>Illegal activity or events designed to enable illegal activity.</li>
+          <li>Harassment, threats, hate, discrimination, sexual exploitation, or violence.</li>
+          <li>Scams, fraud, phishing, fake giveaways, or misleading promotions.</li>
+          <li>Spam, bot activity, scraping, fake engagement, or platform manipulation.</li>
+          <li>Sharing private information without permission.</li>
+          <li>Weapons, dangerous behavior, or instructions that create real-world harm.</li>
+          <li>Content or activity involving minors in unsafe, exploitative, or inappropriate ways.</li>
+        </ul>
+      </section>
+
+      <section id="content">
+        <h2>8. Content standards</h2>
+        <p>Profiles, event descriptions, photos, messages, reports, and community posts must be truthful, respectful, and safe. We may remove content that violates these guidelines, infringes rights, misleads users, or creates risk.</p>
+      </section>
+
+      <section id="reports">
+        <h2>9. Reporting</h2>
+        <p>You can report users, events, lobbies, messages, or behavior that violates these guidelines. Reports help us review issues, remove harmful content, restrict accounts, and improve safety systems.</p>
+        <p>When reporting, include enough context for us to understand what happened. False or abusive reporting may itself lead to enforcement action.</p>
+      </section>
+
+      <section id="enforcement">
+        <h2>10. Enforcement</h2>
+        <p>Depending on the issue, WECREO LABS PRIVATE LIMITED may remove content, reduce visibility, adjust trust indicators, limit features, suspend accounts, ban users, or take other action needed to protect the community.</p>
+        <p>Serious safety risks, illegal activity, harassment, impersonation, fraud, or repeated violations can result in immediate removal from Near.</p>
+      </section>
+
+      <section id="contact">
+        <h2>11. Contact</h2>
+        <p>For guideline questions, safety concerns, or enforcement-related communication, contact:</p>
+        <p><strong>WECREO LABS PRIVATE LIMITED</strong><br>
+        Email: <a href="mailto:hello@wecreo.in">hello@wecreo.in</a><br>
+        Product: Near</p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span>© 2026 WECREO LABS PRIVATE LIMITED. All rights reserved.</span>
+      <span><a href="privacy-policy.html">Privacy Policy</a> · <a href="terms-of-service.html">Terms of Service</a></span>
+    </div>
+  </footer>
+</body>
+</html>

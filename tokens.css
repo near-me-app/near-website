@@ -1,0 +1,68 @@
+:root {
+  color-scheme: dark;
+
+  /* Canvas — AppColors */
+  --bg:        #0B0C0F;   /* page */
+  --bg-2:      #111317;   /* alt sections, nav glass base */
+  --surface:   #161A20;   /* inputs, chips, sheet bodies */
+  --surface-2: #1C2027;
+  --card:      #1A1E25;   /* event cards, pills on map */
+  --card-2:    #21262F;
+  --border:    #262C36;   /* every hairline */
+  --line-soft: rgba(120,134,156,.12);  /* AppColors.lineSoft 0x1F78869C */
+
+  /* Ink */
+  --ink:       #F4EFE7;   /* primary text, primary CTA fill, accent */
+  --ink-mid:   #A8A196;   /* secondary text on dark, meta */
+  --ink-2:     #948F86;   /* textSecondary — AA (≥4.5:1) on bg/card/card-2 */
+  --accent-subtle: rgba(244,239,231,.14); /* 0x24 */
+  --accent-border: rgba(244,239,231,.31); /* 0x50 */
+  --warm-tint-strong: rgba(244,239,231,.22);
+
+  /* Paper (cream ticket surfaces, from shareLandingPage.ts) */
+  --paper:     #F4EFE7;
+  --paper-ink: #14161A;
+  --paper-mid: #6B655C;
+
+  /* Signals */
+  --live:      #FF3B30;   /* ONLY for live-now: pins, live pill, highlighter */
+  --success:   #4ADE80;   --success-subtle: rgba(74,222,128,.14);
+  --warning:   #FBBF24;   --warning-subtle: rgba(251,191,36,.14);
+  --danger:    #F87171;   --danger-subtle:  rgba(248,113,113,.16);
+
+  /* Chat — only inside chat-bubble recreations */
+  --bubble-in:  #232324;
+  --bubble-out: #212239;
+  --link:       #63AFFF;  /* @mentions/links INSIDE bubbles only */
+
+  /* Gold — ONLY monetization ("host events, get paid") */
+  --gold-hi: #FFF3D1; --gold-light: #F5D68A; --gold: #E0B25A;
+  --gold-deep: #B07E2C; --gold-ink: #2B1D07;
+
+  /* NEAR green — ONLY the Final Boss tier accent */
+  --near-green: #B9FF3B;
+}
+
+:root {
+  /* AppSpacing */
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 20px; --s-6: 24px; --s-7: 28px;
+  /* AppRadii */
+  --r-xs: 10px; --r-sm: 12px; --r-md: 16px; --r-lg: 22px; --r-xl: 28px; --r-xxl: 34px; --r-pill: 999px;
+  /* Layout */
+  --gutter: 16px;            /* ≥640: 24px, ≥1200: 40px */
+  --max: 1240px;
+  --section-y: clamp(88px, 12vw, 168px);
+}
+
+:root {
+  --d-fast: 140ms;  --d-short: 260ms;  --d-nav: 320ms;  --d-medium: 900ms;
+  --ease-out: cubic-bezier(.2,.7,.2,1);
+  --ease-out-cubic: cubic-bezier(.33,1,.68,1);
+}
+
+:root{--food:#EC4899;--food-deep:#A13B6E;--sport:#22C55E;--water:#14B8A6;--white:#fff;--shadow:rgba(0,0,0,.5);--display:Anton,sans-serif;--body:Nunito,sans-serif;--number:Unbounded,sans-serif}
+:root{--tier-0:#2EC4D6;--tier-1:#7C6CF2;--tier-2:#4CC764;--tier-3:#E5484D;--tier-4:#3D8BFD;--tier-5:#F05BB5;--tier-6:#C9CDD5;--tier-7:#FFD36B;}
+:root{--cat-0:#EC4899;--cat-0-deep:#A13B6E;--cat-1:#22C55E;--cat-1-deep:#1E7D4A;--cat-2:#14B8A6;--cat-2-deep:#1C7F76;--cat-3:#38BDF8;--cat-3-deep:#1D6FA5;--cat-4:#10B981;--cat-4-deep:#0B7A5A;--cat-5:#EC4899;--cat-5-deep:#A13B6E;}
+:root{--photo-ink:#FFFFFF;--photo-shade:rgba(0,0,0,.78);--photo-shadow:rgba(0,0,0,.3)}
+
+:root{--panel-radius:32px;--panel-radius-small:22px;--heading-weight:800;--section-space:clamp(65px,8vw,115px);--soft-shadow:0 24px 60px var(--photo-shadow)}
