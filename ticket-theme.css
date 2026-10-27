@@ -154,6 +154,22 @@ footer.site-footer.footer-renewed,.footer-renewed .footer-showcase,.footer-renew
 .community-ticket-stub small{display:block;color:var(--ticket-muted);font-size:10px;margin-top:4px}
 .community-ticket-stub i{display:block;width:98px;height:35px;flex:none;background:repeating-linear-gradient(90deg,var(--ticket-ink) 0 3px,transparent 3px 6px,var(--ticket-ink) 6px 7px,transparent 7px 11px,var(--ticket-ink) 11px 17px,transparent 17px 21px)}
 
+/* Scroll enhancement holds the community copy while invitations pass on the right. */
+#communities .community-invite{border:0;padding-top:0;margin-top:28px}
+#communities .community-apply,#communities .community-apply:hover{text-decoration:none}
+#communities .community-apply:focus-visible{outline:2px solid var(--sky);outline-offset:4px}
+#communities .community-join{text-decoration:none}
+#communities .community-join:hover{text-decoration:underline}
+.community-ticket-stack{display:grid;gap:28px}
+.community-ticket-stack .community-ticket{width:100%}
+@media (min-width:901px) and (min-height:700px){
+ #communities.community-scroll-ready{height:300svh;overflow:clip}
+ #communities.community-scroll-ready .community-stage{position:sticky;top:64px;height:calc(100svh - 64px);padding-block:0}
+ #communities.community-scroll-ready .community-visual{padding:0}
+ #communities.community-scroll-ready .community-ticket-stack{height:min(620px,calc(100svh - 96px));gap:0;place-items:center}
+ #communities.community-scroll-ready .community-ticket{grid-area:1/1;will-change:transform,opacity}
+}
+
 /* The film has a clear place between the community invitation and the close. */
 .film{padding-block:clamp(75px,9vw,130px);background:radial-gradient(ellipse 55% 65% at 70% 48%,rgba(67,111,139,.2),transparent 82%),var(--night)}
 .film:before{display:none}
