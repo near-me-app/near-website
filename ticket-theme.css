@@ -23,6 +23,7 @@ body>header.site-header{background:rgba(11,12,15,.94);backdrop-filter:blur(18px)
 .hero-plan{background:var(--ticket);color:var(--ticket-ink);border:0;border-radius:14px;box-shadow:0 15px 40px rgba(0,0,0,.45)}
 .hero-plan strong{font-family:var(--display-ticket);font-size:12px;letter-spacing:-.04em}
 .hero-plan small{color:var(--ticket-muted)}
+#hero .pin.p0 .disc,#hero .hero-plan>img{background:#263a28}
 .hero-app-caption,#hero .map-note{color:#c5d9e5}
 #hero .pin-preview .event-card{background:var(--ticket);color:var(--ticket-ink)}
 #hero .pin-preview .event-card p{color:var(--ticket-muted)}
