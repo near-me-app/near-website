@@ -1,109 +1,192 @@
-/* Communities: a pinned deck of invitation tickets. Scrolling deals the next ticket forward;
-   the one before slides away to the left and fades. */
+/* Communities: the app's member pass (from Near's poster studio), hung on a lanyard.
+   Scrolling deals the passes forward with natural pendulum physics;
+   moving the pointer sways the active pass and catches light on the holographic foil. */
 (() => {
   'use strict';
 
   const section = document.getElementById('communities');
   if (!section) return;
-  const stack = section.querySelector('.community-ticket-stack');
-  const cards = [...stack.querySelectorAll('.community-ticket')];
-  if (cards.length < 2) return;
+  const rig = section.querySelector('.cp-rig');
+  if (!rig) return;
+  const passes = [...rig.querySelectorAll('.cp')];
+  if (passes.length < 2) return;
 
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
   const lerp = (a, b, t) => a + (b - a) * t;
   const smoothstep = t => t * t * (3 - 2 * t);
   const pad = n => String(n).padStart(2, '0');
 
-  // Perforation notches sit on the stub's dashed line, wherever that lands on each ticket.
-  function placeNotches() {
-    cards.forEach(card => {
-      const stub = card.querySelector('.community-ticket-stub');
-      if (stub) card.style.setProperty('--notch-y', stub.offsetTop + 'px');
-    });
-  }
-  placeNotches();
-  addEventListener('resize', placeNotches);
-  document.fonts && document.fonts.ready.then(placeNotches);
+  const kinds = passes.map(p => {
+    const code = p.querySelector('.cp-code');
+    if (code && code.textContent.trim()) return code.textContent.trim();
+    const name = p.querySelector('.cp-name');
+    return name ? name.textContent.trim() : 'Community';
+  });
 
-  const kinds = cards.map(card => card.querySelector('.community-ticket-kicker').textContent.split('·')[0].trim());
   const count = section.querySelector('.cm-count');
-  const countNum = count.querySelector('b');
-  const countKind = count.querySelector('span');
+  const countNum = count ? count.querySelector('b') : null;
+  const countKind = count ? count.querySelector('span') : null;
 
   if (!window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
 
-  gsap.matchMedia().add('(prefers-reduced-motion: no-preference) and (min-height: 600px)', () => {
+  gsap.matchMedia().add('(min-width: 901px) and (min-height: 500px) and (prefers-reduced-motion: no-preference)', () => {
     section.classList.add('cm-live');
-    requestAnimationFrame(placeNotches);
-    const follow = window.NearMotion && NearMotion.smooth ? 1 : 0.14;
-    const pointer = {x: 0, y: 0};
+    const follow = (window.NearMotion && NearMotion.smooth) ? 1 : 0.14;
+    const pointer = { x: 0, y: 0 };
     let target = 0, current = 0, raf = 0, active = -1;
 
-    // Pose by offset from focus: >0 waiting in the deck, 0 in front, <0 dealt away.
+    // Pose by offset from focus:
+    // o > 0: waiting on the peg behind the front pass
+    // o = 0: front-and-center active pass
+    // o < 0: swinging away to the left on the lanyard arc
     function pose(o) {
       if (o >= 0) {
-        const t = smoothstep(clamp(o)), deep = Math.max(0, o - 1);
-        return {x: lerp(0, 7, t) + deep * 3, y: lerp(0, 5, t) + deep * 2.5, r: lerp(0, 3, t) + deep * 1.5, s: lerp(1, 0.93, t) - deep * 0.03, dim: lerp(0, 0.22, t) + deep * 0.1, a: clamp(1 - Math.max(0, o - 1.6) * 1.5)};
+        const t = smoothstep(clamp(o, 0, 1));
+        const deep = Math.max(0, o - 1);
+        return {
+          x: lerp(0, 8, t) + deep * 4,
+          y: lerp(0, 4, t) + deep * 2.5,
+          r: lerp(0, 4, t) + deep * 1.5,
+          s: lerp(1, 0.94, t) - deep * 0.03,
+          dim: lerp(0, 0.22, t) + deep * 0.12,
+          a: clamp(1 - Math.max(0, o - 1.5) * 2, 0, 1),
+          z: Math.max(1, 20 - Math.round(o * 6))
+        };
       }
-      const t = smoothstep(clamp(-o));
-      return {x: lerp(0, -38, t), y: lerp(0, 2, t), r: lerp(0, -5, t), s: lerp(1, 0.94, t), dim: lerp(0, 0.3, t), a: 1 - t};
+      const t = smoothstep(clamp(-o, 0, 1));
+      return {
+        x: lerp(0, -62, t),
+        y: lerp(0, -14, t),
+        r: lerp(0, -18, t),
+        s: lerp(1, 0.94, t),
+        dim: lerp(0, 0.35, t),
+        a: clamp(1 - Math.max(0, -o - 0.55) * 2.2, 0, 1),
+        z: Math.max(1, 20 - Math.round(t * 8))
+      };
     }
 
     function render(p) {
-      const pos = clamp(p) * (cards.length - 1);
-      cards.forEach((card, i) => {
-        const o = i - pos, q = pose(o);
-        const focus = 1 - Math.min(1, Math.abs(o));
-        const ry = pointer.x * 6 * focus, rx = -pointer.y * 5 * focus;
-        card.style.transform = `translate3d(${q.x.toFixed(2)}%, ${q.y.toFixed(2)}%, 0) perspective(1400px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) rotateZ(${q.r.toFixed(2)}deg) scale(${q.s.toFixed(4)})`;
-        card.style.opacity = q.a.toFixed(3);
-        card.style.visibility = q.a < 0.01 ? 'hidden' : '';
-        card.style.zIndex = String(100 - Math.round(Math.abs(o) * 10));
-        card.style.setProperty('--cm-dim', q.dim.toFixed(3));
-        card.setAttribute('aria-hidden', String(Math.round(pos) !== i));
+      const pos = clamp(p, 0, 1) * (passes.length - 1);
+      const vel = clamp((target - current) * 25, -1, 1);
+      const sway = -vel * 4.2;
+
+      passes.forEach((pass, i) => {
+        const o = i - pos;
+        const q = pose(o);
+        const focus = clamp(1 - Math.abs(o) * 1.2, 0, 1);
+        const rx = -pointer.y * 5 * focus;
+        const ry = pointer.x * 6.5 * focus;
+        const rz = q.r + (sway * (1 - Math.min(1, Math.abs(o) * 0.5))) + (pointer.x * 2.8 * focus);
+
+        pass.style.transform = `translate3d(${q.x.toFixed(2)}%, ${q.y.toFixed(2)}%, 0) scale(${q.s.toFixed(4)})`;
+        pass.style.opacity = q.a.toFixed(3);
+        pass.style.visibility = q.a < 0.01 ? 'hidden' : '';
+        pass.style.zIndex = String(q.z);
+        pass.style.filter = q.dim > 0.01 ? `brightness(${(1 - q.dim * 0.45).toFixed(3)})` : '';
+
+        const hang = pass.querySelector('.cp-hang');
+        if (hang) {
+          hang.style.transform = `perspective(1200px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) rotateZ(${rz.toFixed(2)}deg)`;
+        }
+
+        const foilPos = 35 + (pointer.x * 35) + (o * -15);
+        pass.style.setProperty('--foil', `${foilPos.toFixed(1)}%`);
       });
+
       const next = Math.round(pos);
       if (next !== active) {
         active = next;
-        countNum.textContent = `${pad(next + 1)} / ${pad(cards.length)}`;
-        countKind.textContent = kinds[next];
+        if (countNum) countNum.textContent = `${pad(next + 1)} / ${pad(passes.length)}`;
+        if (countKind) countKind.textContent = kinds[next];
+        passes.forEach((p, idx) => {
+          const isCur = idx === active;
+          p.setAttribute('aria-hidden', String(!isCur));
+          p.inert = !isCur;
+        });
       }
     }
 
     function tick() {
       current += (target - current) * follow;
-      if (Math.abs(target - current) < 0.0004) { current = target; raf = 0; } else raf = requestAnimationFrame(tick);
+      if (Math.abs(target - current) < 0.0004) {
+        current = target;
+        raf = 0;
+      } else {
+        raf = requestAnimationFrame(tick);
+      }
       render(current);
     }
-    const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
 
-    // A gentle tilt toward the pointer on the ticket in front (fine pointers only).
+    const kick = () => {
+      if (!raf) raf = requestAnimationFrame(tick);
+    };
+
+    // Pointer tracking for pendulum sway and holographic sheen
     const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
     const onMove = e => {
-      const r = stack.getBoundingClientRect();
-      pointer.x = clamp((e.clientX - r.left) / r.width * 2 - 1, -1, 1);
-      pointer.y = clamp((e.clientY - r.top) / r.height * 2 - 1, -1, 1);
-      render(current);
+      const r = rig.getBoundingClientRect();
+      pointer.x = clamp((e.clientX - (r.left + r.width / 2)) / (r.width / 2), -1, 1);
+      pointer.y = clamp((e.clientY - (r.top + r.height / 2)) / (r.height / 2), -1, 1);
+      kick();
     };
-    const onLeave = () => { pointer.x = pointer.y = 0; render(current); };
-    if (fine) { stack.addEventListener('pointermove', onMove); stack.addEventListener('pointerleave', onLeave); }
+    const onLeave = () => {
+      pointer.x = 0;
+      pointer.y = 0;
+      kick();
+    };
+
+    if (fine) {
+      rig.addEventListener('pointermove', onMove);
+      rig.addEventListener('pointerleave', onLeave);
+    }
+
+    // Click on a visible card to scroll straight to it
+    const onClick = e => {
+      if (e.target.closest('a') || e.target.closest('button')) return;
+      const clicked = e.target.closest('.cp');
+      if (!clicked) return;
+      const idx = passes.indexOf(clicked);
+      if (idx !== -1 && idx !== active) {
+        const range = trigger.end - trigger.start;
+        const targetScroll = trigger.start + (idx / (passes.length - 1)) * range;
+        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+      }
+    };
+    rig.addEventListener('click', onClick);
 
     const trigger = ScrollTrigger.create({
-      trigger: section, start: 'top 64px', end: 'bottom bottom',
-      onUpdate: self => { target = self.progress; kick(); },
-      onRefresh: self => { placeNotches(); target = current = self.progress; render(current); }
+      trigger: section,
+      start: 'top 64px',
+      end: 'bottom bottom',
+      onUpdate: self => {
+        target = self.progress;
+        kick();
+      },
+      onRefresh: self => {
+        target = current = self.progress;
+        render(current);
+      }
     });
-    document.fonts.ready.then(() => ScrollTrigger.refresh());
+
+    document.fonts && document.fonts.ready.then(() => ScrollTrigger.refresh());
 
     return () => {
       trigger.kill();
-      cancelAnimationFrame(raf); raf = 0;
-      stack.removeEventListener('pointermove', onMove);
-      stack.removeEventListener('pointerleave', onLeave);
+      cancelAnimationFrame(raf);
+      raf = 0;
+      rig.removeEventListener('pointermove', onMove);
+      rig.removeEventListener('pointerleave', onLeave);
+      rig.removeEventListener('click', onClick);
       section.classList.remove('cm-live');
-      cards.forEach(card => { card.removeAttribute('style'); card.removeAttribute('aria-hidden'); });
-      active = -1; placeNotches();
+      passes.forEach(p => {
+        p.removeAttribute('style');
+        p.removeAttribute('aria-hidden');
+        p.inert = false;
+        const hang = p.querySelector('.cp-hang');
+        if (hang) hang.removeAttribute('style');
+      });
+      active = -1;
     };
   });
 })();
