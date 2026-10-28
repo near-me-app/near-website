@@ -1,0 +1,52 @@
+/* Hero entrance: HUD + hairlines, headline lines rise through a mask, pins pop in, phones settle, pointer tilt.
+   Everything is visible by default; the entrance only runs once motion-kit adds html.nm-smooth. */
+#hero .hero-hud{position:absolute;left:0;right:0;top:18px;z-index:4;margin-inline:auto;pointer-events:none}
+#hero .hero-hud .nm-rule{margin-top:10px}
+#hero .hero-hud .nm-hud>span:last-child{display:flex;align-items:center;gap:8px}
+#hero .hero-hud i{width:6px;height:6px;border-radius:50%;background:var(--live);box-shadow:0 0 0 3px rgba(255,59,48,.18)}
+#hero .hero-rule{margin:0 0 22px;max-width:430px}
+@media(max-width:900px){
+ #hero .hero-hud{top:12px;left:16px;right:16px;width:auto;margin:0}
+ #hero .hero-hud .nm-hud{font-size:9px;letter-spacing:.14em}
+ #hero .hero-hud .nm-hud>span:first-child{display:none}
+ #hero .hero-hud .nm-hud{justify-content:flex-end}
+ #hero .hero-rule{margin-bottom:16px}
+}
+
+/* Entrance */
+@keyframes hero-line{from{clip-path:inset(100% -2% -2% -2%);translate:0 .45em}to{clip-path:inset(-8% -2% -8% -2%);translate:0 0}}
+@keyframes hero-rise{from{opacity:0;translate:0 18px}to{opacity:1;translate:0 0}}
+@keyframes hero-pop{0%{opacity:0;scale:.3}60%{opacity:1;scale:1.12}100%{opacity:1;scale:1}}
+@keyframes hero-phones{from{opacity:0;translate:0 60px}to{opacity:1;translate:0 0}}
+html.nm-smooth #heroTitle>span{animation:hero-line 1s cubic-bezier(.2,.75,.15,1) both}
+html.nm-smooth #heroTitle>.hero-prelude{animation-delay:.05s}
+html.nm-smooth #heroTitle>.hero-go{animation-delay:.16s}
+html.nm-smooth #heroTitle>.hero-outside{animation-delay:.28s}
+html.nm-smooth #hero .hero-copy>p,html.nm-smooth #hero .store-row{animation:hero-rise .9s cubic-bezier(.2,.75,.15,1) both}
+html.nm-smooth #hero .hero-copy>p{animation-delay:.45s}
+html.nm-smooth #hero .store-row{animation-delay:.58s}
+html.nm-smooth #hero .hero-apps{animation:hero-phones 1.3s cubic-bezier(.2,.75,.15,1) .2s both}
+html.nm-smooth #hero .pin .disc,html.nm-smooth #hero .pin .pin-label{animation:hero-pop .7s cubic-bezier(.3,.8,.3,1.2) both}
+html.nm-smooth #hero .pin .pin-label{animation-duration:.5s}
+html.nm-smooth #hero .pin.p2 .disc{animation-delay:.55s}html.nm-smooth #hero .pin.p2 .pin-label{animation-delay:.7s}
+html.nm-smooth #hero .pin.p4 .disc{animation-delay:.68s}html.nm-smooth #hero .pin.p4 .pin-label{animation-delay:.83s}
+html.nm-smooth #hero .pin.p1 .disc{animation-delay:.81s}html.nm-smooth #hero .pin.p1 .pin-label{animation-delay:.96s}
+html.nm-smooth #hero .pin.p3 .disc{animation-delay:.94s}html.nm-smooth #hero .pin.p3 .pin-label{animation-delay:1.09s}
+html.nm-smooth #hero .pin.p0 .disc{animation-delay:1.07s}html.nm-smooth #hero .pin.p0 .pin-label{animation-delay:1.22s}
+html.nm-smooth #hero .pin.p5 .disc{animation-delay:1.2s}html.nm-smooth #hero .pin.p5 .pin-label{animation-delay:1.35s}
+html.nm-smooth #hero .you{animation:hero-pop .8s cubic-bezier(.3,.8,.3,1.2) .4s both}
+
+/* Pointer tilt (class added by hero-motion.js on fine pointers, desktop layout only). */
+#hero .hero-apps.is-tilting .hero-device-front{transform:rotate(8deg) rotateX(calc(var(--hy,0)*-7deg)) rotateY(calc(var(--hx,0)*9deg))}
+#hero .hero-apps.is-tilting .hero-device-back{transform:rotate(-10deg) rotateX(calc(var(--hy,0)*-4deg)) rotateY(calc(var(--hx,0)*5deg)) translate3d(calc(var(--hx,0)*-10px),calc(var(--hy,0)*-6px),0)}
+#hero .hero-apps.is-tilting .hero-plan-deck{translate:calc(var(--hx,0)*14px) calc(var(--hy,0)*10px)}
+
+@media(prefers-reduced-motion:reduce){#heroTitle>span,#hero .hero-copy>p,#hero .store-row,#hero .hero-apps,#hero .pin .disc,#hero .pin .pin-label,#hero .you{animation:none!important}}
+
+/* ── Round 2: system type + system device ── */
+html #hero .hero-copy h1{font-size:var(--ns-h1)}
+/* .hero-device keeps position/rotation/float; the .ns-device inside draws the phone at the container's width. */
+#hero .hero-device{container-type:inline-size;padding:0;border:0;border-radius:0;background:none;box-shadow:none;overflow:visible}
+#hero .hero-device>.ns-device{--w:100cqw}
+#hero .hero-device .ns-screen>img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:top}
+#hero .hero-device-back{opacity:1;filter:brightness(.62)}

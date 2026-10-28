@@ -1,150 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy | Near by WECREO LABS PRIVATE LIMITED</title>
-  <meta name="description" content="Privacy Policy for Near, a real-time social discovery platform operated by WECREO LABS PRIVATE LIMITED. Contact hello@wecreo.in.">
-  <meta name="author" content="WECREO LABS PRIVATE LIMITED">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Near by WECREO LABS PRIVATE LIMITED">
-  <meta property="og:title" content="Privacy Policy | Near">
-  <meta property="og:description" content="How Near collects, uses, protects, and handles user data.">
-  <meta property="og:url" content="https://whatsnear.in/privacy-policy.html">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --bg:#08080a;
-      --surface:rgba(255,255,255,.045);
-      --surface2:rgba(255,255,255,.075);
-      --border:rgba(255,255,255,.1);
-      --border2:rgba(255,255,255,.18);
-      --text:#f2f2f2;
-      --muted:#8a8a96;
-      --soft:#c9c9d1;
-      --orange:#ff4500;
-      --acid:#00ff87;
-    }
-    html{background:var(--bg);scroll-behavior:smooth}
-    body{
-      min-height:100vh;
-      background:
-        radial-gradient(ellipse 60% 38% at 0 0, rgba(255,69,0,.09), transparent 58%),
-        radial-gradient(ellipse 45% 35% at 100% 8%, rgba(0,255,135,.06), transparent 52%),
-        var(--bg);
-      color:var(--text);
-      font-family:'JetBrains Mono','Courier New',monospace;
-      font-size:14px;
-      line-height:1.75;
-      -webkit-font-smoothing:antialiased;
-    }
-    a{color:var(--orange);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .wrap{width:min(980px,calc(100% - 40px));margin:0 auto}
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:10;
-      backdrop-filter:blur(22px);
-      -webkit-backdrop-filter:blur(22px);
-      background:rgba(8,8,10,.82);
-      border-bottom:1px solid var(--border);
-    }
-    .topbar-inner{height:64px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-    .brand{display:flex;align-items:center;text-decoration:none}
-    .brand-logo{height:20px;width:auto;display:block}
-    .back-link{font-size:12px;color:var(--muted);white-space:nowrap}
-    .hero{padding:76px 0 38px;border-bottom:1px solid var(--border)}
-    .eyebrow{font-size:10px;letter-spacing:2.8px;text-transform:uppercase;color:var(--orange);font-weight:700;margin-bottom:16px}
-    h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.4px;line-height:1.12}
-    h1{font-size:clamp(2.4rem,6vw,4.6rem);font-weight:800;max-width:760px}
-    .summary{max-width:760px;margin-top:22px;color:var(--soft);font-size:15px;line-height:1.85}
-    .meta{
-      margin-top:28px;
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      border:1px solid var(--border);
-      background:var(--surface);
-    }
-    .meta div{padding:16px 18px;border-right:1px solid var(--border)}
-    .meta div:last-child{border-right:none}
-    .meta strong{display:block;color:var(--text);font-size:11px;text-transform:uppercase;letter-spacing:1.6px;margin-bottom:4px}
-    .meta span,.meta a{font-size:12px;color:var(--muted)}
-    main{padding:46px 0 72px}
-    .policy-layout{display:grid;grid-template-columns:220px 1fr;gap:42px;align-items:start}
-    .toc{position:sticky;top:88px;border-left:1px solid var(--border);padding-left:16px}
-    .toc a{display:block;color:var(--muted);font-size:12px;padding:6px 0}
-    .toc a:hover{color:var(--text);text-decoration:none}
-    .content{min-width:0}
-    section{padding:28px 0;border-bottom:1px solid var(--border)}
-    section:first-child{padding-top:0}
-    h2{font-size:1.55rem;font-weight:800;margin-bottom:12px}
-    h3{font-size:1rem;font-weight:700;margin:20px 0 8px}
-    p{color:var(--soft);margin-bottom:12px}
-    ul{margin:10px 0 14px 20px;color:var(--soft)}
-    li{margin-bottom:8px}
-    .callout{
-      margin:18px 0;
-      padding:16px 18px;
-      border:1px solid rgba(0,255,135,.18);
-      background:rgba(0,255,135,.055);
-      color:var(--soft);
-    }
-    .data-table{display:grid;border:1px solid var(--border);margin:16px 0;background:var(--surface)}
-    .data-row{display:grid;grid-template-columns:1fr 1.25fr;border-bottom:1px solid var(--border)}
-    .data-row:last-child{border-bottom:none}
-    .data-row strong,.data-row span{padding:13px 14px}
-    .data-row strong{color:var(--text);border-right:1px solid var(--border);font-size:12px}
-    .data-row span{color:var(--soft);font-size:12px}
-    .footer{padding:30px 0;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
-    .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    @media(max-width:760px){
-      .wrap{width:min(100% - 28px,980px)}
-      .topbar-inner{height:58px}
-      .hero{padding:52px 0 30px}
-      .meta{grid-template-columns:1fr}
-      .meta div{border-right:none;border-bottom:1px solid var(--border)}
-      .meta div:last-child{border-bottom:none}
-      .policy-layout{display:block}
-      .toc{position:static;margin-bottom:28px;display:grid;grid-template-columns:1fr 1fr;gap:2px 14px}
-      .data-row{grid-template-columns:1fr}
-      .data-row strong{border-right:none;border-bottom:1px solid var(--border)}
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0B0C0F">
+<title>Privacy policy | Near</title>
+<meta name="description" content="How Near collects, uses, shares and protects your data, including identity verification, location and account deletion.">
+<link rel="canonical" href="https://www.whatsnear.in/privacy-policy.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Near">
+<meta property="og:title" content="Privacy policy | Near">
+<meta property="og:description" content="How Near collects, uses, shares and protects your data, including identity verification, location and account deletion.">
+<meta property="og:url" content="https://www.whatsnear.in/privacy-policy.html">
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="tokens.css" rel="stylesheet">
+<link href="legal.css" rel="stylesheet">
 </head>
 <body>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="brand" href="index.html"><img src="near-logo.png" alt="Near" class="brand-logo"></a>
-      <a class="back-link" href="terms-of-service.html">terms</a>
-    </div>
-  </header>
+<a class="skip" href="#legal-content">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+  <a class="header-brand" href="index.html" aria-label="Near home"><svg class="wordmark" viewBox="0 0 23 5" role="img" aria-label="Near" shape-rendering="crispEdges"><rect x="0" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="1" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="2" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="3" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="4" width="1.04" height="1.04" fill="currentColor"/></svg></a>
+  <nav class="desktop-nav" aria-label="Main"><a href="index.html#possibilities">Discover</a><a href="index.html#aura">Your Aura</a><a href="index.html#communities">Communities</a></nav>
+  <a class="header-download" href="index.html#download">Get Near <span aria-hidden="true">&#8599;</span></a>
+  <details class="mobile-nav"><summary>Menu <span aria-hidden="true">&#9776;</span></summary><nav aria-label="Mobile"><a href="index.html#possibilities">Discover plans</a><a href="index.html#features">Inside the app</a><a href="index.html#aura">Your Aura</a><a href="index.html#communities">Communities</a></nav></details>
+</div></header>
 
-  <div class="hero">
-    <div class="wrap">
-      <div class="eyebrow">Privacy Policy</div>
-      <h1>How Near handles your data.</h1>
-      <p class="summary">Near helps people discover what is happening around them, join live local experiences, and build trusted offline communities. This policy explains what we collect, how we use it, what others may see, and the choices you have.</p>
-      <div class="meta">
-        <div>
-          <strong>Company</strong>
-          <span>WECREO LABS PRIVATE LIMITED</span>
-        </div>
-        <div>
-          <strong>Contact</strong>
-          <a href="mailto:hello@wecreo.in">hello@wecreo.in</a>
-        </div>
-      </div>
+<div class="legal-hero">
+  <div class="wrap">
+    <div class="eyebrow">Privacy Policy</div>
+    <h1>How Near handles your data.</h1>
+    <p class="summary">Near helps people discover what is happening around them, join live local experiences, and build trusted offline communities. This policy explains what we collect, how we use it, what others may see, who we share it with, how long we keep it, and the choices you have.</p>
+    <div class="meta">
+      <div><strong>Company</strong><span>WECREO LABS PRIVATE LIMITED</span></div>
+      <div><strong>Product</strong><span>Near</span></div>
+      <div><strong>Contact</strong><a href="mailto:hello@wecreo.in">hello@wecreo.in</a></div>
     </div>
   </div>
+</div>
 
-  <main class="wrap policy-layout">
+<main class="wrap legal-layout" id="legal-content">
     <nav class="toc" aria-label="Privacy policy sections">
       <a href="#overview">Overview</a>
       <a href="#collect">What we collect</a>
+      <a href="#verification">Identity verification</a>
       <a href="#use">How we use it</a>
       <a href="#visible">What others see</a>
       <a href="#location">Location</a>
@@ -157,6 +58,7 @@
       <a href="#transfers">Transfers</a>
       <a href="#children">Age limit</a>
       <a href="#security">Security</a>
+      <a href="#changes">Policy updates</a>
       <a href="#contact">Contact</a>
     </nav>
 
@@ -165,6 +67,7 @@
         <h2>1. Overview</h2>
         <p>This Privacy Policy applies to Near, including our mobile apps, website, waitlist, contact forms, event discovery features, safety features, and related services operated by WECREO LABS PRIVATE LIMITED.</p>
         <p>To operate Near, we need some account, location, activity, safety, and device information. We try to collect only what we need to run the product, keep the platform trusted, and improve the experience.</p>
+        <p>By using Near, you acknowledge that your information may be collected and used as described in this Privacy Policy.</p>
       </section>
 
       <section id="collect">
@@ -200,125 +103,189 @@
         <p>Near does not intentionally collect sensitive information such as government identifiers, financial information, health information, or precise biometric data unless a specific feature clearly asks for it and explains why it is needed.</p>
       </section>
 
-      <section id="use">
-        <h2>3. How we use it</h2>
+      <section id="verification">
+        <h2>3. Identity verification and face data</h2>
+        <p>Near offers identity verification as a safety feature designed to help ensure that users are real people and to reduce fake profiles, fraud, impersonation, and abuse on the platform.</p>
+        <h3>What face data we collect</h3>
+        <p>When you choose to complete identity verification, Near temporarily collects a <strong>live selfie</strong> taken for the verification process.</p>
+        <p>The live selfie is compared with the profile photograph associated with your Near account to help determine whether the person completing verification matches the person represented by the profile.</p>
+        <p>The live verification selfie is different from your normal Near profile photograph.</p>
+        <p>Near does not create or retain a permanent facial profile, facial biometric template, or other biometric identifier from the live selfie for this verification process.</p>
+        <h3>How we use the live selfie</h3>
+        <p>The live selfie is used only to:</p>
         <ul>
-          <li>To create and manage your Near account.</li>
-          <li>To show nearby plans, live event lobbies, communities, routes, venues, and local experiences.</li>
-          <li>To help users coordinate, join, host, and attend experiences.</li>
-          <li>To verify users, reduce fake profiles, prevent abuse, and maintain trust.</li>
-          <li>To calculate and display product features such as Aura scores and trust indicators.</li>
-          <li>To provide safety features such as reporting, moderation, trusted-contact flows, and SOS-related tools.</li>
-          <li>To send service messages, launch updates, event reminders, security alerts, and support replies.</li>
-          <li>To debug errors, analyze performance, improve features, and understand how Near is used.</li>
-          <li>To comply with applicable laws, enforce our terms, and respond to lawful requests.</li>
+          <li>verify that you are a real person;</li>
+          <li>compare the live selfie with your Near profile photograph;</li>
+          <li>reduce fake profiles and impersonation;</li>
+          <li>prevent fraud and abuse; and</li>
+          <li>support the safety and trust of people using Near to meet, join, or host events and communities.</li>
         </ul>
+        <p>The live selfie is <strong>not used for advertising, marketing, behavioral profiling, or unrelated purposes</strong>.</p>
+        <h3>AWS Rekognition</h3>
+        <p>Near uses <strong>Amazon Web Services (AWS) Rekognition</strong> as a service provider to perform the facial comparison required for identity verification.</p>
+        <p>The live selfie is sent to AWS Rekognition only for the verification function described in this section. AWS is used as a service provider on Near's behalf and is not authorized by Near to use the live selfie for advertising, marketing, analytics, or unrelated purposes.</p>
+        <h3>Storage and retention</h3>
+        <p>The live selfie is temporarily uploaded to Near's AWS-hosted storage, including Amazon S3, as part of the verification process.</p>
+        <p>The selfie is retained only for the time necessary to complete identity verification. Once the verification process is completed, the temporary selfie is automatically deleted.</p>
+        <p>Near does not retain the live verification selfie as part of your permanent profile and does not retain a facial biometric template or other permanent biometric profile from the verification selfie.</p>
+        <p>Your normal Near profile photograph is separate from the temporary verification selfie and may be retained as part of your Near profile according to this Privacy Policy.</p>
+        <h3>Sharing</h3>
+        <p>Near does not sell face data.</p>
+        <p>Near does not share the live verification selfie or facial verification data with advertising networks, data brokers, analytics providers, or other unrelated third parties.</p>
+        <p>The live selfie may be processed by AWS Rekognition as described above solely to provide the identity-verification function.</p>
+        <h3>Account deletion</h3>
+        <p>If you delete your Near account, Near will delete or de-identify personal data associated with your account as described in Section 9. Temporary verification selfies are not retained as part of your permanent account data and are automatically deleted after the verification process is completed.</p>
+      </section>
+
+      <section id="use">
+        <h2>4. How we use your information</h2>
+        <p>We use information collected through Near to:</p>
+        <ul>
+          <li>Create and manage your Near account.</li>
+          <li>Show nearby plans, live event lobbies, communities, routes, venues, and local experiences.</li>
+          <li>Help users coordinate, join, host, and attend experiences.</li>
+          <li>Verify users, reduce fake profiles, prevent impersonation, prevent abuse, and maintain trust.</li>
+          <li>Calculate and display product features such as Aura scores and trust indicators.</li>
+          <li>Provide safety features such as reporting, moderation, trusted-contact flows, and SOS-related tools.</li>
+          <li>Send service messages, launch updates, event reminders, security alerts, and support replies.</li>
+          <li>Debug errors, analyze performance, improve features, and understand how Near is used.</li>
+          <li>Comply with applicable laws, enforce our terms, and respond to lawful requests.</li>
+        </ul>
+        <p>We do not use face data collected through identity verification for advertising, marketing, analytics, behavioral profiling, or unrelated purposes.</p>
       </section>
 
       <section id="visible">
-        <h2>4. What others may see</h2>
+        <h2>5. What others may see</h2>
         <p>Near is social, so some information is visible to other users when you choose to participate.</p>
+        <p>Depending on the feature and your settings, this may include:</p>
         <ul>
           <li>Your profile information, such as name, photo, bio, and trust indicators.</li>
-          <li>Your public activity, such as events you host or join, depending on the feature and privacy settings.</li>
+          <li>Your public activity, such as events you host or join.</li>
           <li>Your presence inside an event lobby or community space after you join it.</li>
           <li>Information needed for safety and trust, such as verification status or Aura-related indicators.</li>
         </ul>
         <p>We do not show your precise live location to everyone by default. Some location or proximity information may be visible when it is necessary for a feature you choose to use, such as joining a live event, route, venue, or safety flow.</p>
         <p>Private contact information, support messages, safety reports, and internal moderation notes are not shown publicly.</p>
+        <p>Your live identity-verification selfie is not publicly visible to other Near users.</p>
       </section>
 
       <section id="location">
-        <h2>5. Location</h2>
+        <h2>6. Location</h2>
         <p>Near uses location to make the app feel live and local. Depending on your device permissions, we may use approximate or precise location while you use the app.</p>
-        <p>Location helps us show nearby plans, maps, lobbies, routes, venues, and safety features. You can control location access from your device settings. If you turn location off, some parts of Near may not work as intended.</p>
+        <p>Location helps us show nearby plans, maps, lobbies, routes, venues, and safety features.</p>
+        <p>You can control location access from your device settings. If you turn location off, some parts of Near may not work as intended.</p>
+        <p>Near does not sell your location information or use your location for third-party advertising.</p>
       </section>
 
       <section id="safety">
-        <h2>6. Safety features and reports</h2>
+        <h2>7. Safety features and reports</h2>
         <p>We may process safety-related information when you verify your account, use SOS tools, report a user or event, add trusted contacts, contact support, or participate in moderation workflows.</p>
-        <p>This may include the event involved, user identifiers, timestamps, location context, messages submitted with the report, moderation notes, and actions taken by our team. We use this information to investigate abuse, prevent harm, enforce guidelines, and protect the community.</p>
+        <p>This may include the event involved, user identifiers, timestamps, location context, messages submitted with the report, moderation notes, and actions taken by our team.</p>
+        <p>We use this information to investigate abuse, prevent harm, enforce our guidelines, and protect the community.</p>
+        <p>Identity verification information is processed only for the safety and verification purposes described in Section 3.</p>
       </section>
 
       <section id="sharing">
-        <h2>7. When we share data</h2>
-        <p>We do not sell your personal data. We may share limited data with:</p>
+        <h2>8. When we share data</h2>
+        <p>We do not sell your personal data.</p>
+        <p>We may share limited data with:</p>
         <ul>
-          <li>Service providers that help us operate Near, such as hosting, database, analytics, notification, email, crash reporting, maps, moderation, and verification providers.</li>
-          <li>Other users, when you choose to create a public profile, host an event, join an event lobby, message, report, or otherwise interact inside Near.</li>
-          <li>Trusted contacts, only when you choose to use features that share safety or location information with them.</li>
-          <li>Law enforcement, regulators, courts, or government authorities where required by applicable law or necessary to protect users and the platform.</li>
-          <li>Business successors if WECREO LABS PRIVATE LIMITED is involved in a merger, acquisition, financing, restructuring, or transfer of assets.</li>
+          <li><strong>Service providers</strong> that help us operate Near, such as hosting, database, analytics, notification, email, crash reporting, maps, moderation, and identity-verification providers.</li>
+          <li><strong>Amazon Web Services (AWS)</strong>, including AWS Rekognition, when required to provide identity-verification functionality described in Section 3.</li>
+          <li><strong>Other users</strong>, when you choose to create a public profile, host an event, join an event lobby, message, report, or otherwise interact inside Near.</li>
+          <li><strong>Trusted contacts</strong>, only when you choose to use features that share safety or location information with them.</li>
+          <li><strong>Law enforcement, regulators, courts, or government authorities</strong> where required by applicable law or necessary to protect users and the platform.</li>
+          <li><strong>Business successors</strong> if WECREO LABS PRIVATE LIMITED is involved in a merger, acquisition, financing, restructuring, or transfer of assets.</li>
         </ul>
         <p>When we use service providers, we require them to handle user data with appropriate confidentiality, security, and privacy protections and to use it only for the services they provide to Near.</p>
+        <p>Face data is not shared with advertising networks, analytics providers, data brokers, or information resellers.</p>
         <p>We do not share your precise location with third parties for third-party advertising.</p>
       </section>
 
       <section id="controls">
-        <h2>8. Your controls</h2>
+        <h2>9. Your controls</h2>
         <p>You can control or limit some data collection and use through the app and your device settings.</p>
+        <p>You can:</p>
         <ul>
           <li>Update your account and profile information.</li>
           <li>Change device permissions such as location, notifications, camera, photos, contacts, or microphone.</li>
           <li>Leave events, communities, or lobbies when you no longer want to participate.</li>
           <li>Request access, correction, export, or deletion of your personal data by contacting us.</li>
-          <li>Withdraw optional permissions through your device settings. Some features may stop working if a required permission is disabled.</li>
+          <li>Withdraw optional permissions through your device settings.</li>
+          <li>Request deletion of your account and associated personal data using the methods described below.</li>
         </ul>
+        <p>Some features may stop working if a required permission is disabled.</p>
       </section>
 
       <section id="deletion">
-        <h2>9. Account deletion</h2>
-        <p>If you create a Near account, you can request deletion of your account and associated personal data from inside the app where the feature is available, through our <a href="account-deletion.html">account deletion page</a>, or by emailing <a href="mailto:hello@wecreo.in">hello@wecreo.in</a> from the email address linked to your account.</p>
-        <p>Account deletion is permanent. When we delete an account, we delete or de-identify personal data associated with that account unless we need to retain limited information for safety, security, fraud prevention, dispute resolution, legal compliance, or enforcement of our terms.</p>
+        <h2>10. Account deletion</h2>
+        <p>If you create a Near account, you can request deletion of your account and associated personal data from inside the app where the feature is available, through our <a href="account-deletion.html">account deletion page</a>, or by emailing <a href="mailto:hello@wecreo.in"><strong>hello@wecreo.in</strong></a> from the email address linked to your account.</p>
+        <p>Account deletion is permanent.</p>
+        <p>When we delete an account, we delete or de-identify personal data associated with that account unless we need to retain limited information for safety, security, fraud prevention, dispute resolution, legal compliance, or enforcement of our terms.</p>
+        <p>Temporary identity-verification selfies are not retained as part of your permanent account data and are automatically deleted after the verification process is completed.</p>
       </section>
 
       <section id="retention">
-        <h2>10. Retention</h2>
+        <h2>11. Retention</h2>
         <p>We keep personal data for as long as needed to provide Near, maintain safety and trust, comply with legal obligations, resolve disputes, prevent fraud or abuse, and improve the product.</p>
-        <p>If you delete your account, we will delete or de-identify personal data that is no longer needed. Some safety, verification, abuse-prevention, transaction, or legal records may be retained where necessary.</p>
+        <p>Different categories of information may have different retention periods depending on why the information was collected.</p>
+        <h3>Identity-verification selfies</h3>
+        <p>Live selfies collected for identity verification are temporary. They are retained only for the time necessary to complete the verification process and are automatically deleted after verification is completed.</p>
+        <p>Near does not retain the live verification selfie as part of the user's permanent profile and does not retain a facial biometric template or other permanent biometric profile from the verification selfie.</p>
+        <h3>Other account and safety information</h3>
+        <p>If you delete your account, we will delete or de-identify personal data that is no longer needed.</p>
+        <p>Some safety, verification, abuse-prevention, transaction, or legal records may be retained where necessary for the purposes described in this policy.</p>
       </section>
 
       <section id="cookies">
-        <h2>11. Cookies and similar technologies</h2>
+        <h2>12. Cookies and similar technologies</h2>
         <p>Our website and services may use cookies, local storage, analytics tools, and similar technologies to remember preferences, maintain security, understand performance, and improve Near.</p>
         <p>You can control cookies through your browser settings. Disabling cookies or similar technologies may affect some website or app functionality.</p>
       </section>
 
       <section id="transfers">
-        <h2>12. International processing</h2>
-        <p>Near may process and store information in countries other than where you live, depending on where our service providers operate. When information is transferred or processed internationally, we use appropriate safeguards required by applicable law.</p>
+        <h2>13. International processing</h2>
+        <p>Near may process and store information in countries other than where you live, depending on where our service providers operate.</p>
+        <p>For example, Near uses infrastructure and service providers operated by Amazon Web Services and other technology providers that may process information in different countries.</p>
+        <p>When information is transferred or processed internationally, we use appropriate safeguards required by applicable law.</p>
       </section>
 
       <section id="children">
-        <h2>13. Age limit</h2>
-        <p>Near is intended for users who are 18 years or older. We do not knowingly allow children to create accounts. If we learn that a child has provided personal data, we will take steps to delete it.</p>
+        <h2>14. Age limit</h2>
+        <p>Near is intended for users who are 18 years or older.</p>
+        <p>We do not knowingly allow children to create accounts.</p>
+        <p>If we learn that a child has provided personal data, we will take steps to delete it.</p>
       </section>
 
       <section id="security">
-        <h2>14. Security</h2>
-        <p>We use reasonable technical and organisational safeguards to protect personal data, including encryption in transit where appropriate, access controls, limited internal access, monitoring, backup practices, and vendor review. No system is perfectly secure, but we work to protect user data and respond to risks responsibly.</p>
+        <h2>15. Security</h2>
+        <p>We use reasonable technical and organisational safeguards to protect personal data, including encryption in transit where appropriate, access controls, limited internal access, monitoring, backup practices, and vendor review.</p>
+        <p>Temporary identity-verification selfies are stored in controlled AWS-hosted infrastructure and are automatically deleted after the verification process is completed.</p>
+        <p>No system is perfectly secure, but we work to protect user data and respond to risks responsibly.</p>
       </section>
 
       <section id="changes">
-        <h2>15. Changes to this policy</h2>
-        <p>We may update this Privacy Policy as Near evolves, as we add features, or as legal and platform requirements change. The updated version will be posted on this page. For material changes, we may also notify users through the app, email, or another appropriate method.</p>
+        <h2>16. Changes to this policy</h2>
+        <p>We may update this Privacy Policy as Near evolves, as we add features, or as legal and platform requirements change.</p>
+        <p>The updated version will be posted on this page.</p>
+        <p>For material changes, we may also notify users through the app, email, or another appropriate method.</p>
       </section>
 
       <section id="contact">
-        <h2>16. Contact</h2>
+        <h2>17. Contact</h2>
         <p>For privacy questions, data requests, account deletion, support, or safety-related communication, contact:</p>
         <p><strong>WECREO LABS PRIVATE LIMITED</strong><br>
-        Email: <a href="mailto:hello@wecreo.in">hello@wecreo.in</a><br>
-        Product: Near</p>
+        <strong>Email:</strong> <a href="mailto:hello@wecreo.in">hello@wecreo.in</a><br>
+        <strong>Product:</strong> Near</p>
       </section>
     </div>
-  </main>
+</main>
 
-  <footer class="footer">
-    <div class="wrap footer-inner">
-      <span>© 2026 WECREO LABS PRIVATE LIMITED. All rights reserved.</span>
-      <span><a href="terms-of-service.html">Terms of Service</a> · <a href="community-guidelines.html">Community Guidelines</a> · <a href="account-deletion.html">Account Deletion</a> · <a href="mailto:hello@wecreo.in">hello@wecreo.in</a></span>
-    </div>
-  </footer>
+<footer class="site-footer">
+<div class="footer-bottom wrap"><div class="footer-brand-block"><a class="footer-brand" href="index.html" aria-label="Near home"><svg class="wordmark" viewBox="0 0 23 5" role="img" aria-label="Near" shape-rendering="crispEdges"><rect x="0" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="1" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="2" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="3" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="4" width="1.04" height="1.04" fill="currentColor"/></svg></a><p>People. Plans. A little closer.</p></div>
+<nav aria-label="Explore Near"><a href="index.html#possibilities">Discover plans</a><a href="index.html#aura">Your Aura</a><a href="index.html#communities">Communities</a><a href="mailto:hello@wecreo.in">Contact</a></nav>
+<nav aria-label="Legal"><a href="privacy-policy.html" aria-current="page">Privacy policy</a><a href="terms-of-service.html">Terms of service</a><a href="community-guidelines.html">Community guidelines</a><a href="account-deletion.html">Account deletion</a></nav></div>
+<div class="footer-colophon wrap"><span>&copy; 2026 WECREO LABS PRIVATE LIMITED. All rights reserved.</span><span>hello@wecreo.in</span></div>
+</footer>
 </body>
 </html>

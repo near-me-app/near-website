@@ -60,9 +60,18 @@
   --ease-out-cubic: cubic-bezier(.33,1,.68,1);
 }
 
-:root{--food:#EC4899;--food-deep:#A13B6E;--sport:#22C55E;--water:#14B8A6;--white:#fff;--shadow:rgba(0,0,0,.5);--display:Anton,sans-serif;--body:Nunito,sans-serif;--number:Unbounded,sans-serif}
+:root{
+  /* Two-font system: Anton shouts the campaign headlines; Archivo does everything else. */
+  --display: Anton, Impact, sans-serif;
+  --body: Archivo, system-ui, sans-serif;
+  --number: var(--body);
+  --food:#EC4899;--food-deep:#A13B6E;--sport:#22C55E;--water:#14B8A6;--white:#fff;--shadow:rgba(0,0,0,.5);
+}
 :root{--tier-0:#2EC4D6;--tier-1:#7C6CF2;--tier-2:#4CC764;--tier-3:#E5484D;--tier-4:#3D8BFD;--tier-5:#F05BB5;--tier-6:#C9CDD5;--tier-7:#FFD36B;}
 :root{--cat-0:#EC4899;--cat-0-deep:#A13B6E;--cat-1:#22C55E;--cat-1-deep:#1E7D4A;--cat-2:#14B8A6;--cat-2-deep:#1C7F76;--cat-3:#38BDF8;--cat-3-deep:#1D6FA5;--cat-4:#10B981;--cat-4-deep:#0B7A5A;--cat-5:#EC4899;--cat-5-deep:#A13B6E;}
 :root{--photo-ink:#FFFFFF;--photo-shade:rgba(0,0,0,.78);--photo-shadow:rgba(0,0,0,.3)}
 
 :root{--panel-radius:32px;--panel-radius-small:22px;--heading-weight:800;--section-space:clamp(65px,8vw,115px);--soft-shadow:0 24px 60px var(--photo-shadow)}
+
+/* Buttons: uppercase across the site */
+.btn,.event-cta,.header-download,.screen-tabs button{text-transform:uppercase;letter-spacing:.06em}

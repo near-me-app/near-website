@@ -1,138 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Community Guidelines | Near</title>
-  <meta name="description" content="Community Guidelines for Near, a real-time social discovery platform operated by WECREO LABS PRIVATE LIMITED.">
-  <meta name="author" content="WECREO LABS PRIVATE LIMITED">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Near by WECREO LABS PRIVATE LIMITED">
-  <meta property="og:title" content="Community Guidelines | Near">
-  <meta property="og:description" content="The standards that keep Near safe, trusted, and useful.">
-  <meta property="og:url" content="https://whatsnear.in/community-guidelines.html">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --bg:#08080a;
-      --surface:rgba(255,255,255,.045);
-      --border:rgba(255,255,255,.1);
-      --border2:rgba(255,255,255,.18);
-      --text:#f2f2f2;
-      --muted:#8a8a96;
-      --soft:#c9c9d1;
-      --orange:#ff4500;
-      --acid:#00ff87;
-    }
-    html{background:var(--bg);scroll-behavior:smooth}
-    body{
-      min-height:100vh;
-      background:
-        radial-gradient(ellipse 60% 38% at 0 0, rgba(255,69,0,.09), transparent 58%),
-        radial-gradient(ellipse 45% 35% at 100% 8%, rgba(0,255,135,.06), transparent 52%),
-        var(--bg);
-      color:var(--text);
-      font-family:'JetBrains Mono','Courier New',monospace;
-      font-size:14px;
-      line-height:1.75;
-      -webkit-font-smoothing:antialiased;
-    }
-    a{color:var(--orange);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .wrap{width:min(980px,calc(100% - 40px));margin:0 auto}
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:10;
-      backdrop-filter:blur(22px);
-      -webkit-backdrop-filter:blur(22px);
-      background:rgba(8,8,10,.82);
-      border-bottom:1px solid var(--border);
-    }
-    .topbar-inner{height:64px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-    .brand{display:flex;align-items:center;text-decoration:none}
-    .brand-logo{height:20px;width:auto;display:block}
-    .back-link{font-size:12px;color:var(--muted);white-space:nowrap}
-    .hero{padding:76px 0 38px;border-bottom:1px solid var(--border)}
-    .eyebrow{font-size:10px;letter-spacing:2.8px;text-transform:uppercase;color:var(--orange);font-weight:700;margin-bottom:16px}
-    h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.4px;line-height:1.12}
-    h1{font-size:clamp(2.4rem,6vw,4.6rem);font-weight:800;max-width:780px}
-    .summary{max-width:780px;margin-top:22px;color:var(--soft);font-size:15px;line-height:1.85}
-    .meta{
-      margin-top:28px;
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      border:1px solid var(--border);
-      background:var(--surface);
-    }
-    .meta div{padding:16px 18px;border-right:1px solid var(--border)}
-    .meta div:last-child{border-right:none}
-    .meta strong{display:block;color:var(--text);font-size:11px;text-transform:uppercase;letter-spacing:1.6px;margin-bottom:4px}
-    .meta span,.meta a{font-size:12px;color:var(--muted)}
-    main{padding:46px 0 72px}
-    .guidelines-layout{display:grid;grid-template-columns:220px 1fr;gap:42px;align-items:start}
-    .toc{position:sticky;top:88px;border-left:1px solid var(--border);padding-left:16px}
-    .toc a{display:block;color:var(--muted);font-size:12px;padding:6px 0}
-    .toc a:hover{color:var(--text);text-decoration:none}
-    .content{min-width:0}
-    section{padding:28px 0;border-bottom:1px solid var(--border)}
-    section:first-child{padding-top:0}
-    h2{font-size:1.55rem;font-weight:800;margin-bottom:12px}
-    h3{font-size:1rem;font-weight:700;margin:20px 0 8px}
-    p{color:var(--soft);margin-bottom:12px}
-    ul{margin:10px 0 14px 20px;color:var(--soft)}
-    li{margin-bottom:8px}
-    .callout{
-      margin:18px 0;
-      padding:16px 18px;
-      border:1px solid rgba(0,255,135,.18);
-      background:rgba(0,255,135,.055);
-      color:var(--soft);
-    }
-    .footer{padding:30px 0;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
-    .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    @media(max-width:760px){
-      .wrap{width:min(100% - 28px,980px)}
-      .topbar-inner{height:58px}
-      .hero{padding:52px 0 30px}
-      .meta{grid-template-columns:1fr}
-      .meta div{border-right:none;border-bottom:1px solid var(--border)}
-      .meta div:last-child{border-bottom:none}
-      .guidelines-layout{display:block}
-      .toc{position:static;margin-bottom:28px;display:grid;grid-template-columns:1fr 1fr;gap:2px 14px}
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0B0C0F">
+<title>Community guidelines | Near</title>
+<meta name="description" content="The standards that keep Near safe, trusted and worth showing up for.">
+<link rel="canonical" href="https://www.whatsnear.in/community-guidelines.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Near">
+<meta property="og:title" content="Community guidelines | Near">
+<meta property="og:description" content="The standards that keep Near safe, trusted and worth showing up for.">
+<meta property="og:url" content="https://www.whatsnear.in/community-guidelines.html">
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="tokens.css" rel="stylesheet">
+<link href="legal.css" rel="stylesheet">
 </head>
 <body>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="brand" href="index.html"><img src="near-logo.png" alt="Near" class="brand-logo"></a>
-      <a class="back-link" href="terms-of-service.html">terms</a>
-    </div>
-  </header>
+<a class="skip" href="#legal-content">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+  <a class="header-brand" href="index.html" aria-label="Near home"><svg class="wordmark" viewBox="0 0 23 5" role="img" aria-label="Near" shape-rendering="crispEdges"><rect x="0" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="1" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="2" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="3" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="4" width="1.04" height="1.04" fill="currentColor"/></svg></a>
+  <nav class="desktop-nav" aria-label="Main"><a href="index.html#possibilities">Discover</a><a href="index.html#aura">Your Aura</a><a href="index.html#communities">Communities</a></nav>
+  <a class="header-download" href="index.html#download">Get Near <span aria-hidden="true">&#8599;</span></a>
+  <details class="mobile-nav"><summary>Menu <span aria-hidden="true">&#9776;</span></summary><nav aria-label="Mobile"><a href="index.html#possibilities">Discover plans</a><a href="index.html#features">Inside the app</a><a href="index.html#aura">Your Aura</a><a href="index.html#communities">Communities</a></nav></details>
+</div></header>
 
-  <div class="hero">
-    <div class="wrap">
-      <div class="eyebrow">Community Guidelines</div>
-      <h1>How we keep Near worth showing up for.</h1>
-      <p class="summary">Near is built for real people meeting in real life. These guidelines explain the behavior we expect from everyone who uses Near, creates plans, joins lobbies, hosts events, or interacts with the community.</p>
-      <div class="meta">
-        <div>
-          <strong>Company</strong>
-          <span>WECREO LABS PRIVATE LIMITED</span>
-        </div>
-        <div>
-          <strong>Contact</strong>
-          <a href="mailto:hello@wecreo.in">hello@wecreo.in</a>
-        </div>
-      </div>
+<div class="legal-hero">
+  <div class="wrap">
+    <div class="eyebrow">Community Guidelines</div>
+    <h1>How we keep Near worth showing up for.</h1>
+    <p class="summary">Near is built for real people meeting in real life. These guidelines explain the behavior we expect from everyone who uses Near, creates plans, joins lobbies, hosts events, or interacts with the community.</p>
+    <div class="meta">
+      <div><strong>Company</strong><span>WECREO LABS PRIVATE LIMITED</span></div>
+      <div><strong>Product</strong><span>Near</span></div>
+      <div><strong>Contact</strong><a href="mailto:hello@wecreo.in">hello@wecreo.in</a></div>
     </div>
   </div>
+</div>
 
-  <main class="wrap guidelines-layout">
+<main class="wrap legal-layout" id="legal-content">
     <nav class="toc" aria-label="Community guidelines sections">
       <a href="#principles">Principles</a>
       <a href="#show-up">Show up</a>
@@ -236,13 +145,13 @@
         Product: Near</p>
       </section>
     </div>
-  </main>
+</main>
 
-  <footer class="footer">
-    <div class="wrap footer-inner">
-      <span>© 2026 WECREO LABS PRIVATE LIMITED. All rights reserved.</span>
-      <span><a href="privacy-policy.html">Privacy Policy</a> · <a href="terms-of-service.html">Terms of Service</a></span>
-    </div>
-  </footer>
+<footer class="site-footer">
+<div class="footer-bottom wrap"><div class="footer-brand-block"><a class="footer-brand" href="index.html" aria-label="Near home"><svg class="wordmark" viewBox="0 0 23 5" role="img" aria-label="Near" shape-rendering="crispEdges"><rect x="0" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="0" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="1" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="1" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="2" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="2" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="3" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="6" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="13" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="14" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="15" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="19" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="20" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="21" y="3" width="1.04" height="1.04" fill="currentColor"/><rect x="0" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="4" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="7" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="8" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="9" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="10" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="12" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="16" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="18" y="4" width="1.04" height="1.04" fill="currentColor"/><rect x="22" y="4" width="1.04" height="1.04" fill="currentColor"/></svg></a><p>People. Plans. A little closer.</p></div>
+<nav aria-label="Explore Near"><a href="index.html#possibilities">Discover plans</a><a href="index.html#aura">Your Aura</a><a href="index.html#communities">Communities</a><a href="mailto:hello@wecreo.in">Contact</a></nav>
+<nav aria-label="Legal"><a href="privacy-policy.html">Privacy policy</a><a href="terms-of-service.html">Terms of service</a><a href="community-guidelines.html" aria-current="page">Community guidelines</a><a href="account-deletion.html">Account deletion</a></nav></div>
+<div class="footer-colophon wrap"><span>&copy; 2026 WECREO LABS PRIVATE LIMITED. All rights reserved.</span><span>hello@wecreo.in</span></div>
+</footer>
 </body>
 </html>

@@ -1,0 +1,37 @@
+/* Shared motion kit: hairline rules, masked line reveals, rule-riding split words, wavy reveal edge, scribble.
+   Every piece renders in its final state without JS or with reduced motion. */
+html.nm-smooth{scroll-behavior:auto}
+html.nm-smooth.lenis-stopped{overflow:hidden}
+
+/* Hairline rule that draws from the left (add .nm-rule--center to draw from the middle). */
+.nm-rule{display:block;height:1px;border:0;margin:0;background:var(--line,rgba(233,223,205,.16));transform-origin:left;transition:transform 1.2s cubic-bezier(.65,.05,.2,1)}
+.nm-rule--center{transform-origin:center}
+html.nm-smooth .nm-rule:not(.is-in){transform:scaleX(0)}
+
+/* Masked line reveal: wrap each line in <span>; lines rise in sequence. */
+[data-nm-reveal]>span{display:block;overflow:hidden;padding-bottom:.04em}
+[data-nm-reveal]>span>span{display:block;transition:transform 1s cubic-bezier(.2,.75,.15,1)}
+html.nm-smooth [data-nm-reveal]:not(.is-in)>span>span{transform:translateY(105%)}
+[data-nm-reveal]>span:nth-child(2)>span{transition-delay:.08s}
+[data-nm-reveal]>span:nth-child(3)>span{transition-delay:.16s}
+[data-nm-reveal]>span:nth-child(4)>span{transition-delay:.24s}
+
+/* Words that ride a rule: position with --nm-shift (scrubbed by JS) e.g. translateX(calc(var(--nm-shift)*-30vw)). */
+.nm-ride{display:block;will-change:transform}
+
+/* Wavy reveal edge: an element whose top edge is an organic wave; JS scrubs --nm-wave 0 (hidden) → 1 (open). */
+.nm-wave{--nm-wave:1;clip-path:inset(calc((1 - var(--nm-wave))*100%) 0 0 0 round calc((1 - var(--nm-wave))*48%) calc((1 - var(--nm-wave))*48%) 0 0)}
+.nm-wave-edge{-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0 60V34c90-22 160 8 250-4s140-30 240-20 160 34 260 22 170-32 270-26 110 18 180 12V60Z'/%3E%3C/svg%3E") top/100% 60px no-repeat,linear-gradient(#000,#000) 0 59px/100% calc(100% - 59px) no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0 60V34c90-22 160 8 250-4s140-30 240-20 160 34 260 22 170-32 270-26 110 18 180 12V60Z'/%3E%3C/svg%3E") top/100% 60px no-repeat,linear-gradient(#000,#000) 0 59px/100% calc(100% - 59px) no-repeat}
+
+/* Hand-drawn scribble (from NearMotion.scribble). Host must be position:relative. */
+.nm-scribble{position:absolute;inset:-9% -12%;width:124%;height:118%;pointer-events:none;overflow:visible;z-index:5;color:var(--ink,#F4EFE7)}
+
+/* Mono HUD row + tick ruler, shared with the Aura section. */
+.nm-hud{display:flex;justify-content:space-between;gap:20px;font:500 11px/1.4 var(--body),sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(233,223,205,.55)}
+.nm-hud b{color:var(--ink);font-weight:700}
+.nm-ruler{height:34px;pointer-events:none;background:repeating-linear-gradient(90deg,rgba(233,223,205,.22) 0 1px,transparent 1px 160px) bottom/100% 34px no-repeat,repeating-linear-gradient(90deg,rgba(233,223,205,.1) 0 1px,transparent 1px 32px) bottom/100% 14px no-repeat}
+/* Info table with hairlines (A24 metadata panel). */
+.nm-meta{display:grid;grid-template-columns:auto 1fr;font:500 10px/1.5 var(--body),sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(233,223,205,.5)}
+.nm-meta dt,.nm-meta dd{margin:0;padding:7px 0;border-top:1px solid rgba(233,223,205,.14)}
+.nm-meta dd{text-align:right;color:var(--ink);font-family:Archivo,sans-serif;font-weight:700;font-size:12px;letter-spacing:0;text-transform:none}
+@media(prefers-reduced-motion:reduce){.nm-rule,[data-nm-reveal]>span>span{transition:none}}

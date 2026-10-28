@@ -1,0 +1,54 @@
+/* Discover: one headline, one line, and a stream of event tickets receding into the distance.
+   Static by default (a swipeable row); gallery.js adds .is-live to pin it and run the stream. */
+#possibilities.ng{position:relative;background:var(--bg,#0B0C0F);padding-block:var(--ns-section)}
+.ng-stage{position:relative}
+.ng-copy{display:flex;flex-direction:column;gap:28px}
+.ng-copy .ns-h2{white-space:nowrap}
+.ng-note{margin:0;font:500 10px/1.4 var(--body),sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,239,231,.32)}
+
+.ng-stream{list-style:none;margin:48px 0 0;padding:0 var(--ns-gutter) 8px;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--ns-gutter);scrollbar-width:none}
+.ng-stream::-webkit-scrollbar{display:none}
+/* Event tickets, after the app's share ticket (share.whatsnear.in): cover art, category line,
+   title, labelled cells, and a perforated stub. Sizes are in cqw so the ticket scales as one piece. */
+.ng{--paper:#F4EFE7;--paper-ink:#14161A;--paper-mid:#6B655C}
+.ng-card{position:relative;flex:0 0 auto;width:clamp(240px,22vw,300px);margin:0;container-type:inline-size;scroll-snap-align:start;color:var(--paper-ink);filter:drop-shadow(0 30px 40px rgba(0,0,0,.55))}
+.ng-card[aria-hidden=true]{display:none}
+.nt-main{background:var(--paper);border-radius:7cqw 7cqw 0 0;padding:4cqw 4cqw 5.5cqw;
+ -webkit-mask:radial-gradient(circle 4cqw at 0 100%,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 4cqw at 100% 100%,transparent 98%,#000) right/51% 100% no-repeat;
+ mask:radial-gradient(circle 4cqw at 0 100%,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 4cqw at 100% 100%,transparent 98%,#000) right/51% 100% no-repeat}
+.nt-art{position:relative;aspect-ratio:1200/680;border-radius:4.4cqw;overflow:hidden;background:#222}
+.nt-art img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:var(--focus,50% 50%);user-select:none;-webkit-user-drag:none}
+.nt-eyebrow{position:absolute;left:3.4cqw;top:3.4cqw;padding:1.8cqw 2.8cqw;border-radius:999px;background:var(--paper-ink);color:var(--paper);font:500 3.2cqw/1 var(--body),sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.nt-cat{margin:5cqw 2cqw 0;font:500 3.4cqw/1.2 var(--body),sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-mid)}
+.nt-title{margin:2.2cqw 2cqw 4.4cqw;font:900 7.6cqw/1.04 var(--body),sans-serif;letter-spacing:-.02em;color:var(--paper-ink);text-wrap:balance}
+.nt-cells{display:grid;grid-template-columns:1fr 1fr;margin:0 2cqw;border-top:.5cqw solid var(--paper-ink)}
+.nt-cells div{min-width:0;padding:3.2cqw 2.6cqw 3.2cqw 0;border-bottom:.5cqw solid var(--paper-ink)}
+.nt-cells div:nth-child(2n){padding-left:3.2cqw;border-left:.5cqw solid var(--paper-ink)}
+.nt-cells div:nth-last-child(-n+2){border-bottom:0}
+.nt-cells dt{margin-bottom:1.2cqw;font:500 3cqw/1 var(--body),sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-mid)}
+.nt-cells dd{margin:0;font:800 4.6cqw/1.2 Archivo,sans-serif;overflow-wrap:anywhere}
+.nt-cells dd small{display:block;margin-top:.6cqw;font-size:3.8cqw;font-weight:600;color:var(--paper-mid)}
+.nt-stub{position:relative;display:flex;align-items:center;justify-content:space-between;gap:4cqw;padding:5.4cqw 6cqw;background:var(--paper);border-radius:0 0 7cqw 7cqw;
+ -webkit-mask:radial-gradient(circle 4cqw at 0 0,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 4cqw at 100% 0,transparent 98%,#000) right/51% 100% no-repeat;
+ mask:radial-gradient(circle 4cqw at 0 0,transparent 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 4cqw at 100% 0,transparent 98%,#000) right/51% 100% no-repeat}
+.nt-stub:before{content:'';position:absolute;left:6cqw;right:6cqw;top:0;border-top:.6cqw dashed color-mix(in srgb,var(--paper-ink) 32%,transparent)}
+.nt-admit{font:900 5cqw/1.1 var(--body),sans-serif;letter-spacing:-.01em}
+.nt-admit small{display:block;margin-top:1cqw;font:700 3.8cqw/1.2 Archivo,sans-serif;letter-spacing:0;color:var(--paper-mid)}
+.nt-code{flex:none;width:22cqw;height:10cqw}
+
+/* ── Live: pinned stage, cards placed by gallery.js ── */
+#possibilities.ng.is-live{height:320svh;padding:0}
+.is-live .ng-stage{position:sticky;top:64px;height:calc(100svh - 64px);min-height:540px;overflow:hidden}
+.is-live .ng-copy{position:absolute;left:0;right:0;top:0;bottom:0;margin-inline:auto;z-index:2;justify-content:center;pointer-events:none}
+.is-live .ng-copy .ns-head{max-width:min(34vw,470px)}
+.is-live .ng-note{position:absolute;bottom:28px}
+.is-live .ng-stream{position:absolute;inset:0;margin:0;padding:0;display:block;overflow:visible;z-index:1}
+.is-live .ng-card{position:absolute;left:0;top:0;width:var(--ng-w);will-change:transform,opacity;transform-origin:50% 50%}
+.is-live .ng-card[aria-hidden=true]{display:block}
+
+@media(max-width:900px){
+ .is-live .ng-copy{justify-content:flex-start;padding-top:32px}
+ .is-live .ng-copy .ns-head{max-width:none;gap:14px}
+ .is-live .ng-note{position:static;margin-top:-6px}
+}
+@media(prefers-reduced-motion:reduce){.ng-card{box-shadow:none}}

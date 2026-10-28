@@ -1,0 +1,138 @@
+/* App alignment layer (mockup checkpoint).
+   Loaded last. Maps the ticket theme's drift back onto the NearRadar tokens in
+   tokens.css: warm near-black canvas, cream ink, no blue tint or glows, Anton
+   for page headlines, Archivo for body, UI, tickets, and kickers. Once the
+   direction is signed off, these rules get folded into the base stylesheets and
+   this file goes away. */
+
+/* ── Palette: the ticket theme's own variables now resolve to app tokens ── */
+:root{
+ --night:var(--bg);
+ --night-blue:var(--bg);
+ --sky:var(--ink);            /* focus rings, kickers, links: cream, not blue */
+ --ticket:var(--paper);
+ --ticket-ink:var(--paper-ink);
+ --ticket-muted:var(--paper-mid);
+ --ticket-line:rgba(20,22,26,.4);
+ --display:Anton,Impact,sans-serif;
+}
+
+/* ── Canvas: one flat warm near-black, no radial glows ── */
+body:before{display:none}
+#hero.map-hero,
+#possibilities .event-stage,
+#aura.aura-journey,
+#communities.community-renewed,
+.film{background:var(--bg)}
+#features{background-image:none}
+.footer-renewed .footer-showcase{background-image:none}
+.footer-discovery-map:before{display:none}
+.footer-renewed .vortex-rings i{border-color:var(--line-soft)}
+
+/* Secondary copy uses the app's text tokens instead of tinted greys. */
+#possibilities .occasion-intro p,#possibilities .occasion-bottom,
+#features .feature-copy p,
+#communities .community-copy>p,
+.footer-renewed .footer-heading p{color:var(--ink-mid)}
+.hero-app-caption,#hero .map-note{color:var(--ink-2)}
+
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+/* ── Header ── */
+.site-header .desktop-nav a{color:var(--ink-mid);font-size:13px}
+.site-header .desktop-nav a:hover,.site-header .desktop-nav a:focus-visible{color:var(--ink)}
+.site-header .header-download{border-radius:var(--r-pill);font-weight:800}
+.site-header .mobile-nav nav{background:var(--surface);border-color:var(--border)}
+
+/* ── Headlines: Anton, uppercase, the campaign voice ── */
+#hero .hero-copy h1,
+#possibilities .occasion-intro h2,#possibilities.spatial-events .occasion-intro h2,
+#features .feature-copy h2,
+#aura .aura-copy h2,
+#communities .community-copy h2,
+.film h2,
+.footer-renewed .footer-heading h2{
+ font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:0;line-height:.92;
+}
+/* The ticket theme hid these <br>s on small screens, which ran the words
+   together ("plan.New"). Anton is narrow enough to keep the intended breaks. */
+#possibilities .occasion-intro h2 br,#possibilities.spatial-events .occasion-intro h2 br,#possibilities.spatial-events .occasion-intro p br,#features .feature-copy h2 br,#aura .aura-copy h2 br,
+#communities .community-copy h2 br,.film h2 br,.footer-renewed .footer-heading h2 br{display:initial}
+
+/* Hero: stacked lines, the red live pill as a highlighter on the last one. */
+#hero .hero-copy h1{font-size:clamp(80px,8vw,124px);line-height:.95;max-width:none;margin-bottom:28px}
+#hero .hero-copy h1 .hero-go,#hero .hero-copy h1 .hero-outside{white-space:nowrap}
+#hero .hero-copy h1 .hero-prelude{font:400 .43em/1.2 var(--display);letter-spacing:0;color:var(--ink-mid);margin-bottom:10px}
+#hero .hero-copy h1 .hero-go{margin-bottom:10px}
+#hero .hero-copy h1 .hero-outside{background:var(--live);color:var(--white);padding:.025em .2em .085em;border-radius:var(--r-pill);margin-left:-.05em}
+#hero .hero-copy>p{color:var(--ink)}
+/* The two sentences are spans; keep a space between them wherever they sit inline. */
+#hero .hero-copy>p span+span:before{content:' '}
+
+#possibilities.spatial-events .occasion-intro h2{font-size:clamp(48px,5.4vw,84px);max-width:620px}
+#features .feature-copy h2{font-size:clamp(48px,5.6vw,88px)}
+#aura .aura-copy h2{font-size:clamp(48px,5.6vw,88px);margin-bottom:16px}
+#communities .community-copy h2{font-size:clamp(48px,5vw,80px)}
+.film h2{font-size:clamp(46px,4.8vw,76px)}
+.footer-renewed .footer-heading h2{font-size:clamp(70px,7.5vw,116px);line-height:.96}
+
+/* Ticket titles stay in Archivo, tracked so word spaces survive. */
+.hero-plan strong,
+#possibilities .event-body h3,#possibilities.spatial-events .event-body h3,
+#aura .card-tier,
+.community-ticket-body h3,#communities .community-identity h3,#communities .community-invite h3,
+.footer-renewed .vortex-card>strong,.footer-invite-body strong{letter-spacing:-.02em}
+.community-ticket-stub strong{letter-spacing:-.01em}
+
+/* ── Hero details ── */
+.hero-device{background:var(--surface-2);border-color:var(--border)}
+#hero .pin.p0 .disc{background:var(--cat-1-deep)}        /* pickleball → sportGreen */
+#hero .hero-plan>img{background:var(--hero-icon-bg,var(--cat-1-deep))}
+
+/* ── Features ── */
+#features .phone{border-color:var(--border)}
+
+/* ── Aura: Rookie uses its real tier colour (aura_palette.dart #E5484D) ── */
+.rookie-card{--card-tone:var(--tier-3)!important;background:linear-gradient(155deg,rgba(229,72,77,.1),transparent 44%),var(--bg)!important}
+
+/* ── Community ticket stub: hairline in paper-mid, notches cut in the page colour ── */
+.community-ticket-stub{border-top-color:rgba(107,101,92,.45)}
+.community-ticket-stub:before,.community-ticket-stub:after{background:var(--bg)}
+
+@media(min-width:901px) and (max-height:820px){
+ #hero .hero-copy h1{font-size:clamp(80px,7.6vw,112px)}
+}
+@media(max-width:1050px) and (min-width:901px){
+ #hero .hero-copy h1{font-size:88px}
+}
+@media(max-width:900px){
+ #hero .hero-copy h1{font-size:clamp(84px,16vw,140px)}
+ #hero .hero-copy h1 .hero-go,#hero .hero-copy h1 .hero-outside{display:block;width:fit-content;font-size:1em;margin:0 0 8px}
+ #hero .hero-copy h1 .hero-outside{margin:0 0 0 -.05em}
+ #possibilities.spatial-events .occasion-intro h2{font-size:clamp(40px,9vw,60px)}
+ #features .feature-copy h2,.has-story .feature-copy h2{font-size:clamp(38px,8vw,56px)}
+ #aura .aura-copy h2,.has-flips .aura-copy h2{font-size:clamp(38px,8vw,56px)}
+ #communities .community-copy h2{font-size:clamp(40px,9vw,60px)}
+ .film h2{font-size:clamp(40px,9vw,60px)}
+ .footer-renewed .footer-heading h2{font-size:clamp(64px,13vw,96px)}
+}
+@media(max-width:900px) and (min-height:600px){
+ #communities.community-mobile-scroll-ready .community-copy h2{font-size:clamp(36px,10vw,48px)}
+}
+@media(max-width:520px){
+ html{background:var(--bg)}
+ body>header.site-header{background:var(--bg);box-shadow:0 -32px 0 var(--bg)}
+ #hero .map:after{background:linear-gradient(180deg,rgba(11,12,15,.12),rgba(11,12,15,.05) 34%,var(--bg) 94%)}
+ #hero .hero-copy h1{font-size:clamp(68px,20vw,96px);margin-bottom:20px}
+ #hero .hero-copy h1 .hero-prelude{font-size:.4em;margin-bottom:6px}
+ /* Keep the map pins above the headline rather than on top of it. */
+ #hero .pin.p0{left:56%;top:31%}
+ #hero .pin.p1{left:84%;top:20%}
+ #hero .pin.p2{left:16%;top:52%}
+ #hero .pin.p4{left:12%;top:20%}
+ .footer-renewed .footer-heading h2{font-size:clamp(56px,17vw,72px)}
+}
+@media(max-height:740px) and (max-width:900px){
+ .has-story .feature-copy h2{font-size:34px}
+ .has-flips .aura-copy h2{font-size:34px}
+}

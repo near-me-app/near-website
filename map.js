@@ -48,7 +48,7 @@ function drawMap(cv,W,H,cam){
   WORLD.majors.forEach(p=>{poly(p);c.strokeStyle=palette["surface-2"];c.lineWidth=22;c.stroke()});
   WORLD.majors.forEach(p=>{poly(p);c.strokeStyle=palette["border"];c.lineWidth=13;c.stroke()});
   // labels
-  if(cam.labels!==false){c.font='700 15px Nunito';c.fillStyle=palette["ink-2"];c.textAlign='center';c.textBaseline='middle';
+  if(cam.labels!==false){c.font='700 15px Archivo';c.fillStyle=palette["ink-2"];c.textAlign='center';c.textBaseline='middle';
     WORLD.labels.forEach(l=>{if(!inV(l.x,l.y))return;c.save();c.translate(l.x,l.y);let a=l.ang;if(a>Math.PI/2)a-=Math.PI;if(a<-Math.PI/2)a+=Math.PI;c.rotate(a);c.translate(0,-22);c.fillText(l.t,0,0);c.restore()});}
   c.restore();
 }
