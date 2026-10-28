@@ -26,7 +26,9 @@ if(window.gsap&&window.ScrollTrigger){
 if(!feature.classList.contains('has-story'))screens.forEach(screen=>screen.hidden=false);
 const film=document.querySelector('.film video');
 let filmVisible=false;
-function syncFilm(){if(document.hidden||!filmVisible){film.pause();return}film.play().catch(()=>{});}
+const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+function syncFilm(){if(document.hidden||!filmVisible||reducedMotion.matches){film.pause();return}film.play().catch(()=>{});}
 new IntersectionObserver(entries=>{filmVisible=entries[0].isIntersecting;syncFilm()},{threshold:.35}).observe(film);
 document.addEventListener('visibilitychange',syncFilm);
+reducedMotion.addEventListener('change',syncFilm);
 })();
