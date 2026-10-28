@@ -191,8 +191,8 @@ footer.site-footer.footer-renewed,.footer-renewed .footer-showcase,.footer-renew
 /* The footer repeats the app's map-to-invitation language. */
 .footer-renewed .footer-showcase{height:760px}
 .footer-renewed .footer-download{bottom:55px}
-.footer-renewed .footer-brand{display:inline-flex;align-items:center;min-height:0;padding:11px 12px;background:var(--ticket);border-radius:7px;color:var(--ticket-ink)}
-.footer-renewed .footer-brand .wordmark,.footer-renewed .footer-brand .wordmark rect{color:var(--ticket-ink);fill:var(--ticket-ink)}
+.footer-renewed .footer-brand{display:inline-flex;align-items:center;min-height:0;padding:11px 12px;background:#050608;border:1px solid rgba(244,239,231,.16);border-radius:7px;color:#fff}
+.footer-renewed .footer-brand .wordmark,.footer-renewed .footer-brand .wordmark rect{color:#fff;fill:#fff}
 @media(max-width:900px){
  #communities .community-stage{grid-template-columns:1fr;gap:30px}
  .film-layout{grid-template-columns:1fr;gap:25px}
@@ -234,6 +234,53 @@ footer.site-footer.footer-renewed,.footer-renewed .footer-showcase,.footer-renew
 @keyframes footer-pin-pulse{0%{opacity:.65;transform:translate(-50%,-50%) scale(.7)}100%{opacity:0;transform:translate(-50%,-50%) scale(2)}}
 @media(max-width:760px){.footer-discovery{top:286px;width:calc(100% - 24px);height:280px}.footer-map-rings{left:25%;width:170px}.footer-map-you{left:20%;top:62%}.footer-pin-plant{left:12%;top:44%}.footer-pin-book{left:37%;top:21%}.footer-pin-game{left:39%;top:79%}.footer-ticket-stage{right:1%;top:19px;width:40%;height:250px}.footer-invite{width:100%;height:235px}.footer-invite-photo{height:117px}.footer-invite-body strong{font-size:18px}.footer-invite-detail{font-size:9px;margin-top:9px}}
 @media(max-width:520px){.footer-discovery{top:243px;width:calc(100% - 16px);height:290px}.footer-map-rings{left:26%;top:57%;width:140px}.footer-map-rings:before{inset:28px}.footer-map-rings:after{inset:55px}.footer-map-you{left:19%;top:57%;font-size:9px}.footer-pin-plant{left:12%;top:34%}.footer-pin-book{left:39%;top:17%}.footer-pin-game{left:37%;top:77%}.footer-pin-icon{width:42px;height:42px}.footer-pin-icon img{width:29px;height:29px}.footer-pin-icon svg{width:25px;height:25px}.footer-pin-time{font-size:9px;padding:4px 6px}.footer-ticket-stage{right:0;top:32px;width:49%;height:238px}.footer-invite{height:232px;padding:5px;border-radius:10px}.footer-invite-photo{height:110px;border-radius:5px}.footer-invite-photo span{font-size:9px;left:5px;top:5px}.footer-invite-body{padding:9px 4px}.footer-invite-body small{font-size:9px}.footer-invite-body strong{font-size:16px}.footer-invite-detail{display:block;font-size:9px;line-height:1.35;margin-top:7px;padding-top:4px}.footer-invite-detail span{display:block}.footer-renewed .footer-showcase{height:695px}}
+
+/* Mobile storytelling keeps the message and invitation in one viewport. */
+@media (max-width:900px) and (min-height:600px){
+ #communities.community-mobile-scroll-ready{height:285svh;overflow:visible}
+ #communities.community-mobile-scroll-ready .community-stage{position:sticky;top:64px;height:calc(100svh - 64px);padding-block:22px;display:grid;grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);gap:14px;align-content:start}
+ #communities.community-mobile-scroll-ready .community-copy{position:relative;z-index:4}
+ #communities.community-mobile-scroll-ready .community-copy h2{font-size:clamp(28px,8.3vw,40px);margin-bottom:8px}
+ #communities.community-mobile-scroll-ready .community-copy>p{font-size:13px;margin:0;line-height:1.4}
+ #communities.community-mobile-scroll-ready .community-invite{display:none}
+ #communities.community-mobile-scroll-ready .community-join{margin-top:7px;min-height:40px;font-size:12px}
+ #communities.community-mobile-scroll-ready .community-visual{min-height:0;padding:0;display:grid;place-items:center}
+ #communities.community-mobile-scroll-ready .community-ticket-stack{display:grid;width:100%;height:100%;gap:0;place-items:center}
+ #communities.community-mobile-scroll-ready .community-ticket{grid-area:1/1;width:min(100%,345px);max-height:100%;will-change:transform,opacity}
+ #communities.community-mobile-scroll-ready .community-ticket-cover{height:clamp(150px,24svh,205px)}
+ #communities.community-mobile-scroll-ready .community-ticket-grid>div{min-height:52px;padding-block:7px}
+ #communities.community-mobile-scroll-ready .community-ticket-stub{padding-top:12px}
+}
+
+.rookie-card{background:linear-gradient(155deg,rgba(255,75,69,.1),transparent 44%),var(--bg)!important}
+.card-wordmark{font:900 18px/1 JetBrains Mono,monospace;letter-spacing:.08em}
+
+@media(max-width:520px){
+ html{background:#07090c}
+ body>header.site-header{background:#07090c;box-shadow:0 -32px 0 #07090c}
+ #hero.map-hero{min-height:calc(100svh - 64px);display:flex;align-items:flex-end}
+ #hero .map{position:absolute;height:auto;min-height:0;inset:0 0 43%}
+ #hero .map-art{transform:rotate(-5deg) scale(1.08)}
+ #hero .map:after{background:linear-gradient(180deg,rgba(7,9,12,.12),rgba(7,9,12,.05) 34%,var(--night) 94%)}
+ #hero .hero-layout{width:100%;min-height:calc(100svh - 64px);padding:clamp(240px,44svh,360px) 0 34px;display:block}
+ #hero .hero-copy{padding:0 4px}
+ #hero .hero-copy h1{margin-bottom:20px}
+ #hero .hero-copy>p{font-size:16px;line-height:1.55}
+ #hero .hero-copy>p span{display:inline}
+ #hero .hero-copy>p span+span:before{content:' '}
+ #hero .store-row{margin-top:20px;gap:8px}
+ #hero .store{width:calc(50% - 4px);min-width:0}
+ #hero .store img{width:100%;height:auto;max-height:42px}
+ #hero .hero-apps{display:none}
+ #hero .pin{transform:scale(.86)}
+ #hero .p0{left:64%;top:34%}
+ #hero .p1{left:83%;top:18%}
+ #hero .p2{left:13%;top:49%}
+ #hero .p3{display:none}
+ #hero .p4{left:12%;top:15%}
+ #hero .p5{display:none}
+ #hero .you{display:none}
+}
 @media(prefers-reduced-motion:reduce){.footer-map-pin,.footer-invite{transition:none}.footer-discovery.is-playing .footer-map-pin.is-active:before{animation:none}}
 
 /* Mobile usability: readable microcopy, full touch targets and notch-safe gutters. */
