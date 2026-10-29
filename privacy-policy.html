@@ -37,6 +37,7 @@
       <div><strong>Company</strong><span>WECREO LABS PRIVATE LIMITED</span></div>
       <div><strong>Product</strong><span>Near</span></div>
       <div><strong>Contact</strong><a href="mailto:hello@wecreo.in">hello@wecreo.in</a></div>
+      <div><strong>Last updated</strong><span>29 October 2026</span></div>
     </div>
   </div>
 </div>
@@ -99,6 +100,7 @@
             <span>Device type, app version, IP address, diagnostics, crash logs, notification tokens, and product usage patterns.</span>
           </div>
         </div>
+        <p>We use <strong>PostHog</strong>, a product analytics service, to understand which screens and features are used so we can improve Near. We do not record your screen.</p>
         <p>We may also receive limited information from third-party services that help us with authentication, maps, notifications, analytics, crash reporting, hosting, moderation, identity verification, or support.</p>
         <p>Near does not intentionally collect sensitive information such as government identifiers, financial information, health information, or precise biometric data unless a specific feature clearly asks for it and explains why it is needed.</p>
       </section>
@@ -110,6 +112,7 @@
         <p>When you choose to complete identity verification, Near temporarily collects a <strong>live selfie</strong> taken for the verification process.</p>
         <p>The live selfie is compared with the profile photograph associated with your Near account to help determine whether the person completing verification matches the person represented by the profile.</p>
         <p>The live verification selfie is different from your normal Near profile photograph.</p>
+        <p>If you change your profile photograph while your account is verified, Near compares the new photograph with your current one in the same way, to decide whether your verification badge still applies.</p>
         <p>Near does not create or retain a permanent facial profile, facial biometric template, or other biometric identifier from the live selfie for this verification process.</p>
         <h3>How we use the live selfie</h3>
         <p>The live selfie is used only to:</p>
@@ -125,14 +128,16 @@
         <p>Near uses <strong>Amazon Web Services (AWS) Rekognition</strong> as a service provider to perform the facial comparison required for identity verification.</p>
         <p>The live selfie is sent to AWS Rekognition only for the verification function described in this section. AWS is used as a service provider on Near's behalf and is not authorized by Near to use the live selfie for advertising, marketing, analytics, or unrelated purposes.</p>
         <h3>Storage and retention</h3>
-        <p>The live selfie is temporarily uploaded to Near's AWS-hosted storage, including Amazon S3, as part of the verification process.</p>
+        <p>The live selfie is temporarily uploaded to Near's private AWS-hosted storage (Amazon S3, in India) as part of the verification process.</p>
         <p>The selfie is retained only for the time necessary to complete identity verification. Once the verification process is completed, the temporary selfie is automatically deleted.</p>
+        <p>If the automatic check cannot complete, a Near team member may review the selfie, after which it is deleted. A selfie awaiting review is deleted within 30 days at most.</p>
+        <p>After the selfie is deleted, Near keeps only the verification result, its date, and the similarity score returned by the comparison.</p>
         <p>Near does not retain the live verification selfie as part of your permanent profile and does not retain a facial biometric template or other permanent biometric profile from the verification selfie.</p>
         <p>Your normal Near profile photograph is separate from the temporary verification selfie and may be retained as part of your Near profile according to this Privacy Policy.</p>
         <h3>Sharing</h3>
         <p>Near does not sell face data.</p>
         <p>Near does not share the live verification selfie or facial verification data with advertising networks, data brokers, analytics providers, or other unrelated third parties.</p>
-        <p>The live selfie may be processed by AWS Rekognition as described above solely to provide the identity-verification function.</p>
+        <p>The live selfie may be processed by AWS Rekognition as described above solely to provide the identity-verification function. If the automatic check cannot complete, an authorised Near team member may view the selfie only to review the verification.</p>
         <h3>Account deletion</h3>
         <p>If you delete your Near account, Near will delete or de-identify personal data associated with your account as described in Section 9. Temporary verification selfies are not retained as part of your permanent account data and are automatically deleted after the verification process is completed.</p>
       </section>
@@ -171,8 +176,9 @@
 
       <section id="location">
         <h2>6. Location</h2>
-        <p>Near uses location to make the app feel live and local. Depending on your device permissions, we may use approximate or precise location while you use the app.</p>
-        <p>Location helps us show nearby plans, maps, lobbies, routes, venues, and safety features.</p>
+        <p>Near uses location to make the app feel live and local. Depending on your device permissions, we may use approximate or precise location, and only while you use the app.</p>
+        <p>Location helps us show nearby plans, maps, lobbies, routes, venues, and safety features. For example, Near can show you a rooftop jam happening 0.6 km from you.</p>
+        <p>Our map provider, <strong>Mapbox</strong>, receives your location to display the map and may collect anonymous usage statistics about the map.</p>
         <p>You can control location access from your device settings. If you turn location off, some parts of Near may not work as intended.</p>
         <p>Near does not sell your location information or use your location for third-party advertising.</p>
       </section>
@@ -200,6 +206,7 @@
         <p>When we use service providers, we require them to handle user data with appropriate confidentiality, security, and privacy protections and to use it only for the services they provide to Near.</p>
         <p>Face data is not shared with advertising networks, analytics providers, data brokers, or information resellers.</p>
         <p>We do not share your precise location with third parties for third-party advertising.</p>
+        <p>Near does not track you across other companies' apps or websites and does not use your data for third-party advertising. Our analytics (PostHog) and map (Mapbox) providers process data only to provide their services to Near.</p>
       </section>
 
       <section id="controls">
@@ -230,7 +237,7 @@
         <p>We keep personal data for as long as needed to provide Near, maintain safety and trust, comply with legal obligations, resolve disputes, prevent fraud or abuse, and improve the product.</p>
         <p>Different categories of information may have different retention periods depending on why the information was collected.</p>
         <h3>Identity-verification selfies</h3>
-        <p>Live selfies collected for identity verification are temporary. They are retained only for the time necessary to complete the verification process and are automatically deleted after verification is completed.</p>
+        <p>Live selfies collected for identity verification are temporary. They are retained only for the time necessary to complete the verification process and are automatically deleted after verification is completed. If a selfie needs review by a Near team member, it is deleted after that review, and within 30 days at most.</p>
         <p>Near does not retain the live verification selfie as part of the user's permanent profile and does not retain a facial biometric template or other permanent biometric profile from the verification selfie.</p>
         <h3>Other account and safety information</h3>
         <p>If you delete your account, we will delete or de-identify personal data that is no longer needed.</p>
@@ -246,7 +253,7 @@
       <section id="transfers">
         <h2>13. International processing</h2>
         <p>Near may process and store information in countries other than where you live, depending on where our service providers operate.</p>
-        <p>For example, Near uses infrastructure and service providers operated by Amazon Web Services and other technology providers that may process information in different countries.</p>
+        <p>For example, Near uses infrastructure and service providers operated by Amazon Web Services and other technology providers that may process information in different countries. Identity-verification selfies are stored in India. Product analytics (PostHog) and map services (Mapbox) may process data in the United States.</p>
         <p>When information is transferred or processed internationally, we use appropriate safeguards required by applicable law.</p>
       </section>
 
