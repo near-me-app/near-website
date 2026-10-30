@@ -151,8 +151,10 @@ body:after{content:'';position:fixed;inset:0;z-index:2147483000;pointer-events:n
    plan card are placed inside that zone so nothing ever lands on the headline.
    --------------------------------------------------------------------------- */
 @media(max-width:520px){
- html #hero.map-hero{--hz:clamp(300px,44dvh,380px);min-height:0}
- html #hero .hero-layout{width:auto;max-width:none;min-height:0;padding:var(--hz) 0 clamp(40px,7dvh,64px)}
+ /* The hero fills the screen under the header. The copy block (~300px + bottom padding) sits at the
+    bottom; the map zone (--hz) takes whatever height is left, so taller phones get a roomier map. */
+ html #hero.map-hero{--copy-h:350px;--hz:max(300px,calc(100svh - 64px - var(--copy-h)));min-height:calc(100svh - 64px)}
+ html #hero .hero-layout{width:auto;max-width:none;min-height:calc(100svh - 64px);padding:var(--hz) 0 clamp(36px,6svh,56px);display:flex;flex-direction:column;justify-content:flex-end}
  html #hero .hero-copy{padding:0}
 
  /* Map zone: two pins up top, the live set between them, the plan card off-centre right, two pins low left/right. */
@@ -184,3 +186,7 @@ html #communities.cm-live{overflow-x:clip!important;overflow-y:visible!important
 html #communities.cm-live .community-stage{overflow-x:visible;overflow-y:clip}
 /* The back pass swings ~40% of a card width to the right; shift the rig so the whole stack stays inside the page margin. */
 @media(min-width:901px){html #communities.cm-live .cp-rig{translate:calc(var(--cpw,310px)*-.4) 0}}
+
+/* Header (phones/tablets): the header is a flex row and its inner grid was shrink-wrapping, so the
+   1fr column collapsed and Get Near + menu sat beside the logo. Let the inner row fill the bar. */
+@media(max-width:900px){html .site-header .header-inner{flex:1 1 auto;min-width:0;width:auto}}
