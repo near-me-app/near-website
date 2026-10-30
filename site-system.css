@@ -234,3 +234,11 @@ html.nm-smooth #hero .hero-copy>.hero-prelude{animation:hero-rise .9s cubic-bezi
 /* Aura -> Communities: Aura's stage is darker than the page; fade its bottom edge into the page colour
    so no hard seam scrolls past as the lanyards arrive. */
 html #aura.is-live .am-stage:before{content:"";position:absolute;left:0;right:0;bottom:0;height:min(22%,180px);z-index:5;pointer-events:none;background:linear-gradient(transparent,var(--bg))}
+
+/* Aura HUD: card counter + opt-in sound toggle. */
+.am-hud-r{display:flex;align-items:center;gap:18px}
+.am-sound{position:relative;display:inline-flex;align-items:center;gap:8px;margin:-14px 0;padding:14px 0;border:0;background:none;color:var(--ns-dim);font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;pointer-events:auto}
+.am-sound:hover,.am-sound[aria-pressed="true"]{color:var(--ns-ink)}
+.am-sound svg{flex:none}
+.am-sound .am-wave{opacity:0;transition:opacity var(--d-fast)}
+.am-sound[aria-pressed="true"] .am-wave{opacity:1}

@@ -7,7 +7,50 @@ const quote=section.querySelector('.am-quote'),lines=[...quote.querySelectorAll(
 const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)),lerp=(a,b,t)=>a+(b-a)*t;
 const easeInOut=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2,easeOut=t=>1-Math.pow(1-t,3);
 
-// Pointer tilt and glare, for fine pointers only.
+// Feedback when a new card takes centre stage while scrolling.
+// Haptics: a light tick where the Vibration API exists (Android), once the visitor has touched the page.
+// Sound: opt-in from the HUD toggle (browsers only allow audio after a click), remembered between visits.
+// Each tier plays a short plastic "flick" a whole tone higher than the last, so climbing the ladder sounds like it.
+const soundBtn=section.querySelector('.am-sound');
+let audio=null,soundOn=false,lastFeedback=0,tier=0;
+try{soundOn=localStorage.getItem('near-aura-sound')==='on'}catch(e){}
+function ensureAudio(){
+ if(audio)return audio;
+ const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return null;
+ audio=new AC();return audio;
+}
+function flick(i){
+ const ac=ensureAudio();if(!ac)return;
+ if(ac.state==='suspended')ac.resume();
+ const t=ac.currentTime,f=392*Math.pow(2,(i*2)/12);
+ const out=ac.createGain();out.gain.value=.5;out.connect(ac.destination);
+ // Body: a soft triangle "tock" with a quick pitch drop.
+ const o=ac.createOscillator(),g=ac.createGain();
+ o.type='triangle';o.frequency.setValueAtTime(f*1.5,t);o.frequency.exponentialRampToValueAtTime(f,t+.03);
+ g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.16,t+.004);g.gain.exponentialRampToValueAtTime(.0001,t+.16);
+ o.connect(g).connect(out);o.start(t);o.stop(t+.18);
+ // Snap: a few milliseconds of filtered noise, the edge of the card.
+ const n=ac.createBufferSource(),buf=ac.createBuffer(1,Math.round(ac.sampleRate*.012),ac.sampleRate),d=buf.getChannelData(0);
+ for(let k=0;k<d.length;k++)d[k]=(Math.random()*2-1)*(1-k/d.length);
+ const hp=ac.createBiquadFilter(),ng=ac.createGain();hp.type='highpass';hp.frequency.value=3200;ng.gain.value=.12;
+ n.buffer=buf;n.connect(hp).connect(ng).connect(out);n.start(t);
+}
+function feedback(i){
+ const now=performance.now();if(now-lastFeedback<70)return;lastFeedback=now;
+ if(navigator.vibrate&&(!navigator.userActivation||navigator.userActivation.hasBeenActive)){try{navigator.vibrate(8)}catch(e){}}
+ if(soundOn)flick(i);
+}
+if(soundBtn&&(window.AudioContext||window.webkitAudioContext)){
+ const sync=()=>{soundBtn.setAttribute('aria-pressed',String(soundOn));soundBtn.querySelector('span').textContent=soundOn?'Sound on':'Sound off'};
+ soundBtn.hidden=false;sync();
+ soundBtn.addEventListener('click',()=>{
+  soundOn=!soundOn;sync();
+  try{localStorage.setItem('near-aura-sound',soundOn?'on':'off')}catch(e){}
+  if(soundOn)flick(tier);
+ });
+}
+
+// Pointer tilt, for fine pointers only.
 if(matchMedia('(hover: hover) and (pointer: fine)').matches)cards.forEach(card=>{
  card.addEventListener('pointermove',e=>{const r=card.querySelector('.am-frame').getBoundingClientRect();card.style.setProperty('--px',((e.clientX-r.left)/r.width*2-1).toFixed(3));card.style.setProperty('--py',((e.clientY-r.top)/r.height*2-1).toFixed(3))});
  card.addEventListener('pointerleave',()=>{card.style.setProperty('--px',0);card.style.setProperty('--py',0)});
@@ -86,7 +129,8 @@ gsap.matchMedia().add('(prefers-reduced-motion: no-preference) and (min-height: 
    card.style.setProperty('--glow',focus.toFixed(3));
   });
   if(nearest!==active){
-   active=nearest;section.style.setProperty('--am-tone',tones[active]);
+   if(active!==-1)feedback(nearest);
+   active=nearest;tier=nearest;section.style.setProperty('--am-tone',tones[active]);
    countNum.textContent=String(active+1).padStart(2,'0')+' / '+String(cards.length).padStart(2,'0');countName.textContent=names[active];
   }
   const q=clamp((b-.3)/.7),solid=clamp((q-.5)/.4);
