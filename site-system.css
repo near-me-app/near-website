@@ -205,10 +205,12 @@ html.nm-smooth #hero .hero-copy>.hero-prelude{animation:hero-rise .9s cubic-bezi
 @media(prefers-reduced-motion:reduce){html #hero .hero-copy>.hero-prelude{animation:none!important}}
 @media(max-width:520px){html #hero .hero-copy>.hero-prelude{margin-bottom:12px}}
 
-/* iPhone badge: not a link until the App Store listing exists. */
+/* iPhone badge: not a link until the App Store listing exists. "Soon" shows on hover, or on tap/keyboard focus. */
+.store--soon:hover small,.store--soon:focus small{opacity:1;transform:none}
+.store--soon:focus{outline:none}.store--soon:focus-visible{outline:2px solid var(--ns-ink);outline-offset:4px;border-radius:8px}
 .store--soon{position:relative;display:inline-flex;cursor:default}
 .store--soon img{opacity:.42;filter:grayscale(1)}
-.store--soon small{position:absolute;bottom:-8px;right:-8px;padding:4px 7px;border-radius:var(--r-pill);background:var(--ns-ink);color:var(--bg);font:700 9px/1 var(--body),sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.store--soon small{opacity:0;transform:translateY(3px);transition:opacity var(--d-fast),transform var(--d-fast);position:absolute;bottom:-8px;right:-8px;padding:4px 7px;border-radius:var(--r-pill);background:var(--ns-ink);color:var(--bg);font:700 9px/1 var(--body),sans-serif;letter-spacing:.1em;text-transform:uppercase}
 
 
 /* FAQ: header left, questions right; one hairline between questions. */
