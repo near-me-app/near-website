@@ -190,3 +190,6 @@ html #communities.cm-live .community-stage{overflow-x:visible;overflow-y:clip}
 /* Header (phones/tablets): the header is a flex row and its inner grid was shrink-wrapping, so the
    1fr column collapsed and Get Near + menu sat beside the logo. Let the inner row fill the bar. */
 @media(max-width:900px){html .site-header .header-inner{flex:1 1 auto;min-width:0;width:auto}}
+
+/* Discover's glow peaks near its top edge; with the film now above it, fade the edge in so the seam doesn't read as a line. */
+html #possibilities.is-live .ng-stage:before,html .is-live .ng-stage:before{-webkit-mask:linear-gradient(transparent,#000 16%);mask:linear-gradient(transparent,#000 16%)}
