@@ -22,8 +22,8 @@
 .am-frame:before,.am-frame:after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none}
 /* Gloss: one crisp streak and its soft bloom, like light off laminated plastic. It slides with --sheen as the
    card turns. No blend mode, so it stays a cheap repaint. */
-.am-frame:before{background:linear-gradient(114deg,transparent calc(var(--sheen,50%) - 2%),rgba(255,250,240,.34) var(--sheen,50%),transparent calc(var(--sheen,50%) + 2%)),linear-gradient(114deg,transparent calc(var(--sheen,50%) - 20%),rgba(255,250,240,.07) var(--sheen,50%),transparent calc(var(--sheen,50%) + 20%))}
-.am-frame:after{background:radial-gradient(circle at calc(50% + var(--px)*50%) calc(50% + var(--py)*50%),rgba(255,255,255,.22),transparent 45%),rgba(0,0,0,var(--dim,0));opacity:1;transition:background .3s}
+.am-frame:before{background:linear-gradient(114deg,transparent calc(var(--sheen,50%) - 2%),rgba(255,250,240,.13) var(--sheen,50%),transparent calc(var(--sheen,50%) + 2%)),linear-gradient(114deg,transparent calc(var(--sheen,50%) - 20%),rgba(255,250,240,.035) var(--sheen,50%),transparent calc(var(--sheen,50%) + 20%))}
+.am-frame:after{background:rgba(0,0,0,var(--dim,0))}
 .am-card figcaption{margin-top:22px;text-align:center;font:500 10px/1.5 var(--body),sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(233,223,205,.5)}
 .am-card figcaption strong{display:block;margin-bottom:6px;font-size:13px;font-weight:700;letter-spacing:.22em;color:var(--am-ink)}
 .am-yard,.am-ruler,.am-dots,.am-hint{display:none}
