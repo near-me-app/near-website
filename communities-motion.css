@@ -82,3 +82,8 @@
 @media(prefers-reduced-motion:reduce){
  #communities.cm-live .cp-hang{animation:none}
 }
+
+/* Pinned: the strap runs up past the stage's top edge, so each pass hangs from above the frame. */
+#communities.cm-live .community-stage{overflow:clip}
+#communities.cm-live .cp-hang{display:flow-root}
+#communities.cm-live .cp-strap{height:calc(var(--strap) + 100vh);margin-top:-100vh}
