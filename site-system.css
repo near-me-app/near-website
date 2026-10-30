@@ -185,7 +185,8 @@ body:after{content:'';position:fixed;inset:0;z-index:2147483000;pointer-events:n
 html #communities.cm-live{overflow-x:clip!important;overflow-y:visible!important}
 html #communities.cm-live .community-stage{overflow-x:visible;overflow-y:clip}
 /* The back pass swings ~40% of a card width to the right; shift the rig so the whole stack stays inside the page margin. */
-@media(min-width:901px){html #communities.cm-live .cp-rig{translate:calc(var(--cpw,310px)*-.4) 0}}
+/* Full shift at 1440px+, easing off on narrower screens so the hanging point stays centred in the free space right of the copy. */
+@media(min-width:901px){html #communities.cm-live .cp-rig{translate:clamp(-100px,calc(-96px + (1440px - 100vw)*.16),-30px) 0}}
 
 /* Header (phones/tablets): the header is a flex row and its inner grid was shrink-wrapping, so the
    1fr column collapsed and Get Near + menu sat beside the logo. Let the inner row fill the bar. */
