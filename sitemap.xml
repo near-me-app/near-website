@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.whatsnear.in/</loc></url>
-  <url><loc>https://www.whatsnear.in/privacy-policy.html</loc></url>
-  <url><loc>https://www.whatsnear.in/terms-of-service.html</loc></url>
-  <url><loc>https://www.whatsnear.in/community-guidelines.html</loc></url>
-  <url><loc>https://www.whatsnear.in/account-deletion.html</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://www.whatsnear.in/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <video:video>
+      <video:thumbnail_loc>https://www.whatsnear.in/near-assets/near-film-poster.webp</video:thumbnail_loc>
+      <video:title>A plan starts somewhere: the Near film</video:title>
+      <video:description>A one-minute look at Near: finding what’s happening near you, making a plan, going out safe, and showing up.</video:description>
+      <video:content_loc>https://www.whatsnear.in/near-film.mp4</video:content_loc>
+      <video:duration>67</video:duration>
+      <video:publication_date>2026-10-29T00:00:00+05:30</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url><loc>https://www.whatsnear.in/privacy-policy.html</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://www.whatsnear.in/terms-of-service.html</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://www.whatsnear.in/community-guidelines.html</loc><lastmod>2026-10-30</lastmod></url>
+  <url><loc>https://www.whatsnear.in/account-deletion.html</loc><lastmod>2026-10-30</lastmod></url>
 </urlset>
