@@ -41,7 +41,7 @@ function feedback(i){
  if(soundOn)flick(i);
 }
 if(soundBtn&&(window.AudioContext||window.webkitAudioContext)){
- const sync=()=>{soundBtn.setAttribute('aria-pressed',String(soundOn));soundBtn.querySelector('span').textContent=soundOn?'Sound on':'Sound off'};
+ const sync=()=>{soundBtn.setAttribute('aria-pressed',String(soundOn));soundBtn.title=soundOn?'Sound on':'Sound off'};
  soundBtn.hidden=false;sync();
  soundBtn.addEventListener('click',()=>{
   soundOn=!soundOn;sync();

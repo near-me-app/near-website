@@ -238,13 +238,16 @@ html.nm-smooth #hero .hero-copy>.hero-prelude{animation:hero-rise .9s cubic-bezi
    so no hard seam scrolls past as the lanyards arrive. */
 html #aura.is-live .am-stage:before{content:"";position:absolute;left:0;right:0;bottom:0;height:min(22%,180px);z-index:5;pointer-events:none;background:linear-gradient(transparent,var(--bg))}
 
-/* Aura HUD: card counter + opt-in sound toggle. */
-.am-hud-r{display:flex;align-items:center;gap:18px}
-.am-sound{position:relative;display:inline-flex;align-items:center;gap:8px;margin:-14px 0;padding:14px 0;border:0;background:none;color:var(--ns-dim);font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;pointer-events:auto}
+/* Aura HUD: card counter + an icon-only sound toggle pinned to the far right. On phones the kicker is hidden,
+   so the counter takes the left and the toggle stays right. */
+.am-hud-r{flex:1;display:flex;align-items:center;justify-content:flex-end;gap:14px}
+@media(max-width:900px){.am-hud-r{justify-content:space-between}}
+.am-sound{display:grid;place-items:center;width:44px;height:44px;margin:-14px -14px -14px 0;padding:0;border:0;border-radius:50%;background:none;color:var(--ns-dim);cursor:pointer;pointer-events:auto;transition:color var(--d-fast)}
 .am-sound:hover,.am-sound[aria-pressed="true"]{color:var(--ns-ink)}
-.am-sound svg{flex:none}
-.am-sound .am-wave{opacity:0;transition:opacity var(--d-fast)}
-.am-sound[aria-pressed="true"] .am-wave{opacity:1}
+.am-sound:focus-visible{outline:2px solid var(--ns-ink);outline-offset:-6px}
+.am-sound .am-wave{display:none}
+.am-sound[aria-pressed="true"] .am-wave{display:inline}
+.am-sound[aria-pressed="true"] .am-mute{display:none}
 
 /* ---------------------------------------------------------------------------
    Touch devices (iOS especially): drop effects that make the compositor redo
