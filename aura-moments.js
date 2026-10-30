@@ -81,7 +81,11 @@ gsap.matchMedia().add('(prefers-reduced-motion: no-preference) and (min-height: 
    if(Math.abs(d)<best){best=Math.abs(d);nearest=i}
    const ry=clamp(-d*20,-28,28),rz=tilts[i%tilts.length]*(.35+.65*Math.min(ad,1)),y=-focus*18+d*10;
    card.style.transform=`translate3d(0,${y.toFixed(1)}px,0) perspective(1100px) rotateY(${ry.toFixed(2)}deg) rotateZ(${rz.toFixed(2)}deg) scale(${(1+focus*.12).toFixed(4)})`;
-   card.style.setProperty('--sheen',(50-d*60).toFixed(1)+'%');
+   // Gloss: as the card turns, the distant light's reflection slides across it and counter-rotates with its roll.
+   card.style.setProperty('--gl-base',(34+ry*2.1).toFixed(1)+'%');
+   card.style.setProperty('--gl-a',(114-rz).toFixed(2)+'deg');
+   card.style.setProperty('--gl-i',(.55+.45*focus).toFixed(3));
+   card.style.setProperty('--fres',Math.min(1,Math.abs(ry)/28).toFixed(3));
    card.style.setProperty('--dim',(Math.min(ad,1)*.42).toFixed(3));
    card.style.setProperty('--glow',focus.toFixed(3));
   });
