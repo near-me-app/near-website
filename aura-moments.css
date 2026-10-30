@@ -20,19 +20,8 @@
 .am-frame img{display:block;width:100%;height:auto;aspect-ratio:640/806;border-radius:inherit;user-select:none;-webkit-user-drag:none}
 /* Foil: a soft band that sweeps across as the card travels, plus a pointer glare. */
 .am-frame:before,.am-frame:after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none}
-/* Gloss: the card is hard, laminated plastic lit by one distant light up and to the left.
-   The reflection is world-fixed, so it sweeps across the card as the card turns (scroll: --gl-base,
-   pointer: --px/--py) and counter-rotates with the card's roll (--gl-a). Three layers: a hot streak,
-   the soft bloom around it, and a faint second streak reflected off the back of the laminate. */
-.am-frame{--glx:calc(var(--gl-base,34%) + var(--px)*26% + var(--py)*8%)}
-.am-frame:before{z-index:2;mix-blend-mode:screen;opacity:var(--gl-i,.75);background:linear-gradient(var(--gl-a,114deg),transparent calc(var(--glx) - 2.2%),rgba(255,250,240,.62) var(--glx),transparent calc(var(--glx) + 2.2%)),linear-gradient(var(--gl-a,114deg),transparent calc(var(--glx) + 7%),rgba(255,250,240,.12) calc(var(--glx) + 9%),transparent calc(var(--glx) + 11%)),linear-gradient(var(--gl-a,114deg),transparent calc(var(--glx) - 28%),rgba(255,248,236,.09) calc(var(--glx) - 12%),rgba(255,248,236,.2) var(--glx),rgba(255,248,236,.09) calc(var(--glx) + 12%),transparent calc(var(--glx) + 28%))}
-/* Clear-coat: the top edge catches the light, edges brighten at grazing angles (--fres), off-focus cards dim. */
-.am-frame:after{z-index:3;background:linear-gradient(180deg,rgba(255,255,255,calc(.05 + var(--fres,0)*.1)),transparent 26%,transparent 78%,rgba(0,0,0,.18)),rgba(0,0,0,var(--dim,0));box-shadow:inset 0 1px 0 rgba(255,255,255,calc(.22 + var(--fres,0)*.3)),inset 0 0 0 1px rgba(255,255,255,calc(.05 + var(--fres,0)*.08)),inset 0 -1px 0 rgba(0,0,0,.35)}
-/* The reflection eases back when the pointer leaves instead of jumping. */
-@property --px{syntax:'<number>';inherits:true;initial-value:0}
-@property --py{syntax:'<number>';inherits:true;initial-value:0}
-.am-card{transition:--px .45s var(--ease-out),--py .45s var(--ease-out)}
-.am-card:hover{transition-duration:.08s}
+.am-frame:before{background:linear-gradient(105deg,transparent calc(var(--sheen,50%) - 22%),color-mix(in srgb,var(--tone) 35%,rgba(255,255,255,.28)) var(--sheen,50%),transparent calc(var(--sheen,50%) + 22%));mix-blend-mode:soft-light;opacity:.9}
+.am-frame:after{background:radial-gradient(circle at calc(50% + var(--px)*50%) calc(50% + var(--py)*50%),rgba(255,255,255,.22),transparent 45%),rgba(0,0,0,var(--dim,0));opacity:1;transition:background .3s}
 .am-card figcaption{margin-top:22px;text-align:center;font:500 10px/1.5 var(--body),sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(233,223,205,.5)}
 .am-card figcaption strong{display:block;margin-bottom:6px;font-size:13px;font-weight:700;letter-spacing:.22em;color:var(--am-ink)}
 .am-yard,.am-ruler,.am-dots,.am-hint{display:none}
