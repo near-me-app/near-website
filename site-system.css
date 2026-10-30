@@ -176,3 +176,11 @@ body:after{content:'';position:fixed;inset:0;z-index:2147483000;pointer-events:n
  html #hero .store-row{gap:10px;margin-top:24px}
  html #hero .store-row .store,html #hero .store-row .store img{width:auto;height:44px;min-height:44px}
 }
+
+/* Communities: the pinned stage clipped both axes (to hide the strap above the frame),
+   which cut the back pass off at the column edge. Clip only vertically; the section
+   clips horizontally at the viewport so the swinging pass never causes sideways scroll. */
+html #communities.cm-live{overflow-x:clip!important;overflow-y:visible!important}
+html #communities.cm-live .community-stage{overflow-x:visible;overflow-y:clip}
+/* The back pass swings ~40% of a card width to the right; shift the rig so the whole stack stays inside the page margin. */
+@media(min-width:901px){html #communities.cm-live .cp-rig{translate:calc(var(--cpw,310px)*-.4) 0}}
