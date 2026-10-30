@@ -8,15 +8,16 @@ Near is made by WECREO LABS PRIVATE LIMITED (India). Contact: hello@wecreo.in.
 
 - Platforms: Android, free on Google Play (https://play.google.com/store/apps/details?id=com.near.near_radar). The iPhone app is coming soon.
 - Map: plans around you appear as pins, showing when they start, how many people are going and how many spots are left.
-- Hosting: anyone can host a public or private plan. Pick a category, drop a pin, choose a start time, and set who can join and how many people.
-- Safety: every person is verified (no fake profiles or anonymous accounts), hosts can make women-only spaces, and one-tap SOS shares your live location with trusted contacts.
+- Hosting: anyone can host a public or private plan. Pick a category, drop a pin, choose a start time, and set who can join (everyone, or female-only) and how many people.
+- Monetization: anyone, including communities, will be able to monetize their events. Paid events are coming soon.
+- Safety: everyone on Near is face verified in the app, so nobody can fake a profile or join anonymously. One-tap SOS shares your live location with trusted contacts.
 - Aura: a reputation for showing up. Hosting and attending plans moves it up through eight tiers, from Off Radar to Final Boss; ghosting plans can bring it down.
 - Communities: local groups around an interest, neighbourhood or cause (run clubs, book clubs, volunteering crews). Communities and NGOs can request a profile at hello@wecreo.in.
 - Age: Near is for people aged 18 and over.
 
 ## Pages
 
-- [Home](https://www.whatsnear.in/): what Near is, the one-minute film (with transcript) and an FAQ
+- [Home](https://www.whatsnear.in/): what Near is, the one-minute film and an FAQ
 - [Privacy policy](https://www.whatsnear.in/privacy-policy.html): what data Near collects, identity verification, location and retention
 - [Terms of service](https://www.whatsnear.in/terms-of-service.html): the rules for using Near
 - [Community guidelines](https://www.whatsnear.in/community-guidelines.html): showing up, hosting, safety and what isn't allowed

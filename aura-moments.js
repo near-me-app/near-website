@@ -106,7 +106,8 @@ gsap.matchMedia().add('(prefers-reduced-motion: no-preference) and (min-height: 
  }
  function kick(){if(!raf)raf=requestAnimationFrame(tick)}
 
- const sceneProgress=p=>clamp(p/(mobile ? 0.8 : 1));
+ // Phones keep a short hold on the closing line (was 20% of the section, which read as a stuck scroll).
+ const sceneProgress=p=>clamp(p/(mobile ? 0.94 : 1));
  const trigger=ScrollTrigger.create({trigger:section,start:'top 64px',end:'bottom bottom',
   onUpdate:self=>{target=sceneProgress(self.progress);kick()},
   onRefresh:self=>{measure();target=current=sceneProgress(self.progress);active=-1;render(current)}});

@@ -196,8 +196,7 @@ html #possibilities.is-live .ng-stage:before,html .is-live .ng-stage:before{-web
 
 /* ---------------------------------------------------------------------------
    SEO pass: the hero's opener moved out of the H1 (so the H1 is just the
-   headline); the iPhone badge is "coming soon"; the film has a readable
-   transcript; and a FAQ answers the questions people ask about Near.
+   headline); the iPhone badge is "coming soon"; and a FAQ answers the questions people ask about Near.
    --------------------------------------------------------------------------- */
 html #hero .hero-copy>.hero-prelude{display:flex;align-items:center;gap:14px;margin:0 0 15px;font:500 var(--ns-kicker)/1.3 var(--body),sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--ns-mid)}
 html #hero .hero-copy>.hero-prelude:before{content:'';width:28px;height:1px;flex:none;background:var(--live)}
@@ -210,15 +209,6 @@ html.nm-smooth #hero .hero-copy>.hero-prelude{animation:hero-rise .9s cubic-bezi
 .store--soon img{opacity:.42;filter:grayscale(1)}
 .store--soon small{position:absolute;bottom:-8px;right:-8px;padding:4px 7px;border-radius:var(--r-pill);background:var(--ns-ink);color:var(--bg);font:700 9px/1 var(--body),sans-serif;letter-spacing:.1em;text-transform:uppercase}
 
-/* Film transcript: a quiet text link that opens the on-screen words. */
-.nf-script{margin-top:22px;max-width:64ch}
-.nf-script summary{display:inline-flex;align-items:center;gap:10px;min-height:44px;cursor:pointer;list-style:none;font-size:var(--ns-link-size);font-weight:600;color:var(--ns-mid);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px;text-decoration-color:var(--ns-line)}
-.nf-script summary::-webkit-details-marker{display:none}
-.nf-script summary:after{content:'+';font-weight:400;font-size:18px;line-height:1;text-decoration:none}
-.nf-script[open] summary:after{content:'\2212'}
-.nf-script summary:hover{color:var(--ns-ink);text-decoration-color:currentColor}
-.nf-script-body{padding:6px 0 4px;border-left:1px solid var(--ns-line);padding-left:20px}
-.nf-script-body p{margin:0 0 12px;font-size:var(--ns-body);line-height:1.6;color:var(--ns-mid)}
 
 /* FAQ: header left, questions right; one hairline between questions. */
 .faq{position:relative;padding-block:var(--ns-section)}
@@ -240,3 +230,7 @@ html.nm-smooth #hero .hero-copy>.hero-prelude{animation:hero-rise .9s cubic-bezi
  .faq .ns-head{position:static}
  .faq-grid:before{--gx:24%;--gy:12%;--gw:130%;--gh:40%}
 }
+
+/* Aura -> Communities: Aura's stage is darker than the page; fade its bottom edge into the page colour
+   so no hard seam scrolls past as the lanyards arrive. */
+html #aura.is-live .am-stage:before{content:"";position:absolute;left:0;right:0;bottom:0;height:min(22%,180px);z-index:5;pointer-events:none;background:linear-gradient(transparent,var(--bg))}
