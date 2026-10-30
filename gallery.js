@@ -60,7 +60,7 @@ gsap.matchMedia().add('(prefers-reduced-motion: no-preference) and (min-width: 9
   const focusY=mobile
    ?clamp(Math.max(h*.64,copyBottom+projectedH/2+12),projectedH/2+12,h-projectedH/2-12)
    :h*.47;
-  travel=uniqueCount*clamp(w*.65,340,520);
+  travel=uniqueCount*(mobile?clamp(w*.7,260,330):clamp(w*.65,340,520));
   section.style.setProperty('--ng-travel',`${travel}px`);
   const anchors=[
    {x:-W*1.3,y:h+H*.85,scale:.27,z:-570,rotateY:62,rotateX:-16,rotateZ:-23},
@@ -197,8 +197,8 @@ gsap.matchMedia().add('(prefers-reduced-motion: no-preference) and (min-width: 9
   const trigger=ScrollTrigger.create({
    trigger:section,start:'top 64px',end:()=>`+=${travel}`,
    onRefreshInit:measure,
-   onRefresh:self=>{scrollPhase=self.progress*uniqueCount;render(phase)},
-   onUpdate:self=>{scrollPhase=self.progress*uniqueCount;lastInput=performance.now();wake()}
+   onRefresh:self=>{scrollPhase=layout.mobile?Math.min(uniqueCount-1,self.progress/.85*(uniqueCount-1)):self.progress*uniqueCount;render(phase)},
+   onUpdate:self=>{scrollPhase=layout.mobile?Math.min(uniqueCount-1,self.progress/.85*(uniqueCount-1)):self.progress*uniqueCount;lastInput=performance.now();wake()}
   });
   stage.addEventListener('pointermove',onPointerMove);
   stage.addEventListener('pointerdown',onPointerDown);

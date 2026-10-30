@@ -19,11 +19,11 @@ gsap.matchMedia().add('(prefers-reduced-motion: no-preference) and (min-height: 
  section.classList.add('is-live');
  const tones=cards.map(c=>c.dataset.tone),names=cards.map(c=>c.dataset.name),tilts=[-4,3,-2.5,4,-3.5,2.5,-3,2];
  const dpr=Math.min(2,window.devicePixelRatio||1),SPLIT=.7;
- let vw=0,vh=0,cardW=0,gap=0,startX=0,endX=0,lefts=[],dots=[],dotR=0,active=-1,target=0,current=0,raf=0,lastFrame=0,lastDotPhase=0;
+ let vw=0,vh=0,cardW=0,gap=0,startX=0,endX=0,lefts=[],dots=[],dotR=0,active=-1,target=0,current=0,raf=0,lastFrame=0,lastDotPhase=0,mobile=false;
 
  function measure(){
   vw=stage.clientWidth;vh=stage.clientHeight;cardW=cards[0].offsetWidth;
-  const mobile=vw<=900;
+  mobile=vw<=900;
   gap=mobile?Math.max(cardW*1.18,vw*.7):Math.max(cardW*1.42,vw*.25);
   lefts=cards.map((c,i)=>i*gap);
   cards.forEach((c,i)=>{c.style.left=lefts[i]+'px'});
@@ -106,9 +106,10 @@ gsap.matchMedia().add('(prefers-reduced-motion: no-preference) and (min-height: 
  }
  function kick(){if(!raf)raf=requestAnimationFrame(tick)}
 
+ const sceneProgress=p=>clamp(p/(mobile ? 0.8 : 1));
  const trigger=ScrollTrigger.create({trigger:section,start:'top 64px',end:'bottom bottom',
-  onUpdate:self=>{target=self.progress;kick()},
-  onRefresh:self=>{measure();target=current=self.progress;active=-1;render(current)}});
+  onUpdate:self=>{target=sceneProgress(self.progress);kick()},
+  onRefresh:self=>{measure();target=current=sceneProgress(self.progress);active=-1;render(current)}});
  document.fonts.ready.then(()=>ScrollTrigger.refresh());
 
  return()=>{trigger.kill();cancelAnimationFrame(raf);raf=0;section.classList.remove('is-live');ctx.clearRect(0,0,canvas.width,canvas.height);

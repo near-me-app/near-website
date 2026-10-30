@@ -11,8 +11,8 @@ gsap.registerPlugin(ScrollTrigger);
 const media=gsap.matchMedia();
 media.add('(prefers-reduced-motion: no-preference) and (min-height: 600px)',()=>{
  feature.classList.add('has-story','fm-live');
- let active=-1,span=0;
- const measure=()=>{span=Math.min(innerWidth*.45,520)};
+ let active=-1,span=0,mobile=false;
+ const measure=()=>{span=Math.min(innerWidth*.45,520);mobile=stage.clientWidth<=900};
 
  // Organic top edge: a wave that flattens as the screen finishes rising.
  function wave(w,seed){
@@ -23,8 +23,9 @@ media.add('(prefers-reduced-motion: no-preference) and (min-height: 600px)',()=>
  }
 
  function render(p){
+  const sceneP=mobile?clamp(p/.82):p;
   // While the gallery hands off into this section, the first third is its arrival.
-  const j=feature.classList.contains('gallery-handoff-target')?Math.max(0,(p-.33)/.67):p;
+  const j=feature.classList.contains('gallery-handoff-target')?Math.max(0,(sceneP-.33)/.67):sceneP;
   const pos=j*N,current=Math.min(N-1,Math.floor(pos));
   articles.forEach((a,i)=>{
    const t=pos-i,enter=i===0?1:ease(clamp((t+.1)/.38)),exit=i===N-1?0:ease(clamp((t-.76)/.3));

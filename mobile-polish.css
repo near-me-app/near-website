@@ -49,8 +49,8 @@ html #hero .hero-copy h1{
     grid-template-columns:minmax(0,1fr) auto auto;
     gap:10px;
   }
-  .site-header .header-download{grid-column:2;min-height:44px;justify-self:end}
-  .site-header .mobile-nav{grid-column:3;justify-self:end}
+  .site-header .header-download{grid-column:2;grid-row:1;min-height:44px;justify-self:end}
+  .site-header .mobile-nav{grid-column:3;grid-row:1;justify-self:end}
   .site-header .mobile-nav summary{
     justify-content:center;
     min-width:44px;
@@ -127,7 +127,15 @@ html #hero .hero-copy h1{
   #hero .map{inset:0;height:100%;min-height:0}
   #hero .map:after{background:linear-gradient(180deg,rgba(11,12,15,.12) 0%,rgba(11,12,15,.2) 33%,var(--bg) 68%,var(--bg) 100%)}
   #hero .pin.p2{top:39%}
-  #hero .hero-layout{padding-top:clamp(280px,50svh,420px);padding-bottom:42px}
+  #hero .hero-layout{padding-top:clamp(285px,43svh,360px);padding-bottom:42px}
+  #hero .hero-apps{display:block;position:absolute;inset:0;width:100%;height:100%;margin:0;perspective:none}
+  #hero .hero-device,#hero .hero-app-caption{display:none}
+  #hero .hero-plan-deck{top:clamp(105px,17svh,160px);right:6px;bottom:auto;left:auto;width:min(248px,66vw)}
+  #hero .hero-plan{gap:10px;padding:11px}
+  #hero .hero-plan>img{width:40px;height:40px;padding:5px;border-radius:12px}
+  #hero .hero-plan-meta{font-size:9px;letter-spacing:.05em;margin-bottom:4px}
+  #hero .hero-plan small{font-size:11px;margin-top:3px}
+  #hero .hero-plan-arrow{font-size:18px}
   html #hero .hero-copy h1{font-size:clamp(52px,14vw,72px);line-height:1.06;margin-bottom:20px}
   #hero .hero-copy h1 .hero-prelude{font-size:10px;margin-bottom:12px}
   #hero .hero-copy h1 .hero-go,#hero .hero-copy h1 .hero-outside{font-size:1em}
@@ -150,4 +158,21 @@ html #hero .hero-copy h1{
 @media(max-width:360px){
   #communities .cp-foil{padding-right:4.1cqw}
   #communities .cp-mark{display:none}
+}
+
+/* Let pinned panels grow with the visible phone viewport as browser chrome retracts. */
+@supports (height:100dvh){
+  @media(max-width:900px){
+    #possibilities.ng.is-live{height:calc(100dvh + var(--ng-travel,0px))}
+    #possibilities.ng.is-live .ng-stage{height:calc(100dvh - 64px)}
+    #features.fm-live{height:290dvh}
+    #features.fm-live .story-stage{height:calc(100dvh - 64px)}
+    #aura.aura-moments.is-live{height:470dvh}
+    #aura.aura-moments.is-live .am-stage{height:calc(100dvh - 64px);min-height:0}
+  }
+  @media(max-width:520px){
+    #hero.map-hero,#hero .hero-layout{min-height:calc(100dvh - 64px)}
+    #hero .hero-layout{padding-top:clamp(285px,43dvh,360px)}
+    #hero .hero-plan-deck{top:clamp(105px,17dvh,160px)}
+  }
 }
