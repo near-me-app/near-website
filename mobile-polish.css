@@ -160,19 +160,21 @@ html #hero .hero-copy h1{
   #communities .cp-mark{display:none}
 }
 
-/* Let pinned panels grow with the visible phone viewport as browser chrome retracts. */
-@supports (height:100dvh){
+/* Pinned panels use the small viewport height (svh), which stays fixed while mobile browser toolbars
+   collapse and expand. dvh changed mid-scroll, resizing these tall sections and knocking the
+   scroll-driven scenes out of sync (jumps and jank on iOS). */
+@supports (height:100svh){
   @media(max-width:900px){
-    #possibilities.ng.is-live{height:calc(100dvh + var(--ng-travel,0px))}
-    #possibilities.ng.is-live .ng-stage{height:calc(100dvh - 64px)}
-    #features.fm-live{height:290dvh}
-    #features.fm-live .story-stage{height:calc(100dvh - 64px)}
-    #aura.aura-moments.is-live{height:470dvh}
-    #aura.aura-moments.is-live .am-stage{height:calc(100dvh - 64px);min-height:0}
+    #possibilities.ng.is-live{height:calc(100svh + var(--ng-travel,0px))}
+    #possibilities.ng.is-live .ng-stage{height:calc(100svh - 64px)}
+    #features.fm-live{height:290svh}
+    #features.fm-live .story-stage{height:calc(100svh - 64px)}
+    #aura.aura-moments.is-live{height:470svh}
+    #aura.aura-moments.is-live .am-stage{height:calc(100svh - 64px);min-height:0}
   }
   @media(max-width:520px){
-    #hero.map-hero,#hero .hero-layout{min-height:calc(100dvh - 64px)}
-    #hero .hero-layout{padding-top:clamp(285px,43dvh,360px)}
-    #hero .hero-plan-deck{top:clamp(105px,17dvh,160px)}
+    #hero.map-hero,#hero .hero-layout{min-height:calc(100svh - 64px)}
+    #hero .hero-layout{padding-top:clamp(285px,43svh,360px)}
+    #hero .hero-plan-deck{top:clamp(105px,17svh,160px)}
   }
 }

@@ -7,6 +7,8 @@ const ease={inOut:t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2,out:t=>1-Math.pow(1-t,3
 const NM=window.NearMotion={smooth:null,reduced,clamp,lerp,ease};
 
 // Momentum scroll, driven by GSAP's ticker so ScrollTrigger reads the same frame.
+// Mobile toolbars resize the viewport as they collapse; don't refresh every trigger (and jump) when they do.
+if(window.gsap&&window.ScrollTrigger){gsap.registerPlugin(ScrollTrigger);ScrollTrigger.config({ignoreMobileResize:true})}
 if(!reduced&&window.Lenis&&window.gsap&&window.ScrollTrigger){
  gsap.registerPlugin(ScrollTrigger);
  const lenis=new Lenis({duration:1.15,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)),smoothWheel:true});

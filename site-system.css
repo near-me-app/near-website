@@ -142,7 +142,7 @@ html a:focus-visible,html button:focus-visible,html summary:focus-visible{outlin
 }
 
 /* Grain: the same fine film texture the Aura section has, over the whole page. */
-body:after{content:'';position:fixed;inset:0;z-index:2147483000;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+body:after{content:'';position:fixed;inset:0;z-index:2147483000;pointer-events:none;opacity:.035;
  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 @media print{body:after{display:none}}
 
@@ -245,3 +245,21 @@ html #aura.is-live .am-stage:before{content:"";position:absolute;left:0;right:0;
 .am-sound svg{flex:none}
 .am-sound .am-wave{opacity:0;transition:opacity var(--d-fast)}
 .am-sound[aria-pressed="true"] .am-wave{opacity:1}
+
+/* ---------------------------------------------------------------------------
+   Touch devices (iOS especially): drop effects that make the compositor redo
+   full-screen work every scroll frame. The page-wide grain and the Aura grain
+   are blend-mode layers over moving content; the header blur sits over moving
+   content too (and is barely visible behind a 94% opaque bar).
+   --------------------------------------------------------------------------- */
+@media (hover:none),(pointer:coarse){
+ body:after{display:none}
+ .am-stage:after{display:none}
+ .ng-card::after{display:none}
+ .site-header,body>header.site-header{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(11,12,15,.97)}
+}
+/* Locked Aura art is pre-blurred in the image files, so cards that scale every frame
+   don't recompute a 9px blur each frame. */
+.am-card.is-locked img{filter:none}
+/* Clean-up pin: a volunteering plan, so it shares the tree-planting pin's category colour. */
+html #hero .pin.p6 .disc{background:linear-gradient(135deg,var(--cat-4),var(--cat-4-deep))}
