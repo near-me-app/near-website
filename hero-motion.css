@@ -34,6 +34,7 @@ html.nm-smooth #hero .pin.p1 .disc{animation-delay:.81s}html.nm-smooth #hero .pi
 html.nm-smooth #hero .pin.p3 .disc{animation-delay:.94s}html.nm-smooth #hero .pin.p3 .pin-label{animation-delay:1.09s}
 html.nm-smooth #hero .pin.p0 .disc{animation-delay:1.07s}html.nm-smooth #hero .pin.p0 .pin-label{animation-delay:1.22s}
 html.nm-smooth #hero .pin.p5 .disc{animation-delay:1.2s}html.nm-smooth #hero .pin.p5 .pin-label{animation-delay:1.35s}
+html.nm-smooth #hero .pin.p6 .disc{animation-delay:1.13s}html.nm-smooth #hero .pin.p6 .pin-label{animation-delay:1.28s}
 html.nm-smooth #hero .you{animation:hero-pop .8s cubic-bezier(.3,.8,.3,1.2) .4s both}
 
 /* Pointer tilt (class added by hero-motion.js on fine pointers, desktop layout only). */

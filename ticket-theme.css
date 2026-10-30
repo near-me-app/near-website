@@ -32,13 +32,7 @@ body>header.site-header{background:rgba(11,12,15,.94);backdrop-filter:blur(18px)
 .hero-plan.is-live .hero-plan-meta:before{background:var(--live)}
 .hero-plan-arrow{transition:translate var(--d-short) var(--ease-out)}
 .hero-plan:hover .hero-plan-arrow{translate:3px -3px}
-/* Two ticket stubs behind the front card make the deck read as a stack. */
-.hero-plan-deck:before,.hero-plan-deck:after{content:'';position:absolute;inset:0;border-radius:14px;background:var(--ticket);box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform var(--d-short) var(--ease-out)}
-.hero-plan-deck:before{z-index:1;opacity:.55;transform:translate(10px,-9px) rotate(3deg) scale(.97)}
-.hero-plan-deck:after{z-index:0;opacity:.28;transform:translate(20px,-17px) rotate(6deg) scale(.94)}
-.hero-plan-deck:hover:before{transform:translate(14px,-13px) rotate(4deg) scale(.97)}
-.hero-plan-deck:hover:after{transform:translate(27px,-24px) rotate(8deg) scale(.94)}
-.hero-plan-timer{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--ticket-ink);opacity:.22;transform-origin:left;transform:scaleX(0);animation:hero-plan-timer 4.6s linear forwards;animation-play-state:paused}
+.hero-plan-timer{position:absolute;left:0;bottom:0;height:3px;width:100%;background:var(--ticket-ink);opacity:.22;transform-origin:left;transform:scaleX(0);animation:hero-plan-timer 3s linear forwards;animation-play-state:paused}
 #hero.is-playing .hero-plan-timer{animation-play-state:running}
 #hero.is-playing .hero-plan-deck:hover .hero-plan-timer,#hero.is-playing .hero-plan-deck:focus-within .hero-plan-timer{animation-play-state:paused}
 @keyframes hero-plan-timer{to{transform:scaleX(1)}}
@@ -125,7 +119,7 @@ footer.site-footer.footer-renewed,.footer-renewed .footer-showcase,.footer-renew
 .footer-renewed .footer-brand-block{display:flex;flex-direction:column;align-items:flex-start;gap:7px}
 .footer-renewed .footer-brand-block p{margin:0}
 .footer-renewed .footer-colophon{border-color:rgba(244,239,231,.15)}
-@media(prefers-reduced-motion:reduce){.hero-plan-timer{display:none}.hero-plan-deck:before,.hero-plan-deck:after,#hero .pin{transition:none}}
+@media(prefers-reduced-motion:reduce){.hero-plan-timer{display:none}#hero .pin{transition:none}}
 @media(max-width:900px){
  #hero .hero-copy h1{font-size:clamp(47px,9vw,76px)}
  #hero .hero-copy h1 .hero-go,#hero .hero-copy h1 .hero-outside{display:block;font-size:1em;margin:0}
@@ -298,6 +292,7 @@ footer.site-footer.footer-renewed,.footer-renewed .footer-showcase,.footer-renew
  #hero .p3{display:none}
  #hero .p4{left:12%;top:15%}
  #hero .p5{display:none}
+ #hero .p6{display:none}
  #hero .you{display:none}
 }
 @media(prefers-reduced-motion:reduce){.footer-map-pin,.footer-invite{transition:none}.footer-discovery.is-playing .footer-map-pin.is-active:before{animation:none}}

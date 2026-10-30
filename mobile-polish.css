@@ -1,0 +1,153 @@
+/* Final responsive details for the campaign header, story and member passes. */
+html #hero .hero-copy h1{
+  font:400 clamp(72px,7.8vw,112px)/.98 Anton,Impact,sans-serif;
+  letter-spacing:.005em;
+  text-transform:uppercase;
+  margin-bottom:24px;
+}
+#hero .hero-copy h1 .hero-prelude{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:15px;
+  font:700 11px/1.3 'JetBrains Mono',monospace;
+  letter-spacing:.15em;
+  color:var(--ns-mid);
+}
+#hero .hero-copy h1 .hero-prelude:before{
+  content:'';
+  width:24px;
+  height:2px;
+  flex:none;
+  background:var(--live);
+}
+#hero .hero-copy h1 .hero-go,
+#hero .hero-copy h1 .hero-outside{
+  display:block;
+  width:fit-content;
+  margin:0;
+  padding:0;
+  border-radius:0;
+  background:none;
+  color:var(--ns-ink);
+  font-size:1em;
+  white-space:nowrap;
+}
+#hero .hero-copy h1 .hero-outside{margin-left:clamp(12px,2.2vw,34px)}
+#hero .hero-copy h1 .hero-period{color:var(--live)}
+#hero .hero-copy>p{
+  max-width:440px;
+  font:400 clamp(17px,1.4vw,20px)/1.5 Archivo,Arial,sans-serif;
+  letter-spacing:-.015em;
+  color:var(--ns-mid);
+}
+
+@media(max-width:900px){
+  .site-header .header-inner{
+    width:auto;
+    margin-inline:max(20px,env(safe-area-inset-left)) max(20px,env(safe-area-inset-right));
+    grid-template-columns:minmax(0,1fr) auto auto;
+    gap:10px;
+  }
+  .site-header .header-download{grid-column:2;min-height:44px;justify-self:end}
+  .site-header .mobile-nav{grid-column:3;justify-self:end}
+  .site-header .mobile-nav summary{
+    justify-content:center;
+    min-width:44px;
+    min-height:44px;
+    padding:0 10px;
+    border:1px solid var(--ns-line);
+    border-radius:999px;
+    color:var(--ns-ink);
+  }
+  .site-header .mobile-nav[open] summary{background:var(--ns-ink);color:var(--bg)}
+  .site-header .mobile-nav nav{
+    top:64px;
+    left:max(20px,env(safe-area-inset-left));
+    right:max(20px,env(safe-area-inset-right));
+    border-radius:0 0 18px 18px;
+    box-shadow:0 20px 35px rgba(0,0,0,.35);
+  }
+
+  #features.fm-live .feature-copy{height:clamp(185px,25svh,230px);overflow:visible}
+  #features.fm-live .feature-copy h2{
+    font-size:clamp(40px,10.8vw,58px);
+    line-height:1.06;
+    margin-bottom:12px;
+  }
+  #features .fm-row{padding-block:.06em .12em;margin-bottom:0}
+  #features .fm-ride{transform-origin:center center}
+
+  #communities.cm-live .cp-rig{
+    --cpw:min(310px,calc(100vw - 64px));
+    width:100%;
+    max-width:460px;
+    padding:12px calc(50% - 155px) 18px;
+    gap:16px;
+    scroll-padding-inline:calc(50% - 155px);
+    overscroll-behavior-inline:contain;
+  }
+  #communities .cp-card{isolation:isolate;box-shadow:0 18px 34px -14px rgba(0,0,0,.65)}
+  #communities .cp-body{position:relative;z-index:0}
+  #communities .cp-crest{z-index:20;transform:translateZ(1px)}
+  #communities .cp-chips{z-index:2}
+  #communities .cp-foil{width:100%;min-width:0;gap:2cqw;padding-right:20cqw}
+  #communities .cp-scan{min-width:0;overflow:hidden}
+  #communities .cp-mark{position:absolute;right:4.1cqw;bottom:3cqw;width:15cqw;min-width:0;margin:0}
+
+  .nf-colophon{align-items:stretch;gap:14px}
+  .nf-top{
+    width:100%;
+    margin-left:0;
+    min-height:54px;
+    justify-content:space-between;
+    padding:0 18px;
+    border:1px solid var(--ns-line);
+    border-radius:999px;
+    color:var(--ns-ink);
+    font:700 12px/1 Archivo,Arial,sans-serif;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+  }
+  .nf-top span{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--ns-ink);color:var(--bg);font-size:18px;font-weight:400;line-height:1}
+  .nf-top:hover{border-color:var(--ns-ink)}
+  .nf-top:focus-visible{outline:2px solid var(--ns-ink);outline-offset:3px}
+}
+
+@media(max-width:520px){
+  .site-header .header-inner{
+    margin-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right));
+    gap:8px;
+  }
+  .site-header .header-download{padding-inline:12px;gap:8px;font-size:11px;white-space:nowrap}
+  .site-header .mobile-nav summary{width:44px;padding:0}
+  .site-header .mobile-menu-label{display:none}
+  .site-header .mobile-nav nav{left:max(16px,env(safe-area-inset-left));right:max(16px,env(safe-area-inset-right))}
+
+  #hero .map{inset:0;height:100%;min-height:0}
+  #hero .map:after{background:linear-gradient(180deg,rgba(11,12,15,.12) 0%,rgba(11,12,15,.2) 33%,var(--bg) 68%,var(--bg) 100%)}
+  #hero .pin.p2{top:39%}
+  #hero .hero-layout{padding-top:clamp(280px,50svh,420px);padding-bottom:42px}
+  html #hero .hero-copy h1{font-size:clamp(52px,14vw,72px);line-height:1.06;margin-bottom:20px}
+  #hero .hero-copy h1 .hero-prelude{font-size:10px;margin-bottom:12px}
+  #hero .hero-copy h1 .hero-go,#hero .hero-copy h1 .hero-outside{font-size:1em}
+  #hero .hero-copy h1 .hero-outside{margin-left:0}
+  #hero .hero-copy>p{width:auto;max-width:340px;font-size:16px;line-height:1.55;font-weight:400}
+  #hero .store-row{margin-top:22px}
+
+  #features.fm-live .feature-copy h2{font-size:clamp(38px,10.5vw,48px)}
+  #features .fm-row{padding-bottom:.13em}
+  #features.fm-live .feature-copy p{font-size:14px;line-height:1.5}
+
+  .nf-colophon{flex-direction:column-reverse;padding-block:24px;gap:20px}
+  .nf-colophon>span{align-self:flex-start}
+}
+
+@media(max-width:374px){
+  #communities.cm-live .cp-rig{padding-inline:12px;scroll-padding-inline:12px}
+}
+
+@media(max-width:360px){
+  #communities .cp-foil{padding-right:4.1cqw}
+  #communities .cp-mark{display:none}
+}

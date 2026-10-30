@@ -28,10 +28,9 @@
 
 /* Closing line */
 .am-quote{position:relative;padding:40px var(--am-gutter) 0;text-align:center}
-.am-quote h3{margin:0 auto;font:400 clamp(44px,7.4vw,124px)/.98 Anton,var(--display),sans-serif;text-transform:uppercase;letter-spacing:0;color:var(--am-ink)}
+.am-quote h3{margin:0 auto;font:400 clamp(44px,7.4vw,124px)/.98 Anton,var(--display),sans-serif;text-transform:uppercase;letter-spacing:0;color:#F1F1EF}
 .am-quote h3 span{display:block}
-.am-quote p{margin:22px auto 0;max-width:440px;font-size:14px;line-height:1.6;color:rgba(233,223,205,.6)}
-.am-quote .am-mark{display:block;margin-bottom:10px;font:400 clamp(40px,4vw,64px)/.6 Anton,sans-serif;color:color-mix(in srgb,var(--am-tone) 70%,var(--am-ink))}
+.am-quote p{margin:22px auto 0;max-width:440px;font-size:14px;line-height:1.6;color:rgba(224,228,233,.68)}
 
 /* ── Live: pinned, scroll-driven ── */
 #aura.aura-moments.is-live{height:520svh}
@@ -45,7 +44,7 @@
 .is-live .am-dots{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
 .is-live .am-quote{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:center;padding:0 var(--am-gutter);pointer-events:none}
 .is-live .am-quote h3{clip-path:polygon(0 0,var(--wipe,0%) 0,calc(var(--wipe,0%) - 14%) 100%,0 100%)}
-.is-live .am-quote .am-mark,.is-live .am-quote p{opacity:var(--after,0);transform:translateY(calc((1 - var(--after,0))*14px))}
+.is-live .am-quote p{opacity:var(--after,0);transform:translateY(calc((1 - var(--after,0))*14px))}
 .is-live .am-quote a{pointer-events:auto}
 .is-live .am-hint{display:flex;align-items:center;gap:10px;position:absolute;left:var(--am-gutter);bottom:46px;z-index:6;font:500 10px var(--body),sans-serif;letter-spacing:.2em;text-transform:uppercase;color:rgba(233,223,205,.5)}
 .am-hint i{width:28px;height:1px;background:currentColor;transform-origin:left;animation:am-hint 1.8s var(--ease-out) infinite}

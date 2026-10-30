@@ -19,7 +19,7 @@ gsap.matchMedia().add('(prefers-reduced-motion: no-preference) and (min-height: 
  section.classList.add('is-live');
  const tones=cards.map(c=>c.dataset.tone),names=cards.map(c=>c.dataset.name),tilts=[-4,3,-2.5,4,-3.5,2.5,-3,2];
  const dpr=Math.min(2,window.devicePixelRatio||1),SPLIT=.7;
- let vw=0,vh=0,cardW=0,gap=0,startX=0,endX=0,lefts=[],dots=[],dotR=0,active=-1,target=0,current=0,raf=0;
+ let vw=0,vh=0,cardW=0,gap=0,startX=0,endX=0,lefts=[],dots=[],dotR=0,active=-1,target=0,current=0,raf=0,lastFrame=0,lastDotPhase=0;
 
  function measure(){
   vw=stage.clientWidth;vh=stage.clientHeight;cardW=cards[0].offsetWidth;
@@ -67,7 +67,9 @@ gsap.matchMedia().add('(prefers-reduced-motion: no-preference) and (min-height: 
  }
 
  function render(p){
-  const a=clamp(p/SPLIT),b=clamp((p-SPLIT+.04)/(1-SPLIT+.04));
+  const rawA=clamp(p/SPLIT),tail=clamp((rawA-.85)/.15);
+  const a=rawA<.85?rawA:.85+.15*(tail+tail*tail-tail*tail*tail);
+  const b=clamp((p-SPLIT+.04)/(1-SPLIT+.04));
   const x=lerp(startX,endX,a)-easeInOut(clamp(b/.5))*(vw*1.1);
   track.style.transform=`translate3d(${x.toFixed(1)}px,0,0)`;
   headline.style.transform=`translate3d(${(-(a*.24+b*.12)*vw).toFixed(1)}px,0,0)`;
@@ -90,14 +92,16 @@ gsap.matchMedia().add('(prefers-reduced-motion: no-preference) and (min-height: 
   const q=clamp((b-.3)/.7),solid=clamp((q-.5)/.4);
   quote.style.setProperty('--wipe',(solid*118).toFixed(1)+'%');
   quote.style.setProperty('--after',clamp((q-.82)/.18).toFixed(3));
-  drawDots(q);
+  if(q>0||lastDotPhase>0)drawDots(q);
+  lastDotPhase=q;
  }
 
- // Ease the scroll position so motion glides between wheel ticks (Lenis already does this when present).
- const follow=window.NearMotion&&NearMotion.smooth?1:.12;
- function tick(){
-  current+=(target-current)*follow;
-  if(Math.abs(target-current)<.0003){current=target;raf=0}else raf=requestAnimationFrame(tick);
+ // A short, frame-rate-independent catch-up keeps cards moving between wheel ticks.
+ function tick(now){
+  const dt=lastFrame?Math.min((now-lastFrame)/1000,.05):1/60;
+  lastFrame=now;
+  current+=(target-current)*(1-Math.exp(-dt/.13));
+  if(Math.abs(target-current)<.0003){current=target;raf=0;lastFrame=0}else raf=requestAnimationFrame(tick);
   render(current);
  }
  function kick(){if(!raf)raf=requestAnimationFrame(tick)}

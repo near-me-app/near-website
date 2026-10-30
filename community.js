@@ -32,69 +32,65 @@
 
   gsap.matchMedia().add('(min-width: 901px) and (min-height: 500px) and (prefers-reduced-motion: no-preference)', () => {
     section.classList.add('cm-live');
-    const follow = (window.NearMotion && NearMotion.smooth) ? 1 : 0.14;
     const pointer = { x: 0, y: 0 };
-    let target = 0, current = 0, raf = 0, active = -1;
+    const pointerTarget = { x: 0, y: 0 };
+    let target = 0, current = 0, velocity = 0, swing = 0, swingVelocity = 0, raf = 0, active = -1, lastFrame = 0;
+    let inView = false;
 
     // Pose by offset from focus:
     // o > 0: waiting on the peg behind the front pass
     // o = 0: front-and-center active pass
-    // o < 0: swinging away to the left on the lanyard arc
+    // o < 0: swinging away and settling behind the next pass
     function pose(o) {
       if (o >= 0) {
         const t = smoothstep(clamp(o, 0, 1));
-        const deep = Math.max(0, o - 1);
         return {
-          x: lerp(0, 8, t) + deep * 4,
-          y: lerp(0, 4, t) + deep * 2.5,
-          r: lerp(0, 4, t) + deep * 1.5,
-          s: lerp(1, 0.94, t) - deep * 0.03,
-          dim: lerp(0, 0.22, t) + deep * 0.12,
-          a: clamp(1 - Math.max(0, o - 1.5) * 2, 0, 1),
-          z: Math.max(1, 20 - Math.round(o * 6))
+          r: lerp(0, 10, t),
+          y: lerp(0, 12, t),
+          x: 0
         };
       }
-      const t = smoothstep(clamp(-o, 0, 1));
+      const distance = -o;
+      const out = smoothstep(clamp(distance / 0.62));
+      const back = smoothstep(clamp((distance - 0.72) / 0.68));
       return {
-        x: lerp(0, -62, t),
-        y: lerp(0, -14, t),
-        r: lerp(0, -18, t),
-        s: lerp(1, 0.94, t),
-        dim: lerp(0, 0.35, t),
-        a: clamp(1 - Math.max(0, -o - 0.55) * 2.2, 0, 1),
-        z: Math.max(1, 20 - Math.round(t * 8))
+        r: -28 * out * (1 - back) - 4 * back,
+        y: -24 * out * (1 - back) - 8 * back,
+        x: 5 * out * (1 - back)
       };
     }
 
-    function render(p) {
+    function render(p, sway = 0, now = 0) {
       const pos = clamp(p, 0, 1) * (passes.length - 1);
-      const vel = clamp((target - current) * 25, -1, 1);
-      const sway = -vel * 4.2;
+      const front = Math.round(pos);
 
       passes.forEach((pass, i) => {
         const o = i - pos;
         const q = pose(o);
-        const focus = clamp(1 - Math.abs(o) * 1.2, 0, 1);
-        const rx = -pointer.y * 5 * focus;
-        const ry = pointer.x * 6.5 * focus;
-        const rz = q.r + (sway * (1 - Math.min(1, Math.abs(o) * 0.5))) + (pointer.x * 2.8 * focus);
+        const focus = clamp(1 - Math.abs(o), 0, 1);
+        const rx = q.x - pointer.y * 1.1 * focus;
+        const ry = q.y + pointer.x * 1.2 * focus;
+        const idle = inView && now ? Math.sin(now / 1600 + i * 1.3) * (i === front ? 0.38 : 0.22) : 0;
+        const rz = q.r + sway * (1 - Math.min(1, Math.abs(o) * 0.35)) + idle + pointer.x * 0.35 * focus;
 
-        pass.style.transform = `translate3d(${q.x.toFixed(2)}%, ${q.y.toFixed(2)}%, 0) scale(${q.s.toFixed(4)})`;
-        pass.style.opacity = q.a.toFixed(3);
-        pass.style.visibility = q.a < 0.01 ? 'hidden' : '';
-        pass.style.zIndex = String(q.z);
-        pass.style.filter = q.dim > 0.01 ? `brightness(${(1 - q.dim * 0.45).toFixed(3)})` : '';
+        // A physical pass stays opaque. The front pass changes only once the
+        // outgoing one has swung clear, so the two faces never show through.
+        pass.style.opacity = '1';
+        pass.style.visibility = Math.abs(o) > 1.75 ? 'hidden' : '';
+        pass.style.zIndex = String(i === front ? 30 : 20 - Math.round(Math.abs(o) * 4));
 
         const hang = pass.querySelector('.cp-hang');
         if (hang) {
-          hang.style.transform = `perspective(1200px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) rotateZ(${rz.toFixed(2)}deg)`;
+          hang.style.transform = `perspective(1200px) rotateZ(${rz.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) rotateX(${rx.toFixed(2)}deg)`;
         }
 
-        const foilPos = 35 + (pointer.x * 35) + (o * -15);
-        pass.style.setProperty('--foil', `${foilPos.toFixed(1)}%`);
+        if (focus > 0.05) {
+          const foilPos = 35 + (pointer.x * 35) + (o * -15);
+          pass.style.setProperty('--foil', `${foilPos.toFixed(1)}%`);
+        }
       });
 
-      const next = Math.round(pos);
+      const next = front;
       if (next !== active) {
         active = next;
         if (countNum) countNum.textContent = `${pad(next + 1)} / ${pad(passes.length)}`;
@@ -107,15 +103,32 @@
       }
     }
 
-    function tick() {
-      current += (target - current) * follow;
-      if (Math.abs(target - current) < 0.0004) {
+    function tick(now) {
+      const dt = clamp((now - (lastFrame || now)) / 16.67, 0.5, 2);
+      lastFrame = now;
+      const easePointer = 1 - Math.pow(0.8, dt);
+      pointer.x += (pointerTarget.x - pointer.x) * easePointer;
+      pointer.y += (pointerTarget.y - pointer.y) * easePointer;
+      velocity = (velocity + (target - current) * 0.18 * dt) * Math.pow(0.58, dt);
+      current += velocity * dt;
+      const swingTarget = clamp(-velocity * 90, -4, 4);
+      swingVelocity = (swingVelocity + (swingTarget - swing) * 0.075 * dt) * Math.pow(0.88, dt);
+      swing += swingVelocity * dt;
+      if (Math.abs(target - current) < 0.0002 && Math.abs(velocity) < 0.0002) {
         current = target;
-        raf = 0;
-      } else {
-        raf = requestAnimationFrame(tick);
+        velocity = 0;
       }
-      render(current);
+      if (Math.abs(swing) < 0.02 && Math.abs(swingVelocity) < 0.02 && !velocity) {
+        swing = 0;
+        swingVelocity = 0;
+      }
+      render(current, swing, now);
+      if (inView || velocity || swing || Math.abs(pointerTarget.x - pointer.x) > 0.001 || Math.abs(pointerTarget.y - pointer.y) > 0.001) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        raf = 0;
+        lastFrame = 0;
+      }
     }
 
     const kick = () => {
@@ -126,13 +139,13 @@
     const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
     const onMove = e => {
       const r = rig.getBoundingClientRect();
-      pointer.x = clamp((e.clientX - (r.left + r.width / 2)) / (r.width / 2), -1, 1);
-      pointer.y = clamp((e.clientY - (r.top + r.height / 2)) / (r.height / 2), -1, 1);
+      pointerTarget.x = clamp((e.clientX - (r.left + r.width / 2)) / (r.width / 2), -1, 1);
+      pointerTarget.y = clamp((e.clientY - (r.top + r.height / 2)) / (r.height / 2), -1, 1);
       kick();
     };
     const onLeave = () => {
-      pointer.x = 0;
-      pointer.y = 0;
+      pointerTarget.x = 0;
+      pointerTarget.y = 0;
       kick();
     };
 
@@ -150,7 +163,8 @@
       if (idx !== -1 && idx !== active) {
         const range = trigger.end - trigger.start;
         const targetScroll = trigger.start + (idx / (passes.length - 1)) * range;
-        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+        if (window.NearMotion && NearMotion.smooth) NearMotion.smooth.scrollTo(targetScroll, { duration: 1.1 });
+        else window.scrollTo({ top: targetScroll, behavior: 'smooth' });
       }
     };
     rig.addEventListener('click', onClick);
@@ -159,13 +173,19 @@
       trigger: section,
       start: 'top 64px',
       end: 'bottom bottom',
+      onToggle: self => {
+        inView = self.isActive;
+        kick();
+      },
       onUpdate: self => {
         target = self.progress;
         kick();
       },
       onRefresh: self => {
         target = current = self.progress;
-        render(current);
+        velocity = 0;
+        swing = swingVelocity = 0;
+        render(current, 0);
       }
     });
 
