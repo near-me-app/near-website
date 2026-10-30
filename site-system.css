@@ -62,3 +62,117 @@
 
 /* Header shares the page column so the logo lines up with the content and footer. */
 @media(min-width:901px){.site-header .header-inner{width:min(var(--ns-max),calc(100% - var(--ns-gutter)*2))}}
+
+/* ---------------------------------------------------------------------------
+   Consistency layer. Loaded last (after mobile-polish.css) so older section
+   overrides can't drift from the shared tokens above. One rule per role:
+   column, kicker, headline, lead, counter, CTA, text link, HUD position.
+   --------------------------------------------------------------------------- */
+:root{--ns-hud-top:clamp(28px,5svh,54px);--ns-cta-size:13px;--ns-link-size:14px}
+@media(max-width:900px){:root{--ns-hud-top:24px}}
+
+/* Column: the hero used the legacy 1240px .wrap, so its copy sat 40px right of every other section. */
+@media(min-width:901px){#hero .hero-layout.wrap{width:min(var(--ns-max),calc(100% - var(--ns-gutter)*2));margin-inline:auto}}
+
+/* Kicker: 11px Archivo, .2em tracking, dim, everywhere (Discover was 12px, Communities 16px with a lighter tint). */
+html #main .ns-kicker,html .site-footer .ns-kicker{font:500 var(--ns-kicker)/1 var(--body),sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--ns-dim);max-width:none;margin:0}
+/* The hero's opener speaks the same kicker voice (was JetBrains Mono); its rule keeps the live red. */
+html #hero .hero-copy h1 .hero-prelude{gap:14px;font:500 var(--ns-kicker)/1.3 var(--body),sans-serif;letter-spacing:.2em;color:var(--ns-mid)}
+html #hero .hero-copy h1 .hero-prelude:before{width:28px;height:1px;opacity:1}
+
+/* Headline: every section h2 shares --ns-h2 (Discover ran 86px, Inside the app 81px, the rest 72px). */
+html #possibilities.ng.is-live .ng-copy .ns-h2,html #possibilities.ng .ng-copy .ns-h2,html #features.fm-live .feature-copy h2,html #features .feature-copy h2,html #communities .community-copy h2.ns-h2,html .film .ns-h2,html #download .ns-h2{font-size:var(--ns-h2);line-height:.92;letter-spacing:.005em}
+
+/* Lead: one size, weight and tint (Discover was 22px, Communities 16px in #c5c1ba). */
+html #main .ns-lead,html #features.fm-live .feature-copy p,html #features .feature-copy p,html .site-footer .ns-lead{font-size:var(--ns-lead);line-height:1.55;font-weight:500;color:var(--ns-mid)}
+html #possibilities .ng-copy .ns-lead,html #communities .community-copy p.ns-lead,html #features .feature-copy p{max-width:40ch}
+
+/* Counters (Aura 01 / 08, Communities 01 / 03, Chapter 01 / 03, film meta): kicker voice, not monospace. */
+html #communities .cm-count,html #communities.cm-live .cm-count,html .am-hud,html #features .fm-hud{font-family:var(--body),sans-serif;font-size:var(--ns-kicker);font-weight:500;letter-spacing:.2em;color:var(--ns-dim)}
+
+/* Pinned sections place their kicker row at the same distance below the header. */
+html #features.fm-live .fm-hud,html .is-live .am-hud{top:var(--ns-hud-top)}
+html #possibilities .is-live .ng-copy,html #possibilities.is-live .ng-copy{padding-top:var(--ns-hud-top)}
+
+/* Primary CTA: pill, uppercase, 13px/700, .06em, same as Get Near and Watch the film. */
+html #main .community-apply{border-radius:var(--r-pill);font-size:var(--ns-cta-size);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+html .site-header .header-download{border-radius:var(--r-pill);font-weight:700;letter-spacing:.06em}
+@media(min-width:901px){html .site-header .header-download{font-size:var(--ns-cta-size)}}
+html .nf-play{font-size:var(--ns-cta-size);letter-spacing:.06em;font-weight:700}
+
+/* Text link: 14px/600, mid tint, ink on hover, in every section. */
+html #communities .community-join,html #features .feature-copy article>a{font-size:var(--ns-link-size);font-weight:600;letter-spacing:0;color:var(--ns-mid);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px;text-decoration-color:var(--ns-line)}
+html #communities .community-join:hover,html #features .feature-copy article>a:hover{color:var(--ns-ink);text-decoration-color:currentColor}
+
+/* Focus ring: one treatment for every interactive element. */
+html a:focus-visible,html button:focus-visible,html summary:focus-visible{outline:2px solid var(--ns-ink);outline-offset:4px}
+
+/* ---------------------------------------------------------------------------
+   Atmosphere. Discover's moonlight glow is now a shared token: every section
+   gets the same cool light falling on its headline, anchored where its copy
+   sits, so the page reads as one lit space instead of flat panels.
+   --------------------------------------------------------------------------- */
+:root{
+ --ns-glow-hi:rgba(218,232,240,.15);
+ --ns-glow-lo:rgba(83,113,137,.07);
+ --ns-glow:radial-gradient(ellipse var(--gw,62%) var(--gh,74%) at var(--gx,22%) var(--gy,12%),var(--ns-glow-hi),var(--ns-glow-lo) 38%,transparent 77%);
+}
+/* Full-bleed light behind the (column-width) stage; sticky stages carry it while pinned.
+   The box overhangs its stage and fades at both ends so the light never shows a hard edge. */
+#features .story-stage,.film>.ns-wrap,.nf-cta-inner{position:relative;isolation:isolate}
+#features .story-stage:before,.film>.ns-wrap:after,.nf-cta-inner:before,#hero .map:before{
+ content:'';position:absolute;z-index:-1;pointer-events:none;top:-25%;bottom:-25%;left:50%;width:100vw;transform:translateX(-50%);background:var(--ns-glow);
+ -webkit-mask:linear-gradient(transparent,#000 22%,#000 70%,transparent);mask:linear-gradient(transparent,#000 22%,#000 70%,transparent)}
+#features .story-stage:before{--gx:20%;--gy:32%}
+/* Communities: its stage clips overflow (for the hanging passes), so the light rides on the section as a sticky layer instead. */
+#communities{isolation:isolate}
+#communities:before{content:'';display:block;position:sticky;top:64px;z-index:-1;height:calc(100svh - 64px);margin-bottom:calc(64px - 100svh);pointer-events:none;
+ --gx:18%;--gy:40%;--gw:60%;--gh:80%;background:var(--ns-glow);-webkit-mask:linear-gradient(transparent,#000 18%);mask:linear-gradient(transparent,#000 18%)}
+/* Film: light from the headline corner, plus a soft halo the frame sits in. */
+.film>.ns-wrap:after{--gy:24%;background:var(--ns-glow),radial-gradient(50% 30% at 50% 58%,rgba(218,232,240,.06),transparent 70%)}
+.nf-cta-inner:before{--gx:50%;--gy:34%;--gw:48%;--gh:56%}
+/* Hero: the glow sits on the map, under its dark wash, so it lights the copy side without touching the copy's stacking. */
+#hero .map:before{top:0;bottom:0;left:0;width:auto;right:0;transform:none;z-index:1;--gx:16%;--gy:40%;--gw:55%;--gh:80%;opacity:.9;-webkit-mask:none;mask:none}
+@media(max-width:900px){
+ #hero .map:before{--gx:22%;--gy:78%;--gw:120%;--gh:50%}
+ #features .story-stage:before{--gx:24%;--gy:26%;--gw:130%;--gh:40%}
+ #communities:before{--gx:24%;--gy:16%;--gw:130%;--gh:40%}
+ .film>.ns-wrap:after{--gw:130%;--gh:35%;--gy:24%}
+ .nf-cta-inner:before{--gw:120%;--gh:45%}
+}
+
+/* Grain: the same fine film texture the Aura section has, over the whole page. */
+body:after{content:'';position:fixed;inset:0;z-index:2147483000;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+ background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media print{body:after{display:none}}
+
+/* ---------------------------------------------------------------------------
+   Phone hero. The map gets a fixed zone (--hz) above the copy; pins and the
+   plan card are placed inside that zone so nothing ever lands on the headline.
+   --------------------------------------------------------------------------- */
+@media(max-width:520px){
+ html #hero.map-hero{--hz:clamp(300px,44dvh,380px);min-height:0}
+ html #hero .hero-layout{width:auto;max-width:none;min-height:0;padding:var(--hz) 0 clamp(40px,7dvh,64px)}
+ html #hero .hero-copy{padding:0}
+
+ /* Map zone: two pins up top, the live set between them, the plan card off-centre right, two pins low left/right. */
+ html #hero .pin.p4{left:7%;top:calc(var(--hz)*.05)}
+ html #hero .pin.p5{display:grid;left:40%;top:calc(var(--hz)*.03)}
+ html #hero .pin.p1{left:80%;top:calc(var(--hz)*.08)}
+ html #hero .pin.p2{left:9%;top:calc(var(--hz)*.6)}
+ html #hero .pin.p0{left:54%;top:calc(var(--hz)*.68)}
+ html #hero .hero-plan-deck{top:calc(var(--hz)*.32);right:16px;width:min(256px,64vw)}
+
+ /* Wash reaches solid page colour just above the copy, so the headline sits on a clean ground. */
+ html #hero .map:after{background:linear-gradient(180deg,rgba(11,12,15,.08) 0,rgba(11,12,15,.3) calc(var(--hz) - 140px),var(--bg) calc(var(--hz) - 8px),var(--bg) 100%)}
+ html #hero .map:before{--gx:24%;--gy:calc(var(--hz) + 60px);--gw:120%;--gh:42%}
+
+ /* Badges: true size, flush with the text edge. */
+ /* Lead flows as one paragraph instead of one forced line per sentence. */
+ html #hero .hero-copy>p{max-width:36ch}
+ html #hero .hero-copy>p span{display:inline}
+ html #hero .hero-copy>p span+span:before{content:" "}
+
+ html #hero .store-row{gap:10px;margin-top:24px}
+ html #hero .store-row .store,html #hero .store-row .store img{width:auto;height:44px;min-height:44px}
+}
